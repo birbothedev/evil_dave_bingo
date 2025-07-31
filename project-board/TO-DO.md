@@ -15,3 +15,34 @@
 
 
 # Backend
+## Figure out data structure
+- Json?
+- Should we compartmentalize the data based on request?
+
+## Create API Endpoints
+- /home
+  - get all boards
+  - get all items, icons
+
+- /team?={teamPhrase}
+  - get team board
+  - get team inventory
+  - get team active board effects
+  
+- /admin *authed*
+  - get all teams
+  - get all items, icons
+  - get all active effects
+  - get all boards
+  - get all users
+  - Dashboard
+
+- /tasks?={evilPhrase}
+  - get team assigned evil tasks
+
+# Discord
+
+
+
+
+# Miscellaneous
