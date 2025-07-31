@@ -1,0 +1,41 @@
+
+.bingo-board {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    background-color: #1a1a1a;
+    padding: 1rem;
+    transition: transform 0.2s;
+}
+
+.bingo-board:hover {
+    transform: translateY(-5px);
+}
+
+.tiles-container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    border-radius: 8px;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.tiles {
+    width: 100px;
+    height: 36px;
+    background-color: #333;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+}
+
+.tiles:hover {
+    transform: translateY(-5px);
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+}
