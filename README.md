@@ -1,1 +1,4 @@
-# evil_dave_bingo
+# Evil Dave's Bingo
+
+
+An evil twist on the classic OSRS Bingo Format
