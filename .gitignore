@@ -48,3 +48,7 @@ db.sqlite3
 *.bak
 *.tmp
 *.orig
+
+# Venv
+.discord
+.backend
