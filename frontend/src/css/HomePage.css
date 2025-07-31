@@ -1,0 +1,42 @@
+.main-content {
+    width: 100%;
+    height: 100vh; 
+}
+
+.home-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; 
+    padding-top: 2rem; 
+    outline: 2px dashed blue;
+    margin: 0;
+}
+
+h3 {
+    text-align: center;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    width: 100%;
+    background-color: #1a1a1a;
+    padding: 1rem;
+    transition: transform 0.2s;
+    letter-spacing: 2px;
+    outline: 2px dashed blue;
+}
+
+h3:hover {
+    transform: translateY(-5px);
+}
+
+.bingo-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2%; 
+    width: 100%;
+    align-items: center;
+}
+
+.team-title {
+    padding: 5px;
+}
