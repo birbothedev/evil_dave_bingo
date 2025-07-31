@@ -14,7 +14,6 @@ export function BingoBoard({ team }) {
           id={tileId}
           data-x={i}
           data-y={j}
-          key={tileId}
         >
           {i}, {j}
         </div>,
