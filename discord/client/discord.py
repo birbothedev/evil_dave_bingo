@@ -1,4 +1,5 @@
 import discord
+from discord import app_commands
 from loguru import logger
 
 
@@ -7,6 +8,7 @@ class DiscordClient(discord.Client):
     
     def __init__(self, debug: bool = False):
         self.debug = debug
+        self.tree: app_commands.CommandTree = app_commands.CommandTree(self)
         super().__init__(intents=discord.Intents.all())
         logger.info("DiscordClient initialized.")
         
