@@ -30,8 +30,8 @@ h3:hover {
 }
 
 .bingo-container {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 2%; 
     width: 100%;
     align-items: center;
