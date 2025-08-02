@@ -25,8 +25,8 @@
 }
 
 .tiles {
-    width: 100px;
-    height: 36px;
+    width: 180px;
+    height: 90px;
     background-color: #333;
     color: white;
     display: flex;
@@ -38,19 +38,4 @@
 .tiles:hover {
     transform: translateY(-5px);
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
-}
-
-.tooltip-box {
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #333;
-    color: white;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 12px;
-    white-space: nowrap;
-    margin-bottom: 6px;
-    z-index: 100;
 }

@@ -7,11 +7,12 @@
     border-radius: 8px;
     background-color: #1a1a1a;
     padding: 1rem;
-    transition: transform 0.2s;
+    transform: scale(1);
 }
 
 .small-bingo-board:hover {
     transform: translateY(-5px);
+    transition: transform 0.5s ease-in-out;
     cursor: pointer;
 }
 
@@ -21,6 +22,7 @@
     border-radius: 8px;
     gap: 1rem;
     justify-content: center;
+    outline: 2px dashed red;
 }
 
 .small-tiles {
@@ -39,34 +41,33 @@
 }
 
 .big-bingo-board {
+    position: absolute;
     z-index: 1000;
+    top: 20%;
+    left: 0%;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    max-width: 800px;
+    height: auto;
     margin-bottom: 2rem;
     border-radius: 8px;
     background-color: #1a1a1a;
     padding: 1rem;
-    transition: transform 0.2s;
-}
-
-.big-bingo-board:hover {
-    transform: translateY(-5px);
 }
 
 .big-tiles-container {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(7, 216px);
+    grid-template-rows: repeat(7, 80px);
     border-radius: 8px;
     gap: 1rem;
     justify-content: center;
 }
 
 .big-tiles {
-    width: 100px;
-    height: 36px;
+    width: 100%;
+    height: 100%;
     background-color: #333;
     color: white;
     display: flex;
@@ -78,4 +79,5 @@
 .big-tiles:hover {
     transform: translateY(-5px);
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+    transition: transform 0.25s ease-in-out;
 }

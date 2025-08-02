@@ -37,8 +37,6 @@ export function SmallBingoBoard({team}){
                 className={isOpen ? "big-bingo-board" : "small-bingo-board"}
                 onClick={() => setIsOpen((prev) => !prev)}
                 >
-
-                {isOpen ? 'Collapse' : 'Expand'} 
                 <div 
                     className={isOpen ? "big-tiles-container" : "small-tiles-container"}
                 >
