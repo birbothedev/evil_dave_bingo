@@ -1,0 +1,32 @@
+{
+  "teams": [
+    {
+      "name": "team A",
+      "score": 0,
+      "tiles-completed-count": 0,
+      "last-activity": null,
+      "bingo-bonus": {
+        "row": [1, 4],
+        "column": [2, 3],
+        "diagonal-right" : true,
+        "diagonal-left": false
+      },
+      "tiles": [
+        {
+          "tile-id": "teamA-01",
+          "tile-index": 1,
+          "data": {
+            "tile-coord-x": 1,
+            "tile-coord-y": 1,
+            "tile-descriptor": "Obtain 3 Dragon Pickaxes",
+            "tile-obtained-count": 0,
+            "tile-required-count": 3,
+            "tile-effect-state": "none",
+            "tile-last-updated": null,
+            "tile-completion-state": "true"
+          }
+        }
+      ]
+    }
+  ]
+}
