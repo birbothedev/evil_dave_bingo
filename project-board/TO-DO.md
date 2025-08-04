@@ -22,7 +22,7 @@
 ## Admin Page
 - overall goal: display all team inventories
   - display all team boards? might not be needed if we see them all on the home page
-
+- make buttons auto close when the other is clicked
 
 
 # Backend

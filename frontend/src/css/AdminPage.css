@@ -2,3 +2,27 @@
     justify-content: center;
     align-items: center;
 }
+
+.button-container {
+    display: flex;
+    position: relative;
+    width: 100%;
+    outline: dashed 2px blue;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons {
+    display: flex;
+    gap: 2%; 
+}
+
+.inventory-container, .status-effect-container {
+    position: absolute;
+    left: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2%; 
+    width: 100%;
+    align-items: center;
+}

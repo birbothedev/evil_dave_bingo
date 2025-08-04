@@ -6,7 +6,7 @@ export function CollapsibleSection({ label, children }) {
     return (
         <div className="collapsible-section">
             <button onClick={() => setIsOpen(!isOpen)}>
-                {isOpen ? 'Collapse' : 'Expand'} {label}
+                {label}
             </button>
             {isOpen && <div className="collapsible-content">{children}</div>}
         </div>
