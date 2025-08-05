@@ -29,8 +29,8 @@
     padding: 0.5rem 1.5rem;
     border-radius: 4px;
     transition: background-color 0.2s;
-    background-color: #16523C;
-    color: #FFFFFF;
+    background-color: #8f8c6d;
+    color: #000000;
 }
 
 .nav-link:hover {
