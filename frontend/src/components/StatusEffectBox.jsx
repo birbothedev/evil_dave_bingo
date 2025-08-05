@@ -3,9 +3,10 @@ import "../css/componentcss/PlayerInfoBoxes.css"
 export function StatusEffectBox({team}) {
     return (
         <>
-        <div className="team-info-box">
-            <div className="team-title">This is {team} name</div>
-            <h3>This is the Status Effect box</h3>
+        <div className="team-info-box-wrapper">
+            <div className="team-info-box">
+                <h3 className="team-info-title">This is the status effect box</h3>
+            </div>
         </div>
         </>
     )

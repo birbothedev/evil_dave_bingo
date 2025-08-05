@@ -1,6 +1,7 @@
 import "../css/componentcss/SmallBoard.css"
 import { useState } from "react"
 import { BingoBoard } from "./BingoBoard";
+import { TeamPoints } from "./TeamPoints";
 
 export function SmallBingoBoard({team}){
     // start with open state being set to false
@@ -32,7 +33,10 @@ export function SmallBingoBoard({team}){
     return (
         <>
         <div className="small-board-page">
-            <div className="team-title">This is {team} name</div>
+            <div className="board-label-group">
+                <h3 className="team-title board-title">This is {team} name</h3>
+                <div className="points-title"><TeamPoints team = {team}/></div>
+            </div>
             <div 
                 className={isOpen ? "big-bingo-board" : "small-bingo-board"}
                 onClick={() => setIsOpen((prev) => !prev)}

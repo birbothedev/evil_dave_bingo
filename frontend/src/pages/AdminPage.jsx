@@ -5,7 +5,6 @@ import { StatusEffectBox } from "../components/StatusEffectBox"
 import { useState } from "react"
 
 export function AdminPage(){
-    const [activeMenu, setActiveMenu] = useState(null);
 
     //placeholder teams, going to map these instead of hardcode when we have actual data
     const team1="Team1"
@@ -14,10 +13,6 @@ export function AdminPage(){
     const team4="Team4"
     const team5="Team5"
     const team6="Team6"
-
-    const toggleMenu = (menuName) => {
-        setActiveMenu(activeMenu === menuName ? null : menuName);
-    };
 
     return (
         <>

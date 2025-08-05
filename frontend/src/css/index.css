@@ -1,12 +1,12 @@
 
 :root {
   font-family: "Cal Sans", sans-serif;
-  font-weight: 400; /* Default */
-  font-style: normal; /* Default */
+  font-weight: 400; 
+  font-style: normal;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #221c12;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;

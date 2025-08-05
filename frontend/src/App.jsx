@@ -5,7 +5,7 @@ import './css/App.css'
 import { Routes, Route } from "react-router-dom"
 import { HomePage } from './pages/HomePage'
 import { TeamPage } from './pages/TeamPage'
-import { NavBar } from './components/NavBar'
+import { NavBar } from './components/util/NavBar'
 import { AdminPage } from './pages/AdminPage'
 
 function App() {

@@ -4,12 +4,37 @@
     height: 45%;
     padding: 1rem;
     margin-bottom: 1rem;
-    background-color: #1a1a1a;
-    border-radius: 6px;
     gap: 5%;
 }
 
-.team-info-box:hover {
+.team-info-box, .team-points-box {
+    text-align: center;
+    border-radius: 8px;
+    background-color: #fdd4a3;
+    color: black;
+    padding: 1rem;
+}
+
+.team-info-box-wrapper:hover {
+    box-shadow: 10px 10px 20px rgba(59, 11, 4, 1);
     transform: translateY(-5px);
     transition: transform 0.25s ease-in-out;
+}
+
+.team-points-box {
+    padding: 0.5rem 0.5rem;
+    margin: 0;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fdd4a3;
+    border-radius: 8px;
+}
+
+.team-info-title {
+    background-color: #fdd4a3;
+    pointer-events: none;
+    margin: 0;
+    padding: 0;
 }

@@ -9,20 +9,21 @@
     align-items: center;
     justify-content: flex-start; 
     padding-top: 2rem; 
-    outline: 2px dashed blue;
     margin: 0;
 }
 
-h3 {
+.page-title {
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
     border-radius: 8px;
     width: 100%;
-    background-color: #1a1a1a;
+    background-color: #fdd4a3;
+    color: black;
     padding: 1rem;
+    margin-top: 1rem;
     transition: transform 0.2s;
-    letter-spacing: 2px;
-    outline: 2px dashed blue;
+    letter-spacing: 5px;
+    box-shadow: 10px 10px 20px rgba(59, 11, 4, 1.0);
 }
 
 h3:hover {
@@ -32,11 +33,15 @@ h3:hover {
 .bingo-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2%; 
-    width: 100%;
+    gap: 5%; 
+    width: 80%;
     align-items: center;
 }
 
 .team-title {
     padding: 5px;
+}
+
+.team-groups {
+    gap: 1rem; 
 }
