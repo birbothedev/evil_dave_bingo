@@ -13,10 +13,10 @@
     background-color: #fdd4a3;
     color: black;
     padding: 1rem;
+    box-shadow: 6px 6px 12px rgba(117, 13, 2, 1);
 }
 
 .team-info-box-wrapper:hover {
-    box-shadow: 10px 10px 20px rgba(59, 11, 4, 1);
     transform: translateY(-5px);
     transition: transform 0.25s ease-in-out;
 }
