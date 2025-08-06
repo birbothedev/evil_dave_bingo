@@ -1,6 +1,5 @@
 import "../css/componentcss/SmallBoard.css"
 import { useState } from "react"
-import { BingoBoard } from "./BingoBoard";
 import { TeamPoints } from "./TeamPoints";
 
 export function SmallBingoBoard({team}){
@@ -12,29 +11,57 @@ export function SmallBingoBoard({team}){
     let tileCount = 0;
     const tiles = [];
 
+
+    //this logic going to have to change once we pull actual data
     for (let i = 1; i <= numRows; i++) {
         for (let j = 1; j <= numCols; j++) {
             tileCount++
             const tileId = `tile${(i - 1) * numCols + j}`;
-            tiles.push(
-                <div
-                    className={isOpen ? "big-tiles" : "small-tiles"}
-                    id={tileId}
-                    key= {tileCount}
-                    data-x={i}
-                    data-y={j}
-                >
-                    {tileCount}
-                </div>
-            );
+            if (i % 2 == 0){
+                tiles.push(
+                    <div
+                        className={isOpen ? "big-tiles" + " " + "completed-tile" : "small-tiles" + " " + "completed-tile"}
+                        id={tileId}
+                        key= {tileCount}
+                        data-x={i}
+                        data-y={j}
+                    >
+                        {tileCount}
+                    </div>
+                );
+            } else {
+                tiles.push(
+                    <div
+                        className={isOpen ? "big-tiles" : "small-tiles"}
+                        id={tileId}
+                        key= {tileCount}
+                        data-x={i}
+                        data-y={j}
+                    >
+                        {tileCount}
+                    </div>
+                );
+            }
         }
     }
+
+    // going to look something like this
+
+    // team.tiles.forEach(tile => {
+    //     tile.className = isOpen ? "big-tiles" : "small-tiles";
+    //     tile.id = `tile${tile.id}`;
+    //     tile.key = `tile${tile.index}`;
+
+    //     if (tile.data.tile-completion-state === "true") {
+    //         tile.className.add("completed-tile")
+    //     }
+    // });  
 
     return (
         <>
         <div className="small-board-page">
             <div className="board-label-group">
-                <h3 className="team-title board-title">This is {team} name</h3>
+                <h3 className="team-title board-title">This is {team.name} name</h3>
                 <div className="points-title"><TeamPoints team = {team}/></div>
             </div>
             <div 

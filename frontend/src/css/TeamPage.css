@@ -1,8 +1,11 @@
-
+.team-page-wrapper {
+    padding-top: 2rem;
+}
 
 .team-columns {
+    margin-top: 2%;
     display: flex;
-    gap: 1%;
+    gap: 1rem;
 }
 
 .team-inventory-container {
@@ -10,11 +13,14 @@
 }
 
 .team-bingo-board {
-    flex: 4;
-    background-color: #1a1a1a;
+    flex: 1;
 }
 
-.inventory-container, .team-bingo-board {
+.team-predeclared-bingo-board {
+    flex: 1;
+}
+
+.inventory-container, .team-bingo-board, .team-predeclared-bingo-board {
     display: flex;
     flex-direction: column;
     align-items: center;

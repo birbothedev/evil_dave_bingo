@@ -5,7 +5,7 @@ export function StatusEffectBox({team}) {
         <>
         <div className="team-info-box-wrapper">
             <div className="team-info-box">
-                <h3 className="team-info-title">This is the status effect box</h3>
+                <h3 className="team-info-title">This is the status effect box for {team}</h3>
             </div>
         </div>
         </>

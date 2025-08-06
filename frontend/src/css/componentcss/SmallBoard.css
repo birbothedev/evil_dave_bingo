@@ -7,11 +7,12 @@
     border-radius: 8px;
     background-color: #8f8c6d;
     padding: 1rem;
-    transition: transform 0.5s ease-in-out;
+    transform: none
 }
 
 .small-bingo-board:hover {
     transform: translateY(-5px);
+    transition: transform 0.5s ease-in-out;
     box-shadow: 10px 10px 20px rgba(117, 13, 2, 1.0);
     cursor: pointer;
 }
@@ -47,11 +48,13 @@
 .big-bingo-board {
     position: absolute;
     z-index: 1000;
-    top: 20%;
-    left: 5%;
+    top: 50%;                            
+    left: 50%;                           
+    transform: translate(-50%, -50%); 
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     width: 90%;
     height: auto;
     margin-bottom: 2rem;
@@ -63,7 +66,8 @@
 
 .big-tiles-container {
     display: grid;
-    grid-template-columns: repeat(7, 216px);
+    /* 216 */
+    grid-template-columns: repeat(7, 180px);
     grid-template-rows: repeat(7, 80px);
     border-radius: 8px;
     gap: 1rem;
@@ -111,8 +115,13 @@
     transition: transform 0.25s ease-in-out;
     margin: 0;
     box-shadow: 6px 6px 12px rgba(117, 13, 2, 1);
+    cursor: default;
 }
 
 .points-title {
     flex: 1;
+}
+
+.completed-tile {
+    background-color: #750D02;
 }

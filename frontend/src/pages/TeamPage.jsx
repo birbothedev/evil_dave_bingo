@@ -1,11 +1,9 @@
-import { BingoBoard } from "../components/BingoBoard"
 import { InventoryBox } from "../components/InventoryBox"
+import { SmallBingoBoard } from "../components/SmallBingoBoard"
 import { StatusEffectBox } from "../components/StatusEffectBox"
-import { TeamPoints } from "../components/TeamPoints"
 import "../css/TeamPage.css"
 
 export function TeamPage({team}){
-
     team = "Team A"
 
     return (
@@ -20,12 +18,14 @@ export function TeamPage({team}){
                     <div className="status-box">
                         <StatusEffectBox team={team}/>
                     </div>
-                    <div className="points-box">
-                        <TeamPoints team={team}/>
-                    </div>
                 </div>
                 <div className="team-bingo-board">
-                    <BingoBoard team={team}/>
+                    <SmallBingoBoard team={team}/>
+                </div>
+                {/* this will be for the pre-declared bingo boards, using small board component as a placeholder for now */}
+                <div className="team-predeclared-bingo-board">
+                    <p>**Section for predeclared board, this is just a placeholder</p>
+                    <SmallBingoBoard team={team}/>
                 </div>
             </div>
         </div>

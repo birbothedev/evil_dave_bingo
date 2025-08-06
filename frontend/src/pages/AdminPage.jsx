@@ -17,34 +17,31 @@ export function AdminPage(){
     return (
         <>
         <div className="admin-page">
-            <h3>This is the admin page</h3>
-            <div className="button-container">
-                <div className="buttons">
-                    
-                    <CollapsibleSection 
-                        label="Team Inventories"
-                    >
-                        <div className="inventory-container">
-                            <InventoryBox team={team1} />
-                            <InventoryBox team={team2} />
-                            <InventoryBox team={team3} />
-                            <InventoryBox team={team4} />
-                            <InventoryBox team={team5} />
-                            <InventoryBox team={team6} />
-                        </div>
-                    </CollapsibleSection>
-                    <CollapsibleSection 
-                        label="Team Status Effects"
-                    >
-                        <div className="status-effect-container">
-                            <StatusEffectBox team={team1} />
-                            <StatusEffectBox team={team2} />
-                            <StatusEffectBox team={team3} />
-                            <StatusEffectBox team={team4} />
-                            <StatusEffectBox team={team5} />
-                            <StatusEffectBox team={team6} />
-                        </div>
-                    </CollapsibleSection>
+            <h3 className="page-title">ADMIN HOME</h3>
+            <div className="team-group-container">
+                <div className="team-status-inv-groups">
+                    <StatusEffectBox team={team1} />
+                    <InventoryBox team={team1} />
+                </div>
+                <div className="team-status-inv-groups">
+                    <StatusEffectBox team={team2} />
+                    <InventoryBox team={team2} />
+                </div>
+                <div className="team-status-inv-groups">
+                    <StatusEffectBox team={team3} />
+                    <InventoryBox team={team3} />
+                </div>
+                <div className="team-status-inv-groups">
+                    <StatusEffectBox team={team4} />
+                    <InventoryBox team={team4} />
+                </div>
+                <div className="team-status-inv-groups">
+                    <StatusEffectBox team={team5} />
+                    <InventoryBox team={team5} />
+                </div>
+                <div className="team-status-inv-groups">
+                    <StatusEffectBox team={team6} />
+                    <InventoryBox team={team6} />
                 </div>
             </div>
         </div>
