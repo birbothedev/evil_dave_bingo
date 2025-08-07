@@ -6,6 +6,12 @@ import "../css/TeamPage.css"
 export function TeamPage({team}){
     team = "Team A"
 
+    // waiting to do this page until we have user authentication in place
+
+    // const { teams, loading, error } = useTeamFetch();
+    // if (loading) return <div>Loading Teams...</div>
+    // if (error) return <div>{error}</div>
+
     return (
         <>
         <div className="team-page-wrapper">

@@ -3,27 +3,48 @@
     {
       "name": "team A",
       "score": 0,
-      "tiles-completed-count": 0,
-      "last-activity": null,
-      "bingo-bonus": {
+      "tilesCompletedCount": 0,
+      "lastActivity": null,
+      "bingoBonus": {
         "row": [1, 4],
         "column": [2, 3],
-        "diagonal-right" : true,
-        "diagonal-left": false
+        "diagonalRight" : true,
+        "diagonalLeft": false
       },
+      "inventoryCount": {
+          "freeze": 1,
+          "unfreeze": 0,
+          "unblock": 0
+      },
+      "teamStatusEffects": [
+        {
+          "agility": {
+            "positiveEffect": "true",
+            "positiveEffectDescription": "this is the positive agility description",
+            "negativeEffect": "false",
+            "negativeEffectDescription": ""
+          },
+          "thieving": {
+            "positiveEffect": "false",
+            "positiveEffectDescription": "",
+            "negativeEffect": "false",
+            "negativeEffectDescription": ""
+          }
+        }
+      ],
       "tiles": [
         {
-          "tile-id": "teamA-01",
-          "tile-index": 1,
+          "tileId": "teamA-01",
+          "tileIndex": 1,
           "data": {
-            "tile-coord-x": 1,
-            "tile-coord-y": 1,
-            "tile-descriptor": "Obtain 3 Dragon Pickaxes",
-            "tile-obtained-count": 0,
-            "tile-required-count": 3,
-            "tile-effect-state": "none",
-            "tile-last-updated": null,
-            "tile-completion-state": "true"
+            "tileCoord-x": 1,
+            "tileCoord-y": 1,
+            "tileDescriptor": "Obtain 3 Dragon Pickaxes",
+            "tileObtainedCount": 0,
+            "tileRequiredCount": 3,
+            "tileEffectState": "none",
+            "tileLastUpdated": null,
+            "tileCompletionState": "true"
           }
         }
       ]
@@ -31,27 +52,48 @@
     {
       "name": "team B",
       "score": 0,
-      "tiles-completed-count": 0,
-      "last-activity": null,
-      "bingo-bonus": {
+      "tilesCompletedCount": 0,
+      "lastActivity": null,
+      "bingoBonus": {
         "row": [1, 4],
         "column": [2, 3],
-        "diagonal-right" : true,
-        "diagonal-left": false
+        "diagonalRight" : true,
+        "diagonalLeft": false
       },
+      "inventoryCount": {
+          "freeze": 0,
+          "unfreeze": 1,
+          "unblock": 0
+      },
+      "teamStatusEffects": [
+        {
+          "agility": {
+            "positiveEffect": "false",
+            "positiveEffectDescription": "",
+            "negativeEffect": "false",
+            "negativeEffectDescription": ""
+          },
+          "thieving": {
+            "positiveEffect": "false",
+            "positiveEffectDescription": "",
+            "negativeEffect": "false",
+            "negativeEffectDescription": ""
+          }
+        }
+      ],
       "tiles": [
         {
-          "tile-id": "teamB-01",
-          "tile-index": 1,
+          "tileId": "teamB-01",
+          "tileIndex": 1,
           "data": {
-            "tile-coord-x": 1,
-            "tile-coord-y": 1,
-            "tile-descriptor": "Obtain 3 Dragon Pickaxes",
-            "tile-obtained-count": 0,
-            "tile-required-count": 3,
-            "tile-effect-state": "none",
-            "tile-last-updated": null,
-            "tile-completion-state": "true"
+            "tileCoord-x": 1,
+            "tileCoord-y": 1,
+            "tileDescriptor": "Obtain 3 Dragon Pickaxes",
+            "tileObtainedCount": 0,
+            "tileRequiredCount": 3,
+            "tileEffectState": "none",
+            "tileLastUpdated": null,
+            "tileCompletionState": "true"
           }
         }
       ]
@@ -59,27 +101,48 @@
     {
       "name": "team C",
       "score": 0,
-      "tiles-completed-count": 0,
-      "last-activity": null,
-      "bingo-bonus": {
+      "tilesCompletedCount": 0,
+      "lastActivity": null,
+      "bingoBonus": {
         "row": [1, 4],
         "column": [2, 3],
-        "diagonal-right" : true,
-        "diagonal-left": false
+        "diagonalRight" : true,
+        "diagonalLeft": false
       },
+      "inventoryCount": {
+          "freeze": 0,
+          "unfreeze": 0,
+          "unblock": 1
+      },
+      "teamStatusEffects": [
+        {
+          "agility": {
+            "positiveEffect": "false",
+            "positiveEffectDescription": "",
+            "negativeEffect": "false",
+            "negativeEffectDescription": ""
+          },
+          "thieving": {
+            "positiveEffect": "false",
+            "positiveEffectDescription": "",
+            "negativeEffect": "false",
+            "negativeEffectDescription": ""
+          }
+        }
+      ],
       "tiles": [
         {
-          "tile-id": "teamC-01",
-          "tile-index": 1,
+          "tileId": "teamC-01",
+          "tileIndex": 1,
           "data": {
-            "tile-coord-x": 1,
-            "tile-coord-y": 1,
-            "tile-descriptor": "Obtain 3 Dragon Pickaxes",
-            "tile-obtained-count": 0,
-            "tile-required-count": 3,
-            "tile-effect-state": "none",
-            "tile-last-updated": null,
-            "tile-completion-state": "true"
+            "tileCoord-x": 1,
+            "tileCoord-y": 1,
+            "tileDescriptor": "Obtain 3 Dragon Pickaxes",
+            "tileObtainedCount": 0,
+            "tileRequiredCount": 3,
+            "tileEffectState": "none",
+            "tileLastUpdated": null,
+            "tileCompletionState": "true"
           }
         }
       ]

@@ -13,7 +13,7 @@
   - ~~use state management to update board on home page and team page at the same time?~~ using the same component for both so it will already be connected
 - ~~add inventory management box~~
 - ~~add status effect box~~
-- ~~decide how to pull data~~ pull each team in the main app and send that information to each page so entire site is updated at the same time ?
+- ~~decide how to pull data~~ ~~pull each team in the main app and send that information to each page so entire site is updated at the same time ?~~ 
 - add a component for the pre-declared bingo board to show what bingo the team is currently working on
 ## Home Page
 - ~~make a more dynamic mapping system so we dont have 36 hardcoded tiles for each bingo board~~
@@ -24,6 +24,7 @@
 - overall goal: display all team inventories
   - display all team boards? might not be needed if we see them all on the home page
 - make buttons auto close when the other is clicked
+- weird null error in inventory boxes (will hopefully be fixed by pulling from backend instead of sample json)
 
 
 # Backend

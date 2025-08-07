@@ -38,3 +38,12 @@
     margin: 0;
     padding: 0;
 }
+
+.inventory-items {
+    display: flex;
+    background-color: #fdd4a3;
+}
+
+.inventory-list-text {
+    background-color: #fdd4a3;
+}

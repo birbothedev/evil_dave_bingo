@@ -4,41 +4,11 @@
     padding-top: 2rem;
 }
 
-.button-container {
-    display: flex;
-    position: relative;
-    width: 100%;
-    outline: dashed 2px blue;
-    justify-content: center;
-    align-items: center;
-    padding-top: 1rem;
-    padding-bottom: 3rem;
-}
-
-.buttons {
-    display: flex;
-    gap: 2%; 
-}
-
-.team-inventory-container {
-    padding-top: 1rem;
-}
 
 .team-group-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    border-radius: 8px;
-    gap: 1rem;
-    justify-content: center;
-}
-
-
-.inventory-container, .status-effect-container {
-    position: absolute;
-    left: 0;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2%; 
-    width: 100%;
+    gap: 5%; 
+    width: 90%;
     align-items: center;
 }

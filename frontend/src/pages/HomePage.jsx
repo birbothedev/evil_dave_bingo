@@ -1,28 +1,10 @@
 import { SmallBingoBoard } from "../components/SmallBingoBoard";
 import "../css/HomePage.css"
-import { useEffect, useState } from "react";
-import { fetchTeams } from "../services/api";
+import { useTeamFetch } from "../components/util/GlobalTeamFetch";
 
 export function HomePage(){
-    const [teams, setTeams] = useState([])
-    const [loading, setLoading] = useState(true)
-    const [error, setError] = useState(null)
 
-    useEffect(() =>{
-        async function getData() {
-            try {
-                const teamData = await fetchTeams()
-                setTeams(teamData)
-            } catch (err) {
-                console.error(err)
-                setError("Failed to load teams")
-            } finally {
-                setLoading(false)
-            }
-        }
-
-        getData()
-    }, [])
+    const { teams, loading, error } = useTeamFetch();
 
     if (loading) return <div>Loading Teams...</div>
     if (error) return <div>{error}</div>
