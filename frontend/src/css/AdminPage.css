@@ -12,3 +12,21 @@
     width: 90%;
     align-items: center;
 }
+
+
+@media (max-width: 1350px) {
+    .team-group-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        width: 90%;
+    }
+}
+
+
+@media (max-width: 850px) {
+    .team-group-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        width: 95%;
+    }
+}

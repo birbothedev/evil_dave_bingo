@@ -26,10 +26,6 @@
     box-shadow: 6px 6px 12px rgba(117, 13, 2, 1.0);
 }
 
-h3:hover {
-    transform: translateY(-5px);
-}
-
 .bingo-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -46,3 +42,20 @@ h3:hover {
     gap: 1rem; 
 }
 
+
+@media (max-width: 1350px) {
+    .bingo-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        width: 90%;
+    }
+}
+
+
+@media (max-width: 850px) {
+    .bingo-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        width: 95%;
+    }
+}

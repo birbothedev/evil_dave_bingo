@@ -16,11 +16,6 @@
     box-shadow: 6px 6px 12px rgba(117, 13, 2, 1);
 }
 
-.team-info-box-wrapper:hover {
-    transform: translateY(-5px);
-    transition: transform 0.25s ease-in-out;
-}
-
 .team-points-box {
     padding: 0.5rem 0.5rem;
     margin: 0;

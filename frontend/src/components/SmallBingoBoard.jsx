@@ -17,31 +17,17 @@ export function SmallBingoBoard({team}){
         for (let j = 1; j <= numCols; j++) {
             tileCount++
             const tileId = `tile${(i - 1) * numCols + j}`;
-            if (i % 2 == 0){
-                tiles.push(
-                    <div
-                        className={isOpen ? "big-tiles" + " " + "completed-tile" : "small-tiles" + " " + "completed-tile"}
-                        id={tileId}
-                        key= {tileCount}
-                        data-x={i}
-                        data-y={j}
-                    >
-                        {tileCount}
-                    </div>
-                );
-            } else {
-                tiles.push(
-                    <div
-                        className={isOpen ? "big-tiles" : "small-tiles"}
-                        id={tileId}
-                        key= {tileCount}
-                        data-x={i}
-                        data-y={j}
-                    >
-                        {tileCount}
-                    </div>
-                );
-            }
+            tiles.push(
+                <div
+                    className={isOpen ? "big-tiles" : "small-tiles"}
+                    id={tileId}
+                    key= {tileCount}
+                    data-x={i}
+                    data-y={j}
+                >
+                    {tileCount}
+                </div>
+            );
         }
     }
 

@@ -17,21 +17,17 @@ export function TeamPage({team}){
         <div className="team-page-wrapper">
             <h3 className="page-title">THIS IS TEAM {team}'s HOME PAGE</h3>
             <div className="team-columns">
+                <div className="team-bingo-board">
+                    <SmallBingoBoard team={team}/>
+                </div>
                 <div className="team-inventory-container">
                     <div className="inventory-box">
                         <InventoryBox team={team}/>
+                        this is the inventory box
                     </div>
                     <div className="status-box">
                         <StatusEffectBox team={team}/>
                     </div>
-                </div>
-                <div className="team-bingo-board">
-                    <SmallBingoBoard team={team}/>
-                </div>
-                {/* this will be for the pre-declared bingo boards, using small board component as a placeholder for now */}
-                <div className="team-predeclared-bingo-board">
-                    <p>**Section for predeclared board, this is just a placeholder</p>
-                    <SmallBingoBoard team={team}/>
                 </div>
             </div>
         </div>

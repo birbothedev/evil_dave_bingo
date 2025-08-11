@@ -6,19 +6,16 @@
     margin-top: 2%;
     display: flex;
     gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
 }
 
-.team-inventory-container {
+/* .team-inventory-container {
     flex: 1;
 }
 
 .team-bingo-board {
-    flex: 1;
-}
-
-.team-predeclared-bingo-board {
-    flex: 1;
-}
+    flex: 2;
+} */
 
 .inventory-container, .team-bingo-board, .team-predeclared-bingo-board {
     display: flex;
@@ -27,4 +24,21 @@
     margin-bottom: 2rem;
     border-radius: 8px;
     padding: 1rem;
+}
+
+.team-bingo-board {
+    padding: 0;
+    width: 100%;
+}
+
+@media (max-width: 1350px) {
+    .team-columns {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .team-inventory-container,
+    .team-bingo-board {
+        width: 100%;
+    }
 }
