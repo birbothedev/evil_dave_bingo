@@ -9,13 +9,13 @@
     grid-template-columns: repeat(2, 1fr);
 }
 
-/* .team-inventory-container {
+.team-inventory-container {
     flex: 1;
 }
 
 .team-bingo-board {
     flex: 2;
-} */
+}
 
 .inventory-container, .team-bingo-board, .team-predeclared-bingo-board {
     display: flex;
