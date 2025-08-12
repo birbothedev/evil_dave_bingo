@@ -14,13 +14,15 @@ export function AdminPage(){
         <>
         <div className="admin-page">
             <h3 className="page-title">ADMIN HOME</h3>
-            <div className="team-group-container">
+            <div className="team-wrapper">
+                <div className="team-group-container">
                     {teams.map((team, index) => (
                         <div className="team-groups" key={index}>
                             <StatusEffectBox team={team} />
                             <InventoryBox team={team} />
                         </div>
                     ))}
+                </div>
             </div>
         </div>
         </>

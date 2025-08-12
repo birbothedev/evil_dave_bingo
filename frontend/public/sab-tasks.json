@@ -1,0 +1,90 @@
+{
+    "players": [
+        {
+            "name": "player1",
+            "tasks": [
+                {
+                    "easyTasks": [
+                        {
+                            "taskId": "task1",
+                            "taskDescription": "this is player1 task description",
+                            "taskCompletionState": "false"
+                        },
+                        {
+                            "taskId": "task2",
+                            "taskDescription": "this is a description",
+                            "taskCompletionState": "false"
+                        }
+                    ],
+                    "mediumTasks": [
+                        {
+                            "taskId": "task1",
+                            "taskDescription": "this is a description",
+                            "taskCompletionState": "false"
+                        },
+                        {
+                            "taskId": "task2",
+                            "taskDescription": "this is a description",
+                            "taskCompletionState": "false"
+                        }
+                    ],
+                    "hardTasks": [
+                        {
+                            "taskId": "task1",
+                            "taskDescription": "this is a description",
+                            "taskCompletionState": "false"
+                        },
+                        {
+                            "taskId": "task2",
+                            "taskDescription": "this is a description",
+                            "taskCompletionState": "false"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "player2",
+            "tasks": [
+                {
+                    "easyTasks": [
+                        {
+                            "taskId": "task1",
+                            "taskDescription": "this is a description",
+                            "taskCompletionState": "false"
+                        },
+                        {
+                            "taskId": "task2",
+                            "taskDescription": "this is a description",
+                            "taskCompletionState": "false"
+                        }
+                    ],
+                    "mediumTasks": [
+                        {
+                            "taskId": "task1",
+                            "taskDescription": "this is a description",
+                            "taskCompletionState": "false"
+                        },
+                        {
+                            "taskId": "task2",
+                            "taskDescription": "this is a description",
+                            "taskCompletionState": "false"
+                        }
+                    ],
+                    "hardTasks": [
+                        {
+                            "taskId": "task1",
+                            "taskDescription": "this is a description",
+                            "taskCompletionState": "false"
+                        },
+                        {
+                            "taskId": "task2",
+                            "taskDescription": "this is a description",
+                            "taskCompletionState": "false"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

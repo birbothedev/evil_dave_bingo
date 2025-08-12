@@ -5,29 +5,48 @@
 .team-columns {
     margin-top: 2%;
     display: flex;
-    gap: 1rem;
-    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.team-bingo-board {
+    flex: 1.5;
 }
 
 .team-inventory-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
     flex: 1;
 }
 
 .team-bingo-board {
-    flex: 2;
-}
-
-.inventory-container, .team-bingo-board, .team-predeclared-bingo-board {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 2rem;
-    border-radius: 8px;
-    padding: 1rem;
-}
-
-.team-bingo-board {
     padding: 0;
+    width: 100%;
+}
+
+.password-page {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    height: 100vh;
+    top: 30%;
+    text-align: center;
+}
+
+.input-container {
+    background-color: #fdd4a3;
+    color: black;
+    box-shadow: 5 5 10px rgba(117, 13, 2, 1.0);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0;
+    height: 50px;
     width: 100%;
 }
 

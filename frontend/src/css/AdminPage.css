@@ -1,9 +1,6 @@
 .admin-page {
-    justify-content: center;
-    align-items: center;
     padding-top: 2rem;
 }
-
 
 .team-group-container {
     display: grid;
@@ -11,6 +8,12 @@
     gap: 5%; 
     width: 90%;
     align-items: center;
+    justify-content: center;
+}
+
+.team-wrapper {
+    display: flex;
+    justify-content: center; 
 }
 
 

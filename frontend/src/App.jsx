@@ -5,6 +5,7 @@ import { HomePage } from './pages/HomePage'
 import { TeamPage } from './pages/TeamPage'
 import { NavBar } from './components/util/NavBar'
 import { AdminPage } from './pages/AdminPage'
+import { SaboteurPage } from './pages/SaboteurPage'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/teampage" element={<TeamPage />} />
           <Route path="/adminpage" element={<AdminPage />} />
+          <Route path="/saboteurpage" element={<SaboteurPage />} />
         </Routes>
       </div>
     </div>

@@ -6,8 +6,8 @@
 - ~~figure out a way to combine BingoBoard and SmallBoard components into one component to reduce redundancy ~~ just using the small board component
   - ~~~~take a size paramter into the component function and use it to dynamically change class name to the bigger/smaller size depending on use case?~~ using onclick function for this
 - ~~change css styling of NavBar ~~
-- decide on overall styling of the page
-  - color schemes, look of boards/etc
+- ~~decide on overall styling of the page~~
+  - ~~color schemes, look of boards/etc~~
 ## Team Page
 - ~~add team's bingo board~~
   - ~~use state management to update board on home page and team page at the same time?~~ using the same component for both so it will already be connected
@@ -21,10 +21,11 @@
 - functionality for colored tiles on the small board based on what tiles are marked completed 
   - ~~figure out skeleton functionality before pulling data~~
 ## Admin Page
-- overall goal: display all team inventories
-  - display all team boards? might not be needed if we see them all on the home page
-- make buttons auto close when the other is clicked
-- weird null error in inventory boxes (will hopefully be fixed by pulling from backend instead of sample json)
+- ~~overall goal: display all team inventories~~
+- ~~make buttons auto close when the other is clicked~~
+- ~~weird null error in inventory boxes (will hopefully be fixed by pulling from backend instead of sample json)~~
+## Other
+- turn passcode gate from team page into its own component so it can be reused on the admin page (after we start pulling passcode from the backend)
 
 
 # Backend

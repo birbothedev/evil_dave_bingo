@@ -1,0 +1,56 @@
+.player-tasks {
+    text-align: center;
+    width: 100%;
+    height: auto;
+}
+
+.task-group {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    background-color: #8f8c6d;
+    border-radius: 8px;
+    padding: 0.5rem;
+    justify-content: center;
+}
+
+.task-header {
+    font-weight: bold;
+    background-color: #fdd4a3;
+    color: black;
+    text-align: center;
+    padding: 0.5rem;
+    border-radius: 4px;
+    box-shadow: 3px 3px 6px rgba(22, 82, 60, 1.0);
+}
+
+.task-column {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    background-color: #8f8c6d;
+}
+
+
+.task-tiles {
+    position: relative;
+    background-color: #fdd4a3;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    box-shadow: 3px 3px 6px rgba(22, 82, 60, 1.0);
+    padding: 0.5rem;
+    min-height: 2.5rem;
+}
+
+
+@media (max-width: 800px) {
+    .task-group {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}
