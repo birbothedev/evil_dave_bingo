@@ -40,7 +40,21 @@
           "data": {
             "tileCoord-x": 1,
             "tileCoord-y": 1,
-            "tileDescriptor": "Obtain 3 Dragon Pickaxes",
+            "tileDescriptor": "Obtain 5 Venator Shards",
+            "tileObtainedCount": 0,
+            "tileRequiredCount": 3,
+            "tileEffectState": "none",
+            "tileLastUpdated": null,
+            "tileCompletionState": "true"
+          }
+        },
+        {
+          "tileId": "teamA-02",
+          "tileIndex": 1,
+          "data": {
+            "tileCoord-x": 1,
+            "tileCoord-y": 2,
+            "tileDescriptor": "Obtain 3 Tormented Synapses",
             "tileObtainedCount": 0,
             "tileRequiredCount": 3,
             "tileEffectState": "none",
@@ -90,7 +104,21 @@
           "data": {
             "tileCoord-x": 1,
             "tileCoord-y": 1,
-            "tileDescriptor": "Obtain 3 Dragon Pickaxes",
+            "tileDescriptor": "Obtain 5 Venator Shards",
+            "tileObtainedCount": 0,
+            "tileRequiredCount": 3,
+            "tileEffectState": "none",
+            "tileLastUpdated": null,
+            "tileCompletionState": "true"
+          }
+        },
+        {
+          "tileId": "teamB-02",
+          "tileIndex": 1,
+          "data": {
+            "tileCoord-x": 1,
+            "tileCoord-y": 2,
+            "tileDescriptor": "Obtain 3 Tormented Synapses",
             "tileObtainedCount": 0,
             "tileRequiredCount": 3,
             "tileEffectState": "none",
@@ -140,7 +168,21 @@
           "data": {
             "tileCoord-x": 1,
             "tileCoord-y": 1,
-            "tileDescriptor": "Obtain 3 Dragon Pickaxes",
+            "tileDescriptor": "Obtain 5 Venator Shards",
+            "tileObtainedCount": 0,
+            "tileRequiredCount": 3,
+            "tileEffectState": "none",
+            "tileLastUpdated": null,
+            "tileCompletionState": "true"
+          }
+        },
+        {
+          "tileId": "teamC-02",
+          "tileIndex": 1,
+          "data": {
+            "tileCoord-x": 1,
+            "tileCoord-y": 2,
+            "tileDescriptor": "Obtain 3 Tormented Synapses",
             "tileObtainedCount": 0,
             "tileRequiredCount": 3,
             "tileEffectState": "none",

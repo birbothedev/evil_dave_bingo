@@ -25,7 +25,9 @@ export function SmallBingoBoard({team}){
                     data-x={i}
                     data-y={j}
                 >
-                    {tileCount}
+                    {isOpen ? 
+                        <p>tile description text</p> : tileCount
+                    }
                 </div>
             );
         }

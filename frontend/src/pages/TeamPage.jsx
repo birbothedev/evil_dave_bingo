@@ -52,7 +52,7 @@ export function TeamPage(){
     return (
         <>
         <div className="team-page-wrapper">
-            <h3 className="page-title">THIS IS TEAM {team.name}'s HOME PAGE</h3>
+            <h3 className="page-title">{team.name} HOME PAGE</h3>
             <div className="team-columns">
                 <div className="team-bingo-board">
                     <SmallBingoBoard team={team}/>
