@@ -22,15 +22,16 @@ export function InventoryBox({team}) {
                 <h3 className="team-info-title">This is the inventory box for {team.name}</h3>
                 <div className="inventory-items">
                     {inventory.length > 0 ? (
-                        <ul className="inventory-list-text">
+                        <div className="inventory-list-text">
                             {inventory.map((item) => (
-                                <li className="inventory-list-text" key={item.type}>
+                                <h3 className="inventory-list-text" key={item.type}>
                                     {item.type}: {item.count}
-                                </li>
+                                </h3>
                             ))}
-                        </ul>
+                        </div>
                     ) : (
-                        <p>No items in inventory</p>
+                        <h3 className="inventory-list-text">No items in inventory</h3>
+                        
                     )}
                 </div>
             </div>

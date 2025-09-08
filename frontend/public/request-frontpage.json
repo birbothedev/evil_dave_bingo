@@ -13,7 +13,7 @@
         "diagonalLeft": false
       },
       "inventoryCount": {
-          "freeze": 1,
+          "freeze": 0,
           "unfreeze": 0,
           "unblock": 0
       },
@@ -78,7 +78,7 @@
       },
       "inventoryCount": {
           "freeze": 0,
-          "unfreeze": 1,
+          "unfreeze": 0,
           "unblock": 0
       },
       "teamStatusEffects": [
@@ -143,7 +143,7 @@
       "inventoryCount": {
           "freeze": 0,
           "unfreeze": 0,
-          "unblock": 1
+          "unblock": 0
       },
       "teamStatusEffects": [
         {

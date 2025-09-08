@@ -13,7 +13,6 @@
     background-color: #fdd4a3;
     color: black;
     padding: 1rem;
-    box-shadow: 6px 6px 12px rgba(117, 13, 2, 1);
 }
 
 .team-points-box {
@@ -37,6 +36,8 @@
 .inventory-items {
     display: flex;
     background-color: #fdd4a3;
+    justify-content: center;
+    margin-top: 1rem;
 }
 
 .inventory-list-text {
