@@ -2,57 +2,24 @@ import { InventoryBox } from "../components/InventoryBox"
 import { SmallBingoBoard } from "../components/SmallBingoBoard"
 import { StatusEffectBox } from "../components/StatusEffectBox"
 import { useTeamFetch } from "../components/util/GlobalTeamFetch";
+import { BonusMissionComponent } from "../components/BonusMissionComponent";
+import { useLocation } from "react-router-dom";
 import "../css/TeamPage.css"
-import { useState } from "react"
 
 
 export function TeamPage(){
-    const [authorized, setAuthorized] = useState(false)
-    const [passcode, setPasscode] = useState("")
-    const [team, setTeam] = useState(null)
+    const location = useLocation();
+    const { team } = location.state || {}; // fallback in case state is undefined
 
-    const { teams, loading, error } = useTeamFetch();
-    if (loading) return <div>Loading Teams...</div>
-    if (error) return <div>{error}</div>
-
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        // this will have to be changed when we pull from server
-        const foundTeam = teams.find(team => team.passcode === passcode)
-
-        if (foundTeam){
-            setAuthorized(true)
-            console.log("found team " + foundTeam.name)
-            setTeam(foundTeam)
-        } else {
-            alert("Incorrect Passcode")
-        }
-    }
-
-    if (!authorized || !team) {
-        return (
-            <div className="password-page">
-                <div className="password-container">
-                    <h3>Enter Team Passphrase:</h3>
-                    <form onSubmit={handleSubmit}>
-                        <input className="input-container"
-                            type="password"
-                            value={passcode}
-                            onChange={(e) => setPasscode(e.target.value)}
-                            placeholder="Passphrase"
-                        />
-                    </form>
-                </div>
-            </div>
-        )
-    }
+    if (!team) return <div>No team data!</div>;
 
     return (
         <>
         <div className="team-page-wrapper">
             <h3 className="page-title">{team.name} HOME PAGE</h3>
+            <div className="bonus-missions-home-page">
+                <BonusMissionComponent />
+            </div>
             <div className="team-columns">
                 <div className="team-bingo-board">
                     <SmallBingoBoard team={team}/>

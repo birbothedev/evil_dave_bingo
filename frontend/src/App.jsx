@@ -6,6 +6,7 @@ import { TeamPage } from './pages/TeamPage'
 import { NavBar } from './components/util/NavBar'
 import { AdminPage } from './pages/AdminPage'
 import { SaboteurPage } from './pages/SaboteurPage'
+import { PageAuth } from './components/util/PageAuth'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/teampage" element={<TeamPage />} />
           <Route path="/adminpage" element={<AdminPage />} />
           <Route path="/saboteurpage" element={<SaboteurPage />} />
+          <Route path="/pageauth/:page" element={<PageAuth />} />
         </Routes>
       </div>
     </div>

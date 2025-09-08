@@ -1,11 +1,15 @@
 .team-page-wrapper {
     padding-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .team-columns {
+    width: 80%;
     margin-top: 2%;
     display: flex;
-    gap: 3rem;
+    gap: 5rem;
     justify-content: center;
     align-items: flex-start;
 }
@@ -15,6 +19,7 @@
 }
 
 .team-inventory-container {
+    width: 100%;
     display: flex;
     flex-direction: column;
     padding: 0;
@@ -49,6 +54,7 @@
     height: 50px;
     width: 100%;
 }
+
 
 @media (max-width: 1350px) {
     .team-columns {

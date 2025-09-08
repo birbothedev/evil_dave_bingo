@@ -8,6 +8,7 @@
 }
 
 .team-info-box, .team-points-box {
+    width: 100%;
     text-align: center;
     border-radius: 8px;
     background-color: #fdd4a3;

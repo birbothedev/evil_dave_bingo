@@ -12,7 +12,7 @@
     margin: 0;
 }
 
-.page-title, .bonus-mission-container {
+.page-title {
     text-align: center;
     margin-bottom: 2.5rem;
     border-radius: 8px;
@@ -21,7 +21,6 @@
     color: black;
     padding: 1rem;
     margin-top: 1rem;
-    transition: transform 0.2s;
 }
 
 .page-title {
@@ -46,36 +45,8 @@
     gap: 1rem; 
 }
 
-.bonus-mission-container {
-    display: flex;
-    flex-direction: column;
-    width: 60%;
-    background-color: #8f8c6d;
-}
-
-.bonus-mission-title {
-    text-align: center;
-    background-color: #8f8c6d;
-}
-
-.bonus-mission-desc-and-reward-wrapper {
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
-    background-color: #8f8c6d;
-}
-
-.bonus-mission-description, .bonus-mission-reward {
-    margin-top: 0;
-    background-color: #8f8c6d;
-}
-
-.bonus-mission-description {
-    flex: 2;
-}
-
-.bonus-mission-reward {
-    flex: 1;
+.bonus-missions-home-page {
+    width: 90%;
 }
 
 @media (max-width: 1350px) {
