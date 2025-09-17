@@ -1,8 +1,6 @@
 import "../../css/componentcss/Legend.css"
 
 export function Legend() {
-    // color to be used for exterminated tiles: #754702 
-    // color to be used for protected tiles: #026975
     return (
         <>
         <div className="legend-wrapper">

@@ -3,9 +3,10 @@
     {
       "name": "team A",
       "passcode": "teamApass",
-      "score": 0,
+      "score": 5172,
       "tilesCompletedCount": 0,
       "lastActivity": null,
+      "missionCount": 10,
       "bingoBonus": {
         "row": [1, 4],
         "column": [2, 3],

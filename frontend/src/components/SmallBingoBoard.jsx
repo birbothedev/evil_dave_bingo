@@ -33,6 +33,8 @@ export function SmallBingoBoard({team}){
         }
     }
 
+//      color to be used for exterminated tiles: #754702 
+//      color to be used for protected tiles: #026975
 
     return (
         <>
