@@ -2,6 +2,7 @@ import { SmallBingoBoard } from "../components/SmallBingoBoard";
 import "../css/HomePage.css"
 import { useTeamFetch } from "../components/util/GlobalTeamFetch";
 import { BonusMissionComponent } from "../components/BonusMissionComponent";
+import { Legend } from "../components/util/Legend";
 
 export function HomePage(){
 
@@ -16,6 +17,7 @@ export function HomePage(){
             <div className="bonus-missions-home-page">
                 <BonusMissionComponent />
             </div>
+            <Legend />
             <div className="bingo-container">
                 {teams.map((team, index) => (
                     <div className="team-groups" key={index}>

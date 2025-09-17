@@ -5,6 +5,7 @@ import { useTeamFetch } from "../components/util/GlobalTeamFetch";
 import { BonusMissionComponent } from "../components/BonusMissionComponent";
 import { useLocation } from "react-router-dom";
 import "../css/TeamPage.css"
+import { Legend } from "../components/util/Legend";
 
 
 export function TeamPage(){
@@ -20,6 +21,7 @@ export function TeamPage(){
             <div className="bonus-missions-home-page">
                 <BonusMissionComponent />
             </div>
+            <Legend />
             <div className="team-columns">
                 <div className="team-bingo-board">
                     <SmallBingoBoard team={team}/>

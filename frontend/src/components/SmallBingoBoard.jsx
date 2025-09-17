@@ -33,23 +33,12 @@ export function SmallBingoBoard({team}){
         }
     }
 
-    // going to look something like this
-
-    // team.tiles.forEach(tile => {
-    //     tile.className = isOpen ? "big-tiles" : "small-tiles";
-    //     tile.id = `tile${tile.id}`;
-    //     tile.key = `tile${tile.index}`;
-
-    //     if (tile.data.tile-completion-state === "true") {
-    //         tile.className.add("completed-tile")
-    //     }
-    // });  
 
     return (
         <>
         <div className="small-board-page">
             <div className="board-label-group">
-                <h3 className="team-title board-title">This is {team.name} name</h3>
+                <h3 className="team-title board-title">{team.name}</h3>
                 <div className="points-title"><TeamPoints team = {team}/></div>
             </div>
             <div 

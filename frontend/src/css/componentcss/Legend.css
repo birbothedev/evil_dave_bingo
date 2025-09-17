@@ -1,0 +1,21 @@
+.legend-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.legend-object {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    align-items: center;
+    gap: .5rem;
+}
+
+.legend-image {
+    width: 32px;
+    height: 32px;
+    border: 8px;
+}
