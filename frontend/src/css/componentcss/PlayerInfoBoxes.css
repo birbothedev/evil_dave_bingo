@@ -52,7 +52,8 @@
 
 @media (max-width: 500px) {
     .team-info-title,
-    .points-title {
+    .points-title,
+    .inventory-list-text {
         font-size: 1rem;
     }
 }

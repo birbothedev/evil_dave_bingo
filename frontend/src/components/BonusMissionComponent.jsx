@@ -31,7 +31,6 @@ export function BonusMissionComponent() {
                     label={"This is a description of a bonus mission"}
                     children={`Reward: ${reward}`}
                 />
-                {/* <h3 className="bonus-mission-description">This is a description of the bonus mission</h3> */}
             </div>
         </div>
         </>

@@ -46,7 +46,7 @@ export function PageAuth(){
     return (
         <div className="password-page">
             <div className="password-container">
-                <h3>Enter Passphrase:</h3>
+                <h3 className="passphrase-title">Enter Passphrase:</h3>
                 <form onSubmit={handleSubmit}>
                     <input className="input-container"
                         type="password"
