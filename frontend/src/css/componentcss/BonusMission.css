@@ -50,3 +50,11 @@
 .bonus-mission-reward-container {
     flex: 1;
 }
+
+@media (max-width: 500px) {
+    .bonus-mission-title,
+    .bonus-mission-description,
+    .bonus-mission-reward {
+        font-size: 1rem;
+    }
+}

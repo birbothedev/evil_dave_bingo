@@ -32,6 +32,11 @@
     pointer-events: none;
     margin: 0;
     padding: 0;
+    height: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .inventory-items {
@@ -43,4 +48,11 @@
 
 .inventory-list-text {
     background-color: #fdd4a3;
+}
+
+@media (max-width: 500px) {
+    .team-info-title,
+    .points-title {
+        font-size: 1rem;
+    }
 }

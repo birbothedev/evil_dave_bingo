@@ -40,11 +40,6 @@
     box-shadow: 3px 3px 6px rgba(22, 82, 60, 1.0);
 }
 
-.team-title {
-    margin: 0;
-    padding: 0.75rem 0.5rem;
-}
-
 .big-bingo-board {
     position: absolute;
     z-index: 1000;
@@ -118,6 +113,12 @@ p {
     transition: transform 0.25s ease-in-out;
     margin: 0;
     cursor: default;
+    padding: 0;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .points-title {
@@ -126,4 +127,17 @@ p {
 
 .completed-tile {
     background-color: #750D02;
+}
+
+@media (max-width: 768px) {
+    .small-bingo-board:hover {
+        transform: none;
+        box-shadow: none
+    }   
+}
+
+@media (max-width: 768px) {
+    .team-title {
+        font-size: 1rem;
+    }
 }

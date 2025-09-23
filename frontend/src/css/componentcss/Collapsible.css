@@ -1,0 +1,58 @@
+.collapsible-section {
+    position: relative;
+    background-color: #fdd4a3;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    box-shadow: 3px 3px 6px rgba(22, 82, 60, 1.0);
+    padding: 0.5rem;
+    margin: 0.5rem;
+    min-height: 2.5rem;
+}
+
+.collapsible-content {
+    background-color: #fdd4a3;
+    color: black;
+    font-size: larger;
+    padding: 1rem;
+}
+
+.collapsible-button {
+    background-color: #fdd4a3;
+    color: black;
+    font-size: larger;
+    border: none;   
+    outline: none; 
+    box-shadow: none; 
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.5rem 1rem;
+}
+
+.collapsible-button:focus,
+.collapsible-button:focus-visible {
+    outline: none ;
+    box-shadow: none ;
+}
+
+.collapsible-button:hover {
+    background-color: #750D02;
+    color: bisque;
+}
+
+.collapsible-button::after {
+    content: "▼";       
+    margin-left: 0.5rem; 
+    font-size: 0.8em;
+    transition: transform 0.3s ease;
+}
+
+.collapsible-section.open .collapsible-button::after {
+    transform: rotate(180deg);
+}

@@ -9,7 +9,6 @@ export function NavBar(){
                     <Link to="/" className="nav-link">Home</Link>
                 </div>
                 <div className="navBar-links">
-                    {/* <Link to="/saboteurpage" className="nav-link">Saboteur</Link> */}
                     <Link to="/pageauth/team" className="nav-link">Team</Link>
                     <Link to="/pageauth/admin" className="nav-link">Admin</Link>
                 </div>

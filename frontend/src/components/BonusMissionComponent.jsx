@@ -1,8 +1,13 @@
+import { useState } from "react";
 import "../css/componentcss/BonusMission.css"
 import { useParams } from "react-router-dom";
+import { CollapsibleSection } from "./util/Collapsible";
 
 export function BonusMissionComponent() {
     const { page } = useParams();
+    const [isOpen, setIsOpen] = useState(false)
+
+    const reward = "This is the reward"
 
     // if page === team 
     //      return (
@@ -22,11 +27,11 @@ export function BonusMissionComponent() {
         <div className="bonus-mission-container">
             <div className="bonus-mission-description-container">
                 <h3 className="bonus-mission-title">Active Bonus Missions</h3>
-                <h3 className="bonus-mission-description">This is a description of the bonus mission</h3>
-            </div>
-            <div className="bonus-mission-reward-container">
-                <h3 className="bonus-mission-title">Rewards</h3>
-                <h3 className="bonus-mission-reward">This is the Reward</h3>
+                <CollapsibleSection 
+                    label={"This is a description of a bonus mission"}
+                    children={`Reward: ${reward}`}
+                />
+                {/* <h3 className="bonus-mission-description">This is a description of the bonus mission</h3> */}
             </div>
         </div>
         </>

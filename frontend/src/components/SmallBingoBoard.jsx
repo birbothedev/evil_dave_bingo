@@ -40,12 +40,16 @@ export function SmallBingoBoard({team}){
         <>
         <div className="small-board-page">
             <div className="board-label-group">
-                <h3 className="team-title board-title">{team.name}</h3>
+                <h3 className="board-title">{team.name}</h3>
                 <div className="points-title"><TeamPoints team = {team}/></div>
             </div>
             <div 
                 className={isOpen ? "big-bingo-board" : "small-bingo-board"}
-                onClick={() => setIsOpen((prev) => !prev)}
+                onClick={() => {
+                    if (window.innerWidth > 768) {
+                    setIsOpen((prev) => !prev)
+                    }
+                }}
                 >
                 <div 
                     className={isOpen ? "big-tiles-container" : "small-tiles-container"}

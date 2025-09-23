@@ -19,3 +19,28 @@
     height: 32px;
     border: 8px;
 }
+
+.legend-object h3 {
+    color: bisque;
+}
+
+@media (max-width: 800px) {
+    .legend-wrapper {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 2rem;
+    }
+
+    .legend-object {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .legend-object h3 {
+        margin: 0;
+        font-size: 1rem;
+        color: bisque;
+    }
+}

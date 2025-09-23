@@ -5,7 +5,7 @@ import { useState } from "react"
 
 
 export function PageAuth(){
-    const { page } = useParams(); //either "team" or "admin" based on which link was clicke
+    const { page } = useParams(); //either "team" or "admin" based on which link was clicked
     const navigate = useNavigate();
 
     const [authorized, setAuthorized] = useState(false)

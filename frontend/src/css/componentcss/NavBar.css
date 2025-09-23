@@ -16,6 +16,9 @@
 .navBar-container {
     font-size: 1.5rem;
     font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .navBar-links {
@@ -35,4 +38,17 @@
 
 .nav-link:hover {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 1.0);
+}
+
+
+@media (max-width: 500px) {
+    .navbar {
+    justify-content: center;
+    gap: 1rem;
+    }
+
+    .navBar-container,
+    .navBar-links {
+    display: contents;
+    }
 }

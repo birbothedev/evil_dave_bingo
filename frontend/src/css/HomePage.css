@@ -35,10 +35,8 @@
     gap: 5%; 
     width: 80%;
     align-items: center;
-}
-
-.team-title {
-    padding: 5px;
+    justify-content: center;
+    margin-bottom: 5rem;
 }
 
 .team-groups {
@@ -46,7 +44,7 @@
 }
 
 .bonus-missions-home-page {
-    width: 90%;
+    width: 95%;
 }
 
 @media (max-width: 1350px) {
@@ -65,3 +63,17 @@
         width: 95%;
     }
 }
+
+@media (max-width: 500px) {
+    .page-title {
+        font-size: 1rem;
+    }
+
+    .bingo-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        width: 60%;
+        justify-content: center;
+    }
+}
+

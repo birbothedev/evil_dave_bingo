@@ -1,7 +1,7 @@
 import "../css/SaboteurPage.css"
 import { useState, useEffect } from "react"
 import { fetchEvilTasks } from "../services/api";
-import { SaboteurTaskList } from "../components/SaboteurTaskList";
+import { SaboteurTaskList } from "./SaboteurTaskList";
 
 
 export function SaboteurPage(){
