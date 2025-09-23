@@ -55,7 +55,6 @@
     }
 }
 
-
 @media (max-width: 850px) {
     .bingo-container {
         grid-template-columns: 1fr;
