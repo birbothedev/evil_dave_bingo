@@ -29,13 +29,15 @@ export function HomePage(){
                     </CollapsibleSection>
                 </div>
             </div>
-            <Legend />
-            <div className="bingo-container">
-                {teams.map((team, index) => (
-                    <div className="team-groups" key={index}>
-                        <SmallBingoBoard team={team} />
-                    </div>
-                ))}
+            <div className="everything-else">
+                <Legend />
+                <div className="bingo-container">
+                    {teams.map((team, index) => (
+                        <div className="team-groups" key={index}>
+                            <SmallBingoBoard team={team} />
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
     );

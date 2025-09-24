@@ -42,12 +42,14 @@
 .inventory-items {
     display: flex;
     background-color: #fdd4a3;
-    justify-content: center;
+    justify-content: left;
     margin-top: 1rem;
+    text-align: left;
 }
 
 .inventory-list-text {
     background-color: #fdd4a3;
+    text-align: left;
 }
 
 @media (max-width: 500px) {

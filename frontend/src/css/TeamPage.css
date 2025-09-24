@@ -7,10 +7,11 @@
 
 .team-columns {
     display: grid;
-    grid-template-columns: 2fr 1fr; 
-    gap: 2rem;
-    width: 100%;
-    margin: 2% 0 5%;
+    grid-template-columns: 1.5fr 1.5fr; 
+    gap: 5rem;
+    width: 80%;
+    margin-top: 0;
+    margin-bottom: 2rem;
     align-items: start;
 }
 
@@ -59,7 +60,8 @@
 
 @media (max-width: 850px) {
     .team-columns {
-        grid-template-columns: 1fr; 
+        grid-template-columns: 1fr;
+        gap: 2rem;
     }
 }
 
@@ -67,5 +69,6 @@
     .team-columns {
         width: 100%;
         justify-content: center;
+        gap: 1rem;
     }
 }

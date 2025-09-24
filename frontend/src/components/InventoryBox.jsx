@@ -19,7 +19,7 @@ export function InventoryBox({team}) {
         <>
         <div className="team-info-box-wrapper">
             <div className="team-info-box">
-                <h3 className="team-info-title">This is the inventory box for {team.name}</h3>
+                <h3 className="team-info-title">{team.name} INVENTORY</h3>
                 <div className="inventory-items">
                     {inventory.length > 0 ? (
                         <div className="inventory-list-text">
