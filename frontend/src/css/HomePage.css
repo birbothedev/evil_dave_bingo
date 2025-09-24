@@ -28,12 +28,11 @@
     box-shadow: 6px 6px 12px rgba(117, 13, 2, 1.0);
 }
 
-
 .bingo-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 5%; 
-    width: 80%;
+    width: 100%;
     align-items: center;
     justify-content: center;
     margin-bottom: 5rem;
@@ -43,9 +42,42 @@
     gap: 1rem; 
 }
 
-.bonus-missions-home-page {
-    width: 95%;
+.bonus-missions-home-page,
+.action-feed-wrapper {
+    margin: 0 auto; 
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+.actionfeed-and-mission-wrapper {
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+}
+
+.action-feed-wrapper {
+    display: flex;
+    background-color: #8f8c6d;
+    text-align: left;
+    margin-bottom: 2.5rem;
+    border-radius: 8px;
+    color: black;
+    padding: 1rem;
+    margin-top: 0;
+}
+
+.action-feed-dropdown {
+    margin: 0;
+    font-size: medium;
+}
+
 
 @media (max-width: 1350px) {
     .bingo-container {

@@ -6,13 +6,12 @@
 }
 
 .team-columns {
-    width: 95%;
-    margin-top: 2%;
-    display: flex;
+    display: grid;
+    grid-template-columns: 2fr 1fr; 
     gap: 2rem;
-    justify-content: center;
-    align-items: flex-start;
-    margin-bottom: 5rem;
+    width: 100%;
+    margin: 2% 0 5%;
+    align-items: start;
 }
 
 .team-bingo-board {
@@ -57,14 +56,16 @@
 }
 
 
+
 @media (max-width: 850px) {
     .team-columns {
-        flex-direction: column;
-        align-items: center;
+        grid-template-columns: 1fr; 
     }
+}
 
-    .team-inventory-container,
-    .team-bingo-board {
+@media (max-width: 500px) {
+    .team-columns {
         width: 100%;
+        justify-content: center;
     }
 }

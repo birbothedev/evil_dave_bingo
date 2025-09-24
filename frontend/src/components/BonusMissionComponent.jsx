@@ -7,7 +7,10 @@ export function BonusMissionComponent() {
     const { page } = useParams();
     const [isOpen, setIsOpen] = useState(false)
 
+    const title = "Bonus Mission Title"
+    const description = "This is a description of a bonus mission"
     const reward = "This is the reward"
+    const timeRemaining = "00:00:00"
 
     // if page === team 
     //      return (
@@ -22,15 +25,21 @@ export function BonusMissionComponent() {
     //      return (
     //          normal active bonus mission component
     //      )
+
     return (
         <>
         <div className="bonus-mission-container">
             <div className="bonus-mission-description-container">
-                <h3 className="bonus-mission-title">Active Bonus Missions</h3>
-                <CollapsibleSection 
-                    label={"This is a description of a bonus mission"}
-                    children={`Reward: ${reward}`}
-                />
+                <CollapsibleSection label="Active Bonus Missions">
+                    <CollapsibleSection 
+                        className="inner-collapsible"
+                        style={{boxShadow: "none"}}
+                        label={`${timeRemaining} ${title}`}
+                    >
+                        <div className="inner-description">Mission: {description}</div>
+                        <div className="inner-description">Reward: {reward}</div>
+                    </CollapsibleSection>
+                </CollapsibleSection>
             </div>
         </div>
         </>
