@@ -185,4 +185,8 @@
     }
 }
 
-
+@media (max-width: 380px) {
+    .everything-else {
+        padding-top: 95%;
+    }
+}
