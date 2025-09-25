@@ -18,6 +18,7 @@
 
 .team-bingo-board {
     flex: 1;
+    width: 100%;
 }
 
 .team-inventory-container {

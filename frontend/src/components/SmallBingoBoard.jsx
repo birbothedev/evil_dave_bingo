@@ -46,7 +46,7 @@ export function SmallBingoBoard({team}){
             <div 
                 className={isOpen ? "big-bingo-board" : "small-bingo-board"}
                 onClick={() => {
-                    if (window.innerWidth > 768) {
+                    if (window.innerWidth > 1400) {
                     setIsOpen((prev) => !prev)
                     }
                 }}

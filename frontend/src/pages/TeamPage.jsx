@@ -1,7 +1,6 @@
 import { InventoryBox } from "../components/InventoryBox"
 import { SmallBingoBoard } from "../components/SmallBingoBoard"
 import { StatusEffectBox } from "../components/StatusEffectBox"
-import { useTeamFetch } from "../components/util/GlobalTeamFetch";
 import { BonusMissionComponent } from "../components/BonusMissionComponent";
 import { useLocation } from "react-router-dom";
 import "../css/TeamPage.css"
@@ -16,7 +15,7 @@ export function TeamPage(){
     return (
         <>
         <div className="team-page-wrapper">
-            <h3 className="page-title">{team.name} HOME PAGE</h3>
+            <h3 className="page-title">{team.name} Home Page</h3>
             <div className="actionfeed-and-mission-wrapper-team-page">
                 <div className="bonus-missions-home-page">
                     <BonusMissionComponent />

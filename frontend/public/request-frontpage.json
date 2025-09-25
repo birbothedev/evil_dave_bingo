@@ -1,7 +1,7 @@
 {
   "teams": [
     {
-      "name": "team A",
+      "name": "CregsList",
       "passcode": "teamApass",
       "score": 5172,
       "tilesCompletedCount": 0,
@@ -66,7 +66,7 @@
       ]
     },
     {
-      "name": "team B",
+      "name": "Don't Mind The Gap",
       "passcode": "teamBpass",
       "score": 0,
       "tilesCompletedCount": 0,
@@ -130,7 +130,7 @@
       ]
     },
     {
-      "name": "team C",
+      "name": "Bowfa Not Required",
       "passcode": "teamCpass",
       "score": 0,
       "tilesCompletedCount": 0,

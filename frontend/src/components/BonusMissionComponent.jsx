@@ -25,6 +25,7 @@ export function BonusMissionComponent() {
     //      return (
     //          normal active bonus mission component
     //      )
+    // for every bonus mission create new inner collapsible
 
     return (
         <>
