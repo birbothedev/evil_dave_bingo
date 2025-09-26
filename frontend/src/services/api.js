@@ -8,12 +8,12 @@ export async function fetchTeams(){
     return data.teams;
 }
 
-export async function fetchEvilTasks(){
-    const response = await fetch("/sab-tasks.json");
+export async function teamPageFetch(){
+    const response = await fetch("/team-sample.json");
     if (!response.ok){
-        throw new Error("Failed to fetch tasks");
+        throw new Error("Failed to fetch team!");
     }
 
     const data = await response.json();
-    return data.players;
+    return data;
 }

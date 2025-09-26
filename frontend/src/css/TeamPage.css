@@ -27,6 +27,7 @@
     flex-direction: column;
     padding: 0;
     flex: 1;
+    gap: 1rem;
 }
 
 .team-bingo-board {
@@ -63,12 +64,15 @@
     top: calc(13% + 20px); 
     left: 50%; 
     transform: translateX(-50%);
-    z-index: 1000;
+    z-index: 1100;
     width: 95%;
     display: flex;
     flex-direction: column;
     gap: 2rem; 
     align-items: center;
+    background-color: #8f8c6d;
+    border-radius: 8px;
+    box-shadow: 6px 6px 12px rgba(117, 13, 2, 1.0);
 }
 
 .everything-else-team-page {
@@ -79,6 +83,7 @@
     margin-top: 5%;
     width: 100%;
 }
+
 
 @media (max-width: 1650px) {
     .everything-else-team-page {

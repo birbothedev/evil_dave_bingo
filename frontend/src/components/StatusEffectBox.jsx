@@ -1,34 +1,40 @@
 import "../css/componentcss/PlayerInfoBoxes.css"
+import { fetchTeamData } from "./util/TeamContext";
+import { CollapsibleSection } from "./util/Collapsible";
+import { addSpaceToCamelCase } from "./util/AddSpaceCamelCase";
 
-export function StatusEffectBox({team}) {
+export function StatusEffectBox() {
 
-    const effects = [];
+    const { team, loading, error } = fetchTeamData()
+    
+    if (loading) return <div>Loading Team...</div>
+    if (error) return <div>{error}</div>
+    if (!team) return <div>No team data found.</div>
 
-    for (const [key, value] of Object.entries(team.teamStatusEffects)){
-        if (value > 0){
-            effects.push({type: key, count: value})
-        }
-    }
+    const effects = team.board.tiles.map(tile => ({
+        tileId: tile.tileId,
+        effect: Object.fromEntries(
+            Object.entries(tile.data.effect).filter(([key, value]) => value === true)
+        )
+    }))
 
     return (
         <>
         <div className="team-info-box-wrapper">
-            <div className="team-info-box">
-                <h3 className="team-info-title">{team.name} STATUS EFFECTS</h3>
-                <div className="inventory-items">
-                    {effects.length > 0 ? (
+            <div className="team-status-box">
+                <CollapsibleSection label={`${team.name} Status Effects`}>
+                    <div className="inventory-items">
                         <div className="inventory-list-text">
-                            {effects.map((item) => (
-                                <h3 className="inventory-list-text" key={item.type}>
-                                    {item.type}: {item.count}
-                                </h3>
-                            ))}
+                            {effects.flatMap(({ tileId, effect }) =>
+                                Object.keys(effect).map(effectKey => (
+                                    <div className="inventory-list-text" key={`${tileId}-${effectKey}`}>
+                                        Tile {tileId}: {addSpaceToCamelCase(effectKey)}
+                                    </div>
+                                ))
+                            )}
                         </div>
-                    ) : (
-                        <h3 className="inventory-list-text">No current status effects</h3>
-                        
-                    )}
-                </div>
+                    </div>
+                </CollapsibleSection>
             </div>
         </div>
         </>

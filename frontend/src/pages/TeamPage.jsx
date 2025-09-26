@@ -5,6 +5,7 @@ import { BonusMissionComponent } from "../components/BonusMissionComponent";
 import { useLocation } from "react-router-dom";
 import "../css/TeamPage.css"
 import { Legend } from "../components/util/Legend";
+import { TeamFetch } from "../components/util/TeamContext";
 
 export function TeamPage(){
     const location = useLocation();
@@ -13,7 +14,7 @@ export function TeamPage(){
     if (!team) return <div>No team data!</div>;
 
     return (
-        <>
+        <TeamFetch>
         <div className="team-page-wrapper">
             <h3 className="page-title">{team.name} Home Page</h3>
             <div className="actionfeed-and-mission-wrapper-team-page">
@@ -38,6 +39,6 @@ export function TeamPage(){
                 </div>
             </div>
         </div>
-        </>
+        </TeamFetch>
     )
 }

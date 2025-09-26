@@ -1,0 +1,166 @@
+{
+  "name": "Iron Warriors",
+  "phrase": "Efficiency is everything!",
+  "score": 285,
+  "players": [
+    {
+      "discordId": 123456789012345678,
+      "rsn": "IronMan2024",
+      "captain": true
+    },
+    {
+      "discordId": 234567890123456789,
+      "rsn": "PureBerserker",
+      "captain": false
+    },
+    {
+      "discordId": 345678901234567890,
+      "rsn": "SkillPure99",
+      "captain": false
+    }
+  ],
+  "board": {
+    "updated": 1727370000.0,
+    "bingoReward": 70,
+    "bonusReward": 35,
+    "bingoCount": 2,
+    "activeBonus": {
+      "row": [0, 2],
+      "column": [1],
+      "diagonal": []
+    },
+    "missionBonus": 15,
+    "missions": [
+      {
+        "missionId": 1,
+        "descriptor": "Complete 10 Slayer tasks",
+        "reward": "Slayer helmet (i)",
+        "pointReward": 50,
+        "completed": true,
+        "completedBy": [
+          {
+            "discordId": 123456789012345678,
+            "rsn": "IronMan2024",
+            "captain": true
+          }
+        ]
+      },
+      {
+        "missionId": 2,
+        "descriptor": "Obtain a Fire cape",
+        "reward": null,
+        "pointReward": 75,
+        "completed": false,
+        "completedBy": null
+      },
+      {
+        "missionId": 3,
+        "descriptor": "Reach 99 in any skill",
+        "reward": "Skill cape",
+        "pointReward": 100,
+        "completed": true,
+        "completedBy": [
+          {
+            "discordId": 345678901234567890,
+            "rsn": "SkillPure99",
+            "captain": false
+          }
+        ]
+      }
+    ],
+    "tiles": [
+      {
+        "tileId": "A1",
+        "index": 0,
+        "completedBy": [
+          {
+            "discordId": 123456789012345678,
+            "rsn": "IronMan2024",
+            "captain": true
+          }
+        ],
+        "data": {
+          "coordX": 0,
+          "coordY": 0,
+          "descriptor": "Kill 50 Goblins",
+          "obtained": 50,
+          "required": 50,
+          "effect": {
+            "protected": true,
+            "exterminated": false,
+            "reclaimed": false,
+            "slayerNegative": false,
+            "slayerPositive": false,
+            "previousProtection": false,
+            "appliedBy": "IronMan2024"
+          }
+        }
+      },
+      {
+        "tileId": "B2",
+        "index": 6,
+        "completedBy": null,
+        "data": {
+          "coordX": 1,
+          "coordY": 1,
+          "descriptor": "Obtain Dragon Boots",
+          "obtained": 0,
+          "required": 1,
+          "effect": {
+            "protected": false,
+            "exterminated": true,
+            "reclaimed": false,
+            "slayerNegative": true,
+            "slayerPositive": false,
+            "previousProtection": false,
+            "appliedBy": "EnemyTeam"
+          }
+        }
+      },
+      {
+        "tileId": "C3",
+        "index": 12,
+        "completedBy": [
+          {
+            "discordId": 345678901234567890,
+            "rsn": "SkillPure99",
+            "captain": false
+          }
+        ],
+        "data": {
+          "coordX": 2,
+          "coordY": 2,
+          "descriptor": "Reach level 70 Woodcutting",
+          "obtained": 70,
+          "required": 70,
+          "effect": {
+            "protected": false,
+            "exterminated": false,
+            "reclaimed": true,
+            "slayerNegative": false,
+            "slayerPositive": true,
+            "previousProtection": true,
+            "appliedBy": "SkillPure99"
+          }
+        }
+      }
+    ]
+  },
+  "inventory": {
+    "protection": 3,
+    "reclaim": 1,
+    "extermination": [
+      {
+        "active": true,
+        "used": false,
+        "useBefore": 1759095816.0
+      },
+      {
+        "active": false,
+        "used": true,
+        "useBefore": 1727370000.0
+      }
+    ]
+  },
+  "lastExtermination": 1727283600.0
+}
