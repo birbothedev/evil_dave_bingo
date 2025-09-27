@@ -28,28 +28,26 @@ export function StatusEffectBox() {
         <>
         <div className="team-info-box-wrapper">
             <div className="team-status-box">
-                <CollapsibleSection label={`${team.name} Status Effects`}>
-                    <div className="inventory-items">
-                        <div className="inventory-list-text">
+                <CollapsibleSection label={`Status Effects`}>
+                        <div className="status-list-text">
                             {secondsLeft > 0 && (
                                 <div className="time-remaining">
-                                    Safe from Extermination for: <CountdownComponent useBy={exterminationTimer}/>
+                                • Safe from Extermination for: <CountdownComponent useBy={exterminationTimer}/>
                                 </div>
                             )}
 
                             {effects.flatMap(({ tileId, effect, tileIndex }) =>
                                 Object.keys(effect).map(effectKey => (
-                                    <div className="inventory-list-text" key={`${tileId}-${effectKey}`}>
-                                        Tile {tileIndex + 1}: {addSpaceToCamelCase(effectKey)}
+                                    <div className="status-list-text" key={`${tileId}-${effectKey}`}>
+                                        • Tile {tileIndex + 1}: {addSpaceToCamelCase(effectKey)}
                                     </div>
                                 ))
                             )}
 
                             {effects.length === 0 && (
-                                    <div className="inventory-list-text">No current status effects</div>
+                                    <div className="status-list-text">No current status effects</div>
                             )}
                         </div>
-                    </div>
                 </CollapsibleSection>
             </div>
         </div>

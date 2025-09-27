@@ -1,47 +1,32 @@
 import "../css/componentcss/SmallBoard.css"
 import { useState } from "react"
-import { TeamPoints } from "./TeamPoints";
+import { TeamPoints } from "./TeamPoints"
+import { fetchTeamData } from "./util/TeamContext"
 
-export function SmallBingoBoard({team}){
-    // start with open state being set to false
-    const [isOpen, setIsOpen] = useState(false);
+export function SmallBingoBoard(){
+    const [isOpen, setIsOpen] = useState(false)
+    const { team, loading, error } = fetchTeamData()
 
-    const numRows = 7;
-    const numCols = 7;
-    let tileCount = 0;
-    const tiles = [];
+    if (loading) return <div>Loading Team...</div>
+    if (error) return <div>{error}</div>
+    if (!team?.board) return <div>No board data found.</div>
 
-
-    //this logic going to have to change once we pull actual data
-    for (let i = 1; i <= numRows; i++) {
-        for (let j = 1; j <= numCols; j++) {
-            tileCount++
-            const tileId = `tile${(i - 1) * numCols + j}`;
-            tiles.push(
-                <div
-                    className={isOpen ? "big-tiles" : "small-tiles"}
-                    id={tileId}
-                    key= {tileCount}
-                    data-x={i}
-                    data-y={j}
-                >
-                    {isOpen ? 
-                        <p>tile description text</p> : tileCount
-                    }
-                </div>
-            );
-        }
-    }
-
-//      color to be used for exterminated tiles: #754702 
-//      color to be used for protected tiles: #026975
+    const boardTiles = team?.board?.tiles?.map(tile => ({
+        tileId: tile.tileId,
+        tileIndex: tile.index,
+        tileDescription: tile.data.descriptor,
+        tileObtained: tile.data.obtained,
+        tileRequired: tile.data.required,
+        tileProtection: tile.data.effect.protected,
+        tileExtermination: tile.data.effect.exterminated
+    }))
 
     return (
         <>
         <div className="small-board-page">
             <div className="board-label-group">
                 <h3 className="board-title">{team.name}</h3>
-                <div className="points-title"><TeamPoints team = {team}/></div>
+                <div className="points-title"><TeamPoints/></div>
             </div>
             <div 
                 className={isOpen ? "big-bingo-board" : "small-bingo-board"}
@@ -51,10 +36,27 @@ export function SmallBingoBoard({team}){
                     }
                 }}
                 >
-                <div 
-                    className={isOpen ? "big-tiles-container" : "small-tiles-container"}
-                >
-                    {tiles}
+                <div className={isOpen ? "big-tiles-container" : "small-tiles-container"}>
+                    {boardTiles.map(({ tileId, tileIndex, tileDescription, 
+                        tileExtermination, tileProtection, tileObtained, tileRequired }) => {
+                        return (
+                            <div
+                                className={isOpen ? "big-tiles" : "small-tiles"}
+                                key={`${tileId}-${tileIndex}`}
+                                style={{
+                                    backgroundColor: tileProtection
+                                        ? "#026975"
+                                        : tileExtermination
+                                        ? "#754702"
+                                        : (tileObtained == tileRequired && tileObtained > 0)
+                                        ? "#750D02"
+                                        : undefined
+                                }}
+                            >
+                                {isOpen ? tileDescription : tileIndex + 1}
+                            </div>
+                        );
+                    })}
                 </div>
             </div> 
         </div>

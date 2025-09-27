@@ -6,7 +6,7 @@ export function CountdownComponent({useBy}) {
     const timeRemaining = useCountdownEffect(useBy)
 
     return (
-        <div className="inventory-list-text">
+        <div className="time-remaining">
             {timeRemaining}
         </div>
     )

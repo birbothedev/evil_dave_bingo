@@ -1,45 +1,55 @@
-import { useState } from "react";
+
 import "../css/componentcss/BonusMission.css"
-import { useParams } from "react-router-dom";
-import { CollapsibleSection } from "./util/Collapsible";
+import { useParams } from "react-router-dom"
+import { CollapsibleSection } from "./util/Collapsible"
+import { fetchTeamData } from "./util/TeamContext"
+import { CountdownComponent } from "./util/Timers/CountdownComponent"
 
 export function BonusMissionComponent() {
-    const { page } = useParams();
-    const [isOpen, setIsOpen] = useState(false)
+    const { page } = useParams()
+    const { team, loading, error } = fetchTeamData()
 
-    const title = "Bonus Mission Title"
-    const description = "This is a description of a bonus mission"
-    const reward = "This is the reward"
-    const timeRemaining = "00:00:00"
+    if (loading) return <div>Loading Team...</div>
+    if (error) return <div>{error}</div>
+    if (!team) return <div>No team data found.</div>
 
-    // if page === team 
-    //      return (
-    //          bonus missions and logic to have line drawn through 
-    //          completed bonus missions
-    //      
-    //          also have logic to make bonus missions collapsible for later
-    //          in the event when its populated with loads of missions
-    //      )
+    const missions = team.board.missions
 
-    // else 
-    //      return (
-    //          normal active bonus mission component
-    //      )
-    // for every bonus mission create new inner collapsible
+    // change logic so strikethrough doesnt appear on home page
 
     return (
         <>
         <div className="bonus-mission-container">
             <div className="bonus-mission-description-container">
-                <CollapsibleSection label="Active Bonus Missions">
-                    <CollapsibleSection 
-                        className="inner-collapsible"
-                        style={{boxShadow: "none"}}
-                        label={`${timeRemaining} ${title}`}
-                    >
-                        <div className="inner-description">Mission: {description}</div>
-                        <div className="inner-description">Reward: {reward}</div>
-                    </CollapsibleSection>
+            <CollapsibleSection label="Active Bonus Missions">
+                {missions.length > 0 &&
+                    missions.map((mission, missionId) => {
+                        const isCompleted = mission.completed
+
+                        return (
+                            <CollapsibleSection
+                            key={missionId}
+                            label={
+                                <div
+                                    className="inventory-list-text"
+                                    style={isCompleted ? { textDecoration: "line-through" } : {}}
+                                >
+                                    <CountdownComponent useBy={mission.completeBefore} />{" "}
+                                    {mission.missionTitle}
+                                </div>
+                            }
+                            className="inner-collapsible"
+                            style={{ boxShadow: "none" }}
+                            >
+                            <div className="inner-description">
+                                • Mission: {mission.descriptor}
+                            </div>
+                            <div className="inner-description">
+                                • Reward: {mission.reward}
+                            </div>
+                            </CollapsibleSection>
+                        )
+                    })}
                 </CollapsibleSection>
             </div>
         </div>

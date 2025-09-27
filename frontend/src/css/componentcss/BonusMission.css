@@ -45,6 +45,20 @@
     text-align: left;
     font-size: medium;
     margin-left: .5rem;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.inner-button-content {
+    display: flex;
+    flex-direction: row;
+    background-color: #fdd4a3;
+    gap: 1rem;
+}
+.inner-button-content:hover {
+    background-color: #750D02;
+    color:bisque;
 }
 
 @media (max-width: 500px) {

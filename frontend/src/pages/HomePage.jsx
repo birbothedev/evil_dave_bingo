@@ -1,13 +1,13 @@
 import { SmallBingoBoard } from "../components/SmallBingoBoard";
 import "../css/HomePage.css"
-import { useTeamFetch } from "../components/util/GlobalTeamFetch";
 import { BonusMissionComponent } from "../components/BonusMissionComponent";
 import { Legend } from "../components/util/Legend";
 import { CollapsibleSection } from "../components/util/Collapsible";
+import { fetchTeamData } from "../components/util/TeamContext"
 
 export function HomePage(){
 
-    const { teams, loading, error } = useTeamFetch();
+    const { teams, loading, error } = fetchTeamData()
 
     if (loading) return <div>Loading Teams...</div>
     if (error) return <div>{error}</div>

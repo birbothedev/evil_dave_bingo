@@ -75,6 +75,6 @@
 
 .collapsible-section .inner-collapsible {
     margin: 0;
-    padding: .5rem;
+    padding: .25rem;
+    border-radius: 4px;
 }
-

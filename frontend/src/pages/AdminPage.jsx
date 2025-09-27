@@ -1,7 +1,6 @@
 import "../css/AdminPage.css"
 import { InventoryBox } from "../components/InventoryBox"
 import { StatusEffectBox } from "../components/StatusEffectBox"
-import { useTeamFetch } from "../components/util/GlobalTeamFetch"
 
 export function AdminPage(){
 

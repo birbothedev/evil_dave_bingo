@@ -1,5 +1,4 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { useTeamFetch } from "./GlobalTeamFetch";
 import "../../css/componentcss/PageAuth.css"
 import { useState } from "react"
 
@@ -12,7 +11,7 @@ export function PageAuth(){
     const [passcode, setPasscode] = useState("")
     const [team, setTeam] = useState(null)
 
-    const { teams, loading, error } = useTeamFetch();
+    // const { teams, loading, error } = useTeamFetch()
     if (loading) return <div>Loading Teams...</div>
     if (error) return <div>{error}</div>
 

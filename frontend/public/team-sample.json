@@ -1,7 +1,7 @@
 {
-  "name": "",
+  "name": "iron team",
   "phrase": "",
-  "score": 0,
+  "score": 5172,
   "players": [
     {
       "discordId": 0,
@@ -23,9 +23,27 @@
     "missions": [
       {
         "missionId": 0,
-        "descriptor": null,
-        "reward": null,
-        "pointReward": null,
+        "missionTitle": "test mission title",
+        "descriptor": "test mission 1 description",
+        "reward": "15 points",
+        "pointReward": 15,
+        "completeBefore": 1760745540,
+        "completed": true,
+        "completedBy": [
+          {
+            "discordId": 0,
+            "rsn": "",
+            "captain": false
+          }
+        ]
+      },
+      {
+        "missionId": 1,
+        "missionTitle": "test mission title 2",
+        "descriptor": "test mission 2 description",
+        "reward": "15 points",
+        "pointReward": 15,
+        "completeBefore": 1760745540,
         "completed": false,
         "completedBy": [
           {
@@ -44,7 +62,7 @@
         "data": {
           "coordX": 0,
           "coordY": 0,
-          "descriptor": "",
+          "descriptor": "obtain 5 venator shards",
           "obtained": 0,
           "required": 0,
           "effect": {
@@ -65,7 +83,7 @@
         "data": {
           "coordX": 0,
           "coordY": 1,
-          "descriptor": "",
+          "descriptor": "obtain 3 tormented synapses",
           "obtained": 0,
           "required": 0,
           "effect": {
@@ -86,7 +104,7 @@
         "data": {
           "coordX": 0,
           "coordY": 2,
-          "descriptor": "",
+          "descriptor": "defeat royal titans 850 times",
           "obtained": 0,
           "required": 0,
           "effect": {
@@ -107,7 +125,7 @@
         "data": {
           "coordX": 0,
           "coordY": 3,
-          "descriptor": "",
+          "descriptor": "obtain enhanced crystal weapon seed or 4 crystal armor seeds",
           "obtained": 0,
           "required": 0,
           "effect": {
@@ -128,7 +146,7 @@
         "data": {
           "coordX": 0,
           "coordY": 4,
-          "descriptor": "",
+          "descriptor": "obtain fish barrel and tome of water",
           "obtained": 0,
           "required": 0,
           "effect": {
@@ -149,9 +167,9 @@
         "data": {
           "coordX": 0,
           "coordY": 5,
-          "descriptor": "",
-          "obtained": 0,
-          "required": 0,
+          "descriptor": "obtain bryophyta essence or obor club",
+          "obtained": 5,
+          "required": 5,
           "effect": {
             "protected": false,
             "exterminated": false,
@@ -170,7 +188,7 @@
         "data": {
           "coordX": 0,
           "coordY": 6,
-          "descriptor": "",
+          "descriptor": "obtain all: kq head, dragon chainbody, and dragon 2h sword",
           "obtained": 0,
           "required": 0,
           "effect": {
@@ -191,7 +209,7 @@
         "data": {
           "coordX": 1,
           "coordY": 0,
-          "descriptor": "",
+          "descriptor": "obtain any rev weapon or emblem 2m+",
           "obtained": 0,
           "required": 0,
           "effect": {
@@ -212,7 +230,7 @@
         "data": {
           "coordX": 1,
           "coordY": 1,
-          "descriptor": "",
+          "descriptor": "obtain one: pet, lightbearer, osmumten’s fang, ward, or any masori piece",
           "obtained": 0,
           "required": 0,
           "effect": {
@@ -233,9 +251,9 @@
         "data": {
           "coordX": 1,
           "coordY": 2,
-          "descriptor": "",
-          "obtained": 0,
-          "required": 0,
+          "descriptor": "obtain 3 dragon pickaxes",
+          "obtained": 5,
+          "required": 5,
           "effect": {
             "protected": false,
             "exterminated": false,
@@ -339,8 +357,8 @@
           "coordX": 2,
           "coordY": 0,
           "descriptor": "",
-          "obtained": 0,
-          "required": 0,
+          "obtained": 5,
+          "required": 5,
           "effect": {
             "protected": false,
             "exterminated": false,
@@ -402,8 +420,8 @@
           "coordX": 2,
           "coordY": 3,
           "descriptor": "",
-          "obtained": 0,
-          "required": 0,
+          "obtained": 1,
+          "required": 1,
           "effect": {
             "protected": false,
             "exterminated": false,
@@ -423,11 +441,11 @@
           "coordX": 2,
           "coordY": 4,
           "descriptor": "",
-          "obtained": 0,
-          "required": 0,
+          "obtained": 5,
+          "required": 5,
           "effect": {
             "protected": false,
-            "exterminated": false,
+            "exterminated": true,
             "reclaimed": false,
             "slayerNegative": false,
             "slayerPositive": false,
@@ -1069,7 +1087,6 @@
     ]
   },
   "inventory": {
-    "protection": 0,
     "reclaim": 1,
     "extermination": [
       {

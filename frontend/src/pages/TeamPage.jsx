@@ -1,20 +1,25 @@
 import { InventoryBox } from "../components/InventoryBox"
 import { SmallBingoBoard } from "../components/SmallBingoBoard"
 import { StatusEffectBox } from "../components/StatusEffectBox"
-import { BonusMissionComponent } from "../components/BonusMissionComponent";
-import { useLocation } from "react-router-dom";
+import { BonusMissionComponent } from "../components/BonusMissionComponent"
+import { useLocation } from "react-router-dom"
 import "../css/TeamPage.css"
-import { Legend } from "../components/util/Legend";
-import { TeamFetch } from "../components/util/TeamContext";
+import { Legend } from "../components/util/Legend"
+import { fetchTeamData } from "../components/util/TeamContext"
 
 export function TeamPage(){
     const location = useLocation();
-    const { team } = location.state || {}; // fallback in case state is undefined
+    // const { team } = location.state || {}; // fallback in case state is undefined
+
+    const { team, loading, error } = fetchTeamData()
+
+    if (loading) return <div>Loading Team...</div>
+    if (error) return <div>{error}</div>
+    if (!team?.board) return <div>No board data found.</div>
 
     if (!team) return <div>No team data!</div>;
 
     return (
-        <TeamFetch>
         <div className="team-page-wrapper">
             <h3 className="page-title">{team.name} Home Page</h3>
             <div className="actionfeed-and-mission-wrapper-team-page">
@@ -26,19 +31,18 @@ export function TeamPage(){
                 <Legend />
                 <div className="team-columns">
                     <div className="team-bingo-board">
-                        <SmallBingoBoard team={team}/>
+                        <SmallBingoBoard/>
                     </div>
                     <div className="team-inventory-container">
                         <div className="inventory-box">
-                            <InventoryBox team={team}/>
+                            <InventoryBox/>
                         </div>
                         <div className="status-box">
-                            <StatusEffectBox team={team}/>
+                            <StatusEffectBox/>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        </TeamFetch>
     )
 }
