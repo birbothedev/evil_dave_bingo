@@ -16,6 +16,7 @@ export function HomePage(){
 
     // action feed: for every new action add a new child (timestamp + text)
 
+
     return (
         <div className="home-page">
             <h2 className="page-title">EVIL DAVE'S TOTALLY EVIL BINGO EVENT</h2>

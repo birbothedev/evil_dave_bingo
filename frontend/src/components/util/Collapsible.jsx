@@ -22,5 +22,5 @@ export function CollapsibleSection({ label, children, className = "", style }) {
                 </div>
             )}
         </div>
-    );
+    )
 }

@@ -1,24 +1,11 @@
 import "../css/componentcss/PlayerInfoBoxes.css"
 import { CollapsibleSection } from "./util/Collapsible";
 import { fetchTeamData } from "./util/TeamContext";
-import { getTimeRemaining } from "./util/TimeRemaining";
-import { useState, useEffect } from "react";
+import { CountdownComponent } from "./util/Timers/CountdownComponent";
 
 export function InventoryBox() {
 
     const { team, loading, error } = fetchTeamData()
-    const [timeLeft, setTimeLeft] = useState([])
-
-    useEffect(() => {
-        if (!team?.inventory?.extermination) return
-
-        const interval = setInterval(() => {
-            const times = team.inventory.extermination.map(ex => getTimeRemaining(ex.useBefore))
-            setTimeLeft(times)
-        }, 60000);
-
-        return () => clearInterval(interval)
-    }, [team])
 
     if (loading) return <div>Loading Team...</div>
     if (error) return <div>{error}</div>
@@ -45,14 +32,14 @@ export function InventoryBox() {
                                     <>
                                         {exterminations.map((ex, index) => (
                                             <div className="time-remaining" key={index}>
-                                                Extermination: {getTimeRemaining(ex.useBefore).toLowerCase()}
+                                                Extermination: <CountdownComponent useBy={ex.useBy}/>
                                             </div>
                                         ))}
                                     </>
                                 )}
 
                                 {regularItems.length === 0 && exterminations.length === 0 && (
-                                    <h3>No items in inventory</h3>
+                                    <div className="inventory-list-text">No items in inventory</div>
                                 )}
                             </div>
                         </div>

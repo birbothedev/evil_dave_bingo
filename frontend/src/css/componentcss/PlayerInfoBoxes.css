@@ -45,9 +45,12 @@
 }
 
 .time-remaining {
+    display: flex;
     background-color: #fdd4a3;
     text-align: left;
     text-transform: none;
+    align-items: center;
+    gap: .25rem;
 }
 
 .team-info-box-wrapper {
