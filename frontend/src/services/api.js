@@ -8,8 +8,9 @@ export async function fetchTeams(){
     return data.teams;
 }
 
-export async function teamPageFetch(){
-    const response = await fetch("/team-sample.json");
+export async function teamPageFetch(teamValue){
+    console.log("Fetching team JSON:", `/${teamValue}-sample.json`);
+    const response = await fetch(`/${teamValue}-sample.json`);
     if (!response.ok){
         throw new Error("Failed to fetch team!");
     }

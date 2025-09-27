@@ -1,8 +1,8 @@
-import { SmallBingoBoard } from "../components/SmallBingoBoard";
+import { SmallBingoBoard } from "../components/SmallBingoBoard"
 import "../css/HomePage.css"
-import { BonusMissionComponent } from "../components/BonusMissionComponent";
-import { Legend } from "../components/util/Legend";
-import { CollapsibleSection } from "../components/util/Collapsible";
+import { BonusMissionComponent } from "../components/BonusMissionComponent"
+import { Legend } from "../components/util/Legend"
+import { CollapsibleSection } from "../components/util/Collapsible"
 import { fetchTeamData } from "../components/util/TeamContext"
 
 export function HomePage(){
@@ -16,13 +16,12 @@ export function HomePage(){
 
     // action feed: for every new action add a new child (timestamp + text)
 
-
     return (
         <div className="home-page">
             <h2 className="page-title">EVIL DAVE'S TOTALLY EVIL BINGO EVENT</h2>
             <div className="actionfeed-and-mission-wrapper">
                 <div className="bonus-missions-home-page">
-                    <BonusMissionComponent />
+                    <BonusMissionComponent page={"home"}/>
                 </div>
                 <div className="action-feed-wrapper">
                     <CollapsibleSection className="action-feed-dropdown" label={"Action Feed"}>
@@ -35,13 +34,11 @@ export function HomePage(){
             <div className="everything-else">
                 <Legend />
                 <div className="bingo-container">
-                    {teams.map((team, index) => (
-                        <div className="team-groups" key={index}>
-                            <SmallBingoBoard team={team} />
-                        </div>
-                    ))}
+                    <div className="team-groups">
+                        <SmallBingoBoard/>
+                    </div>
                 </div>
             </div>
         </div>
-    );
+    )
 }

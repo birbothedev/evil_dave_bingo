@@ -1,45 +1,40 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom"
 import "../../css/componentcss/PageAuth.css"
 import { useState } from "react"
+import { teamPageFetch } from "../../services/api"
 
 
 export function PageAuth(){
-    const { page } = useParams(); //either "team" or "admin" based on which link was clicked
-    const navigate = useNavigate();
+    const { page } = useParams() //either "team" or "admin" based on which link was clicked
+    const navigate = useNavigate()
 
-    const [authorized, setAuthorized] = useState(false)
     const [passcode, setPasscode] = useState("")
-    const [team, setTeam] = useState(null)
 
-    // const { teams, loading, error } = useTeamFetch()
-    if (loading) return <div>Loading Teams...</div>
-    if (error) return <div>{error}</div>
+    const handleSubmit = async (e) => {
+        e.preventDefault()
 
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
+        let foundTeam = null
 
         if (page === "team") {
-            // this will have to be changed when we pull from server
-            const foundTeam = teams.find(team => team.passcode === passcode)
+            if (passcode === "team1") foundTeam = "team1"
+            else if (passcode === "team2") foundTeam = "team2"
+            else if (passcode === "team3") foundTeam = "team3"
 
-            if (foundTeam){
-                setAuthorized(true)
-                setTeam(foundTeam)
-                console.log("found team " + foundTeam.name)
-                
-                navigate("/teampage", { state: { team: foundTeam }});
+            if (foundTeam) {
+                console.log("foundTeam:", foundTeam)
+                navigate(`/teampage/${foundTeam}`)
             } else {
                 alert("Incorrect Passcode")
             }
         } else if (page === "admin") {
-            if (passcode === "adminPass"){
-                setAuthorized(true)
-                navigate("/adminpage");
+            if (passcode === "adminPass") {
+                navigate("/adminpage")
             } else {
                 alert("Incorrect Passcode")
             }
         }
+
+        console.log("Passcode entered:", passcode)
     }
 
     return (

@@ -2,29 +2,24 @@ import { InventoryBox } from "../components/InventoryBox"
 import { SmallBingoBoard } from "../components/SmallBingoBoard"
 import { StatusEffectBox } from "../components/StatusEffectBox"
 import { BonusMissionComponent } from "../components/BonusMissionComponent"
-import { useLocation } from "react-router-dom"
 import "../css/TeamPage.css"
 import { Legend } from "../components/util/Legend"
 import { fetchTeamData } from "../components/util/TeamContext"
+import { useLocation } from "react-router-dom"
 
 export function TeamPage(){
-    const location = useLocation();
-    // const { team } = location.state || {}; // fallback in case state is undefined
-
     const { team, loading, error } = fetchTeamData()
 
-    if (loading) return <div>Loading Team...</div>
+    if (loading) return <div>Loading...</div>
     if (error) return <div>{error}</div>
-    if (!team?.board) return <div>No board data found.</div>
-
-    if (!team) return <div>No team data!</div>;
+    if (!team) return <div>no team dummy</div>
 
     return (
         <div className="team-page-wrapper">
-            <h3 className="page-title">{team.name} Home Page</h3>
+            <h3 className="page-title"> {team.name} Home Page</h3>
             <div className="actionfeed-and-mission-wrapper-team-page">
                 <div className="bonus-missions-home-page">
-                    <BonusMissionComponent />
+                    <BonusMissionComponent page={"team"}/>
                 </div>
             </div>
             <div className="everything-else-team-page">

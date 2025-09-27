@@ -1,12 +1,10 @@
 
 import "../css/componentcss/BonusMission.css"
-import { useParams } from "react-router-dom"
 import { CollapsibleSection } from "./util/Collapsible"
 import { fetchTeamData } from "./util/TeamContext"
 import { CountdownComponent } from "./util/Timers/CountdownComponent"
 
-export function BonusMissionComponent() {
-    const { page } = useParams()
+export function BonusMissionComponent({page}) {
     const { team, loading, error } = fetchTeamData()
 
     if (loading) return <div>Loading Team...</div>
@@ -14,8 +12,6 @@ export function BonusMissionComponent() {
     if (!team) return <div>No team data found.</div>
 
     const missions = team.board.missions
-
-    // change logic so strikethrough doesnt appear on home page
 
     return (
         <>
@@ -32,7 +28,7 @@ export function BonusMissionComponent() {
                             label={
                                 <div
                                     className="inventory-list-text"
-                                    style={isCompleted ? { textDecoration: "line-through" } : {}}
+                                    style={(isCompleted && page==="team") ? { textDecoration: "line-through" } : {}}
                                 >
                                     <CountdownComponent useBy={mission.completeBefore} />{" "}
                                     {mission.missionTitle}
