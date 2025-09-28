@@ -29,13 +29,10 @@
 }
 
 .bingo-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 5%; 
-    width: 90%;
-    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
     justify-content: center;
-    margin-bottom: 5rem;
 }
 
 .team-groups {
@@ -114,7 +111,7 @@
     }
 
     .actionfeed-and-mission-wrapper {
-        top: 10%; 
+        top: 15%; 
     }
 
     .everything-else {
@@ -122,9 +119,13 @@
     }
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 1310px) {
     .everything-else {
-        margin-top: 10%;
+        margin-top: 12%;
+    }
+
+    .actionfeed-and-mission-wrapper {
+        top: 12%; 
     }
 }
 
@@ -134,7 +135,10 @@
     }
 }
 
-@media (max-width: 950px) {
+@media (max-width: 880px) {
+    .actionfeed-and-mission-wrapper {
+        top: 7%; 
+    }
     .everything-else {
         margin-top: 13%;
     }

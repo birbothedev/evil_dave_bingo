@@ -29,7 +29,7 @@
                 "data": {
                     "coordX": 0,
                     "coordY": 0,
-                    "descriptor": "",
+                    "descriptor": "obtain 5 venator shards",
                     "obtained": 0,
                     "required": 0,
                     "effect": {
@@ -92,7 +92,7 @@
                 "data": {
                     "coordX": 0,
                     "coordY": 3,
-                    "descriptor": "",
+                    "descriptor": "obtain enhanced crystal weapon seed or 4 crystal armor seeds",
                     "obtained": 0,
                     "required": 0,
                     "effect": {
@@ -155,7 +155,7 @@
                 "data": {
                     "coordX": 0,
                     "coordY": 6,
-                    "descriptor": "",
+                    "descriptor": "obtain all: kq head, dragon chainbody, and dragon 2h sword",
                     "obtained": 0,
                     "required": 0,
                     "effect": {

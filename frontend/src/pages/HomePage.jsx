@@ -15,7 +15,9 @@ export function HomePage(){
 
     const timeStamp = "00:00:00"
 
-    const teamArray = Array.isArray(teams) ? teams : [teams];
+    const teamArray = Array.isArray(teams) ? teams : [teams]
+
+        console.log(teams?.team?.board?.tiles.length);
 
 
     // action feed: for every new action add a new child (timestamp + text)
