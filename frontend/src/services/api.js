@@ -1,5 +1,5 @@
-export async function fetchTeams(){
-    const response = await fetch("/request-frontpage.json");
+export async function fetchAllTeams(){
+    const response = await fetch("/home-page-teams.json");
     if (!response.ok){
         throw new Error("Failed to fetch teams");
     }

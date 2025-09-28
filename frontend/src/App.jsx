@@ -7,6 +7,7 @@ import { NavBar } from './components/util/NavBar'
 import { AdminPage } from './pages/AdminPage'
 import { PageAuth } from './components/util/PageAuth'
 import { TeamFetch } from './components/util/TeamContext'
+import { HomeFetchAllTeams } from './components/util/FetchAllTeamsContext'
 
 function App() {
   return (
@@ -14,7 +15,11 @@ function App() {
       <NavBar />
       <div className='main-content'>
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={
+                <HomeFetchAllTeams>
+                    <HomePage />
+                </HomeFetchAllTeams>
+            } />
           <Route path="/teampage/:teamValue" 
             element={
                 <TeamFetch>

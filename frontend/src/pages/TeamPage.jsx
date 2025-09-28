@@ -5,7 +5,6 @@ import { BonusMissionComponent } from "../components/BonusMissionComponent"
 import "../css/TeamPage.css"
 import { Legend } from "../components/util/Legend"
 import { fetchTeamData } from "../components/util/TeamContext"
-import { useLocation } from "react-router-dom"
 
 export function TeamPage(){
     const { team, loading, error } = fetchTeamData()

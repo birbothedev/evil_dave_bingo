@@ -1,7 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom"
 import "../../css/componentcss/PageAuth.css"
 import { useState } from "react"
-import { teamPageFetch } from "../../services/api"
 
 
 export function PageAuth(){

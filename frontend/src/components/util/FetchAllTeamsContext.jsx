@@ -1,10 +1,10 @@
 import { createContext, useState, useEffect } from "react"
-import { fetchTeams } from "../../services/api"
+import { fetchAllTeams } from "../../services/api"
 import { useContext } from "react"
 
-const GlobalTeamContext = createContext()
+const AllTeamsContext = createContext()
 
-export function GlobalTeamFetch({children}){
+export function HomeFetchAllTeams({children}){
     const [teams, setTeams] = useState([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
@@ -12,7 +12,7 @@ export function GlobalTeamFetch({children}){
     useEffect(() =>{
         async function getData() {
             try {
-                const teamData = await fetchTeams()
+                const teamData = await fetchAllTeams()
                 setTeams(teamData)
             } catch (err) {
                 console.error(err)
@@ -25,12 +25,12 @@ export function GlobalTeamFetch({children}){
     }, [])
 
     return (
-        <GlobalTeamContext.Provider value={{teams, loading, error}}>
+        <AllTeamsContext.Provider value={{teams, loading, error}}>
             {children}
-        </GlobalTeamContext.Provider>
+        </AllTeamsContext.Provider>
     )
 }
 
-export function useTeamFetch() {
-    return useContext(GlobalTeamContext)
+export function useAllTeamsFetch() {
+    return useContext(AllTeamsContext)
 }
