@@ -1,4 +1,5 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, GetCoreSchemaHandler
+from pydantic_core import core_schema
 from datetime import datetime, UTC, timedelta
 from typing import Dict, Optional, Any
 from uuid import uuid4
@@ -8,14 +9,22 @@ class PyObjectId(ObjectId):
     @classmethod
     def __get_validators__(cls):
         yield cls.validate
+
     @classmethod
     def validate(cls, v):
         if not ObjectId.is_valid(v):
             raise ValueError("Invalid ObjectId")
         return ObjectId(v)
+
     @classmethod
-    def __modify_schema__(cls, field_schema: Dict[str, Any]):
-        field_schema.update(type="string")
+    def __get_pydantic_core_schema__(
+        cls, source_type: Any, handler: GetCoreSchemaHandler
+    ) -> core_schema.CoreSchema:
+        return core_schema.json_or_python_schema(
+            json_schema=core_schema.str_schema(),
+            python_schema=core_schema.with_info_plain_validator_function(cls.validate),
+            serialization=core_schema.to_string_ser_schema(),
+        )
 
 class TileEffect(BaseModel):
     protected: bool = False
