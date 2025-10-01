@@ -20,10 +20,6 @@ async def get_all_teams():
         all_teams.append(Team.model_validate(team))
 
     return Frontpage.model_validate(all_teams)
-        
-
-
-
 
 
 @router.get("/", response_model=Frontpage)

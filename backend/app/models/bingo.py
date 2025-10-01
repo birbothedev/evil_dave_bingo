@@ -93,15 +93,9 @@ class Team(BaseModel):
     board: Board
     inventory: Inventory
     lastExtermination: float | None = None
-
-class TeamSimplified(BaseModel):
-    name: str
-    score: int
-    players: list[Player]
-    board: Board
     
 class Frontpage(BaseModel):
-    teams: list[TeamSimplified]
+    teams: list[Team]
 
 class AuthCookie(BaseModel):
     id: Optional[PyObjectId] = Field(alias="_id", default=None)
