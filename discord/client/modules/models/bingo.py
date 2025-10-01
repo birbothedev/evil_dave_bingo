@@ -89,9 +89,9 @@ class Team(BaseModel):
     name: str
     phrase: str
     score: int = 0
-    players: list[Player]
-    board: Board
-    inventory: Inventory
+    players: Optional[list[Player]]
+    board: Optional[Board]
+    inventory: Optional[Inventory]
     lastExtermination: float | None = None
     
 class Frontpage(BaseModel):

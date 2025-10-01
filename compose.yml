@@ -17,11 +17,11 @@ services:
       - "traefik.http.routers.fastapi.tls=true"
       - "traefik.http.routers.fastapi.tls.certresolver=cloudflare"
       - "traefik.http.services.fastapi.loadbalancer.server.port=8000"
-      - "traefik.http.middlewares.localhost-cors.headers.customresponseheaders.Access-Control-Allow-Origin=http://localhost:5173"
-      - "traefik.http.middlewares.localhost-cors.headers.customresponseheaders.Access-Control-Allow-Methods=GET,POST,PUT,DELETE,OPTIONS"
-      - "traefik.http.middlewares.localhost-cors.headers.customresponseheaders.Access-Control-Allow-Headers=Content-Type,Authorization"
-      - "traefik.http.middlewares.localhost-cors.headers.customresponseheaders.Access-Control-Allow-Credentials=true"
-      - "traefik.http.middlewares.localhost-cors.headers.customresponseheaders.Access-Control-Max-Age=600"
+      - "traefik.http.middlewares.fastapi.headers.customresponseheaders.Access-Control-Allow-Origin=http://localhost:5173"
+      - "traefik.http.middlewares.fastapi.headers.customresponseheaders.Access-Control-Allow-Methods=GET,POST,PUT,DELETE,OPTIONS"
+      - "traefik.http.middlewares.fastapi.headers.customresponseheaders.Access-Control-Allow-Headers=Content-Type,Authorization"
+      - "traefik.http.middlewares.fastapi.headers.customresponseheaders.Access-Control-Allow-Credentials=true"
+      - "traefik.http.middlewares.fastapi.headers.customresponseheaders.Access-Control-Max-Age=600"
 
 networks:
   traefik-shared:
