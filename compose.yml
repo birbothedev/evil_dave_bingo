@@ -18,22 +18,12 @@ services:
       - "traefik.http.routers.fastapi.tls.certresolver=cloudflare"
       - "traefik.http.services.fastapi.loadbalancer.server.port=8000"
       - "traefik.http.routers.fastapi.middlewares=localcors@docker"
-      - "traefik.http.routers.fastapi.middlewares=davehttp@docker"
-      - "traefik.http.routers.fastapi.middlewares=davehttps@docker"
       - "traefik.http.middlewares.localcors.headers.customresponseheaders.Access-Control-Allow-Credentials=true"
-      - "traefik.http.middlewares.localcors.headers.customresponseheaders.Access-Control-Allow-Origin=http://localhost:5173"
+      - "traefik.http.middlewares.localcors.headers.customresponseheaders.Access-Control-Allow-Origin=*"
       - "traefik.http.middlewares.localcors.headers.customresponseheaders.Access-Control-Allow-Methods=GET,POST,PUT,DELETE,OPTIONS"
       - "traefik.http.middlewares.localcors.headers.customresponseheaders.Access-Control-Allow-Headers=Content-Type,Authorization"
       - "traefik.http.middlewares.localcors.headers.customresponseheaders.Access-Control-Max-Age=600"
-      - "traefik.http.middlewares.davehttp.headers.customresponseheaders.Access-Control-Allow-Credentials=true"
-      - "traefik.http.middlewares.davehttp.headers.customresponseheaders.Access-Control-Allow-Origin=http://evildavebingo.com"
-      - "traefik.http.middlewares.davehttp.headers.customresponseheaders.Access-Control-Allow-Headers=Content-Type,Authorization"
-      - "traefik.http.middlewares.davehttp.headers.customresponseheaders.Access-Control-Max-Age=600"
-      - "traefik.http.middlewares.davehttps.headers.customresponseheaders.Access-Control-Allow-Credentials=true"
-      - "traefik.http.middlewares.davehttps.headers.customresponseheaders.Access-Control-Allow-Origin=https://evildavebingo.com"
-      - "traefik.http.middlewares.davehttps.headers.customresponseheaders.Access-Control-Allow-Methods=GET,POST,PUT,DELETE,OPTIONS"
-      - "traefik.http.middlewares.davehttps.headers.customresponseheaders.Access-Control-Allow-Headers=Content-Type,Authorization"
-      - "traefik.http.middlewares.davehttps.headers.customresponseheaders.Access-Control-Max-Age=600"
+
 networks:
   traefik-shared:
     external: true
