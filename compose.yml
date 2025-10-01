@@ -13,7 +13,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.fastapi.rule=Host(`api.evildavebingo.com`)"
-      - "traefik.http.routers.fastapi.entrypoints=web"
+      - "traefik.http.routers.fastapi.entrypoints=websecure"
       - "traefik.http.routers.fastapi.tls=true"
       - "traefik.http.routers.fastapi.tls.certresolver=cloudflare"
       - "traefik.http.services.fastapi.loadbalancer.server.port=8000"
