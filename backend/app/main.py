@@ -25,7 +25,7 @@ app.add_middleware(
         "http://www.evildavebingo.com"
     ],
     allow_credentials=True,
-    allow_methods=["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allow_methods=["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS", "HEAD"],
     allow_headers=[
         "Accept",
         "Accept-Language",
@@ -38,12 +38,15 @@ app.add_middleware(
         "X-CSRF-Token",
         "Cache-Control",
         "Pragma",
+        "Set-Cookie",
+        "Cookie",
     ],
     expose_headers=[
         "Content-Length",
         "Content-Type",
         "Authorization",
         "X-Total-Count",
+        "Set-Cookie",
     ],
     max_age=3600,
 )
