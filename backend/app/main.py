@@ -23,14 +23,15 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:5173",
+        "http://localhost",
         "https://evildavebingo.com",
         "https://www.evildavebingo.com",
         "http://evildavebingo.com",
         "http://www.evildavebingo.com"
     ],
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["GET,POST,PUT,OPTIONS,DELETE,PATCH"],
+    allow_headers=["Accept,Accept-Language,Content-Language,Content-Type"],
 )
 
 @app.get("", status_code=status.HTTP_200_OK)
