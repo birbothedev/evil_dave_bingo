@@ -14,7 +14,6 @@ from .routers.home import router as home
 load_dotenv()
 app = FastAPI(debug=os.getenv("BACKEND_DEBUG", False))
 
-# Add middleware BEFORE including routers
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
