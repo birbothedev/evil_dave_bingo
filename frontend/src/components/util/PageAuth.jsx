@@ -4,36 +4,37 @@ import { useState } from "react"
 
 
 export function PageAuth(){
-    const { page } = useParams() //either "team" or "admin" based on which link was clicked
+    const { page } = useParams() // either "team" or "admin" based on which link was clicked
     const navigate = useNavigate()
 
     const [passcode, setPasscode] = useState("")
+    const [error, setError] = useState("")
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        setError("")
 
-        let foundTeam = null
-
-        if (page === "team") {
-            if (passcode === "team1") foundTeam = "team1"
-            else if (passcode === "team2") foundTeam = "team2"
-            else if (passcode === "team3") foundTeam = "team3"
-
-            if (foundTeam) {
-                console.log("foundTeam:", foundTeam)
-                navigate(`/teampage/${foundTeam}`)
-            } else {
-                alert("Incorrect Passcode")
+        try {
+            const response = await fetch(`https://api.evildavebingo.com/authenticate/${passcode}`, {
+                method: "POST",
+                credentials: "include",
+            })
+            if (!response.ok) {
+                throw new Error("Invalid login phrase")
             }
-        } else if (page === "admin") {
-            if (passcode === "adminPass") {
+
+            console.log("Navigating to admin")
+            // navigate("/adminpage")
+
+            const data = await response.json()
+            if (page === "team") {
+                navigate(`/teampage/${data.team}`)
+            } else if (page === "admin") {
                 navigate("/adminpage")
-            } else {
-                alert("Incorrect Passcode")
             }
+        } catch(err) {
+            setError(err.message)
         }
-
-        console.log("Passcode entered:", passcode)
     }
 
     return (

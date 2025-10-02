@@ -6,8 +6,9 @@ import { TeamPage } from './pages/TeamPage'
 import { NavBar } from './components/util/NavBar'
 import { AdminPage } from './pages/AdminPage'
 import { PageAuth } from './components/util/PageAuth'
-import { TeamFetch } from './components/util/TeamContext'
-import { HomeFetchAllTeams } from './components/util/FetchAllTeamsContext'
+import { TeamFetch } from './components/util/contexts/TeamContext'
+import { HomeFetchAllTeams } from './components/util/contexts/FetchAllTeamsContext'
+import { AdminFetch } from './components/util/contexts/AdminContext'
 
 function App() {
   return (
@@ -20,13 +21,17 @@ function App() {
                     <HomePage />
                 </HomeFetchAllTeams>
             } />
-          <Route path="/teampage/:teamValue" 
+          <Route path="/teampage" 
             element={
                 <TeamFetch>
                     <TeamPage />
                 </TeamFetch>
             } />
-          <Route path="/adminpage" element={<AdminPage />} />
+          <Route path="/adminpage" element={
+              <AdminFetch>
+                <AdminPage />
+              </AdminFetch>
+            } />
           <Route path="/pageauth/:page" element={<PageAuth />} />
         </Routes>
       </div>

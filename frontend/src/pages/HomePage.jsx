@@ -2,7 +2,7 @@ import { SmallBingoBoard } from "../components/SmallBingoBoard"
 import "../css/HomePage.css"
 import { Legend } from "../components/util/Legend"
 import { CollapsibleSection } from "../components/util/Collapsible"
-import { useAllTeamsFetch } from "../components/util/FetchAllTeamsContext"
+import { useAllTeamsFetch } from "../components/util/contexts/FetchAllTeamsContext"
 
 export function HomePage(){
 

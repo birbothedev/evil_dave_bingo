@@ -1,5 +1,5 @@
 import "../css/componentcss/PlayerInfoBoxes.css"
-import { fetchTeamData } from "./util/TeamContext";
+import { fetchTeamData } from "./util/contexts/TeamContext";
 import { CollapsibleSection } from "./util/Collapsible";
 import { addSpaceToCamelCase } from "./util/AddSpaceCamelCase";
 import { CountdownComponent } from "./util/Timers/CountdownComponent";

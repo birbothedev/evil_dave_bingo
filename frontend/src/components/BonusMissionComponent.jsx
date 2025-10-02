@@ -1,7 +1,7 @@
 
 import "../css/componentcss/BonusMission.css"
 import { CollapsibleSection } from "./util/Collapsible"
-import { fetchTeamData } from "./util/TeamContext"
+import { fetchTeamData } from "./util/contexts/TeamContext"
 import { CountdownComponent } from "./util/Timers/CountdownComponent"
 
 export function BonusMissionComponent({page}) {

@@ -1,5 +1,5 @@
 import "../css/componentcss/PlayerInfoBoxes.css"
-import { fetchTeamData } from "./util/TeamContext"
+import { fetchTeamData } from "./util/contexts/TeamContext"
 
 export function TeamPoints({ team: teamProp }) {
 

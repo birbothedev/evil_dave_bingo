@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from "react"
-import { fetchAllTeams } from "../../services/api"
+import { fetchAllTeams } from "../../../services/api"
 import { useContext } from "react"
 
 const AllTeamsContext = createContext()

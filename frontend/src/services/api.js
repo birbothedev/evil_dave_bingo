@@ -1,5 +1,7 @@
 export async function fetchAllTeams(){
-    const response = await fetch("/home-page-teams.json");
+    const response = await fetch("https://api.evildavebingo.com/home", {
+        method: "GET",
+    });
     if (!response.ok){
         throw new Error("Failed to fetch teams");
     }
@@ -9,12 +11,39 @@ export async function fetchAllTeams(){
 }
 
 export async function teamPageFetch(teamValue){
-    console.log("Fetching team JSON:", `/${teamValue}-sample.json`);
-    const response = await fetch(`/${teamValue}-sample.json`);
+    const response = await fetch(`https://api.evildavebingo.com/teams/`, {
+        method: "GET",
+        credentials: "include"
+    });
     if (!response.ok){
-        throw new Error("Failed to fetch team!");
+        throw new Error("Not authenticated or invalid team")
     }
+    const data = await response.json();
+    return data;
+}
 
+export async function adminFetch(){
+    const response = await fetch("https://api.evildavebingo.com/admin/", {
+        method: "GET",
+        credentials: "include"
+    })
+
+    if (!response.ok){
+        throw new Error ("Not authenticated or invalid data")
+    }
+    const data = await response.json();
+    return data;
+}
+
+export async function getNews(){
+    const response = await fetch("https://api.evildavebingo.com/news/", {
+        method: "GET",
+        credentials: "include"
+    });
+
+    if (!response.ok){
+        throw new Error ("Not authenticated or invalid data")
+    }
     const data = await response.json();
     return data;
 }

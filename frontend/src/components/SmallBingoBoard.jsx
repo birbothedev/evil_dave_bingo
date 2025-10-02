@@ -1,7 +1,7 @@
 import "../css/componentcss/SmallBoard.css"
 import { useState } from "react"
 import { TeamPoints } from "./TeamPoints"
-import { fetchTeamData } from "./util/TeamContext"
+import { fetchTeamData } from "./util/contexts/TeamContext"
 
 export function SmallBingoBoard({ team: teamProp }){
     const [isOpen, setIsOpen] = useState(false)
@@ -30,9 +30,9 @@ export function SmallBingoBoard({ team: teamProp }){
         tileDescription: tile.data.descriptor,
         tileObtained: tile.data.obtained,
         tileRequired: tile.data.required,
-        tileProtection: tile.data.effect.protected,
-        tileExtermination: tile.data.effect.exterminated,
-        tileReclaimed: tile.data.effect.reclaimed
+        // tileProtection: tile.data.effect.protected,
+        // tileExtermination: tile.data.effect.exterminated,
+        // tileReclaimed: tile.data.effect.reclaimed
     }))
 
     console.log(boardTiles)
