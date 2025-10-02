@@ -46,10 +46,9 @@ class TileData(BaseModel):
     descriptor: str
     obtained: int = 0
     required: int
-    effect: TileEffect
+    effect: Optional[TileEffect] = None
 
 class Tile(BaseModel):
-    tileId: str
     index: int
     completedBy: list[Player] | None = None
     data: TileData
@@ -89,19 +88,13 @@ class Team(BaseModel):
     name: str
     phrase: str
     score: int = 0
-    players: Optional[list[Player]]
-    board: Optional[Board]
-    inventory: Optional[Inventory]
-    lastExtermination: float | None = None
+    players: Optional[list[Player]] = None
+    board: Optional[Board] = None
+    inventory: Optional[Inventory] = None
+    lastExtermination: Optional[float] = None
     
 class Frontpage(BaseModel):
     teams: list[Team]
-
-class AuthCookie(BaseModel):
-    id: Optional[PyObjectId] = Field(alias="_id", default=None)
-    sessionId: str = Field(default_factory=lambda: str(uuid4()))
-    teamPhrase: Optional[str] = None
-    adminPhrase: Optional[str] = None
 
 class NewsPost(BaseModel):
     id: Optional[PyObjectId] = Field(alias="_id", default=None)

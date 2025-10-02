@@ -7,10 +7,12 @@ from .routers.admin import router as admin
 from .routers.auth import router as auth
 from .routers.team import router as team
 from .routers.newsfeed import router as newsfeed
+from .routers.home import router as home
 
 
 load_dotenv()
 app = FastAPI(debug=os.getenv("BACKEND_DEBUG", False))
+app.include_router(home)
 app.include_router(admin)
 app.include_router(auth)
 app.include_router(team)

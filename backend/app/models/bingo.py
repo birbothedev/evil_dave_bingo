@@ -49,7 +49,6 @@ class TileData(BaseModel):
     effect: TileEffect
 
 class Tile(BaseModel):
-    tileId: str
     index: int
     completedBy: list[Player] | None = None
     data: TileData

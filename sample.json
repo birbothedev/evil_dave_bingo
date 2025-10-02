@@ -1,0 +1,785 @@
+{
+  "name": "Iron Warriors",
+  "phrase": "tangled-root-42",
+  "score": 245,
+  "players": [
+    {
+      "discordId": 123456789012345678,
+      "rsn": "ZezimaBTW",
+      "captain": true
+    },
+    {
+      "discordId": 234567890123456789,
+      "rsn": "IronMan42",
+      "captain": false
+    },
+    {
+      "discordId": 345678901234567890,
+      "rsn": "PureSkillz",
+      "captain": false
+    }
+  ],
+  "board": {
+    "updated": 1727830800.0,
+    "bingoReward": 70,
+    "bonusReward": 35,
+    "bingoCount": 2,
+    "activeBonus": {
+      "row": [0, 3],
+      "column": [2],
+      "diagonal": []
+    },
+    "missionBonus": 50,
+    "missions": [
+      {
+        "missionId": 1,
+        "missionTitle": "Dragon Slayer",
+        "descriptor": "Complete Dragon Slayer quest",
+        "reward": "Anti-dragon shield",
+        "pointReward": 25,
+        "completeBefore": 1728435600.0,
+        "completed": true,
+        "completedBy": [
+          {
+            "discordId": 123456789012345678,
+            "rsn": "ZezimaBTW",
+            "captain": true
+          }
+        ]
+      },
+      {
+        "missionId": 2,
+        "missionTitle": "Barrows Champion",
+        "descriptor": "Obtain any Barrows item",
+        "reward": null,
+        "pointReward": 50,
+        "completeBefore": 1728522000.0,
+        "completed": false,
+        "completedBy": null
+      }
+    ],
+    "tiles": [
+      {
+        "index": 0,
+        "completedBy": [
+          {
+            "discordId": 123456789012345678,
+            "rsn": "ZezimaBTW",
+            "captain": true
+          }
+        ],
+        "data": {
+          "coordX": 0,
+          "coordY": 0,
+          "descriptor": "Obtain 50 Fire runes",
+          "obtained": 50,
+          "required": 50,
+          "effect": {
+            "protected": true,
+            "exterminated": false,
+            "reclaimed": false,
+            "slayerNegative": false,
+            "slayerPositive": false,
+            "previousProtection": false,
+            "appliedBy": "ZezimaBTW"
+          }
+        }
+      },
+      {
+        "index": 1,
+        "completedBy": null,
+        "data": {
+          "coordX": 0,
+          "coordY": 1,
+          "descriptor": "Catch 25 Lobsters",
+          "obtained": 18,
+          "required": 25,
+          "effect": null
+        }
+      },
+      {
+        "index": 2,
+        "completedBy": [
+          {
+            "discordId": 234567890123456789,
+            "rsn": "IronMan42",
+            "captain": false
+          }
+        ],
+        "data": {
+          "coordX": 0,
+          "coordY": 2,
+          "descriptor": "Mine 100 Iron ore",
+          "obtained": 100,
+          "required": 100,
+          "effect": null
+        }
+      },
+      {
+        "index": 3,
+        "completedBy": null,
+        "data": {
+          "coordX": 0,
+          "coordY": 3,
+          "descriptor": "Defeat 10 Hill Giants",
+          "obtained": 5,
+          "required": 10,
+          "effect": null
+        }
+      },
+      {
+        "index": 4,
+        "completedBy": null,
+        "data": {
+          "coordX": 0,
+          "coordY": 4,
+          "descriptor": "Complete Cook's Assistant",
+          "obtained": 0,
+          "required": 1,
+          "effect": null
+        }
+      },
+      {
+        "index": 5,
+        "completedBy": [
+          {
+            "discordId": 345678901234567890,
+            "rsn": "PureSkillz",
+            "captain": false
+          }
+        ],
+        "data": {
+          "coordX": 0,
+          "coordY": 5,
+          "descriptor": "Obtain 60 Woodcutting",
+          "obtained": 60,
+          "required": 60,
+          "effect": null
+        }
+      },
+      {
+        "index": 6,
+        "completedBy": null,
+        "data": {
+          "coordX": 0,
+          "coordY": 6,
+          "descriptor": "Craft 50 Air runes",
+          "obtained": 32,
+          "required": 50,
+          "effect": {
+            "protected": false,
+            "exterminated": true,
+            "reclaimed": false,
+            "slayerNegative": false,
+            "slayerPositive": false,
+            "previousProtection": false,
+            "appliedBy": "Team Alpha"
+          }
+        }
+      },
+      {
+        "index": 7,
+        "completedBy": [
+          {
+            "discordId": 123456789012345678,
+            "rsn": "ZezimaBTW",
+            "captain": true
+          }
+        ],
+        "data": {
+          "coordX": 1,
+          "coordY": 0,
+          "descriptor": "Smith 20 Iron daggers",
+          "obtained": 20,
+          "required": 20,
+          "effect": null
+        }
+      },
+      {
+        "index": 8,
+        "completedBy": null,
+        "data": {
+          "coordX": 1,
+          "coordY": 1,
+          "descriptor": "Complete Demon Slayer",
+          "obtained": 0,
+          "required": 1,
+          "effect": null
+        }
+      },
+      {
+        "index": 9,
+        "completedBy": null,
+        "data": {
+          "coordX": 1,
+          "coordY": 2,
+          "descriptor": "Obtain a Rune scimitar",
+          "obtained": 0,
+          "required": 1,
+          "effect": null
+        }
+      },
+      {
+        "index": 10,
+        "completedBy": [
+          {
+            "discordId": 234567890123456789,
+            "rsn": "IronMan42",
+            "captain": false
+          }
+        ],
+        "data": {
+          "coordX": 1,
+          "coordY": 3,
+          "descriptor": "Reach 500 total level",
+          "obtained": 500,
+          "required": 500,
+          "effect": null
+        }
+      },
+      {
+        "index": 11,
+        "completedBy": null,
+        "data": {
+          "coordX": 1,
+          "coordY": 4,
+          "descriptor": "Obtain 40 Ranged",
+          "obtained": 35,
+          "required": 40,
+          "effect": null
+        }
+      },
+      {
+        "index": 12,
+        "completedBy": null,
+        "data": {
+          "coordX": 1,
+          "coordY": 5,
+          "descriptor": "Obtain Dragon bones",
+          "obtained": 0,
+          "required": 1,
+          "effect": null
+        }
+      },
+      {
+        "index": 13,
+        "completedBy": [
+          {
+            "discordId": 123456789012345678,
+            "rsn": "ZezimaBTW",
+            "captain": true
+          }
+        ],
+        "data": {
+          "coordX": 1,
+          "coordY": 6,
+          "descriptor": "Complete Vampire Slayer",
+          "obtained": 1,
+          "required": 1,
+          "effect": null
+        }
+      },
+      {
+        "index": 14,
+        "completedBy": [
+          {
+            "discordId": 345678901234567890,
+            "rsn": "PureSkillz",
+            "captain": false
+          }
+        ],
+        "data": {
+          "coordX": 2,
+          "coordY": 0,
+          "descriptor": "Obtain 50 Firemaking",
+          "obtained": 50,
+          "required": 50,
+          "effect": null
+        }
+      },
+      {
+        "index": 15,
+        "completedBy": [
+          {
+            "discordId": 123456789012345678,
+            "rsn": "ZezimaBTW",
+            "captain": true
+          }
+        ],
+        "data": {
+          "coordX": 2,
+          "coordY": 1,
+          "descriptor": "Defeat 15 Moss Giants",
+          "obtained": 15,
+          "required": 15,
+          "effect": null
+        }
+      },
+      {
+        "index": 16,
+        "completedBy": [
+          {
+            "discordId": 234567890123456789,
+            "rsn": "IronMan42",
+            "captain": false
+          }
+        ],
+        "data": {
+          "coordX": 2,
+          "coordY": 2,
+          "descriptor": "Obtain 45 Agility",
+          "obtained": 45,
+          "required": 45,
+          "effect": null
+        }
+      },
+      {
+        "index": 17,
+        "completedBy": [
+          {
+            "discordId": 345678901234567890,
+            "rsn": "PureSkillz",
+            "captain": false
+          }
+        ],
+        "data": {
+          "coordX": 2,
+          "coordY": 3,
+          "descriptor": "Fletch 100 Maple longbows",
+          "obtained": 100,
+          "required": 100,
+          "effect": null
+        }
+      },
+      {
+        "index": 18,
+        "completedBy": [
+          {
+            "discordId": 123456789012345678,
+            "rsn": "ZezimaBTW",
+            "captain": true
+          }
+        ],
+        "data": {
+          "coordX": 2,
+          "coordY": 4,
+          "descriptor": "Complete Rune Mysteries",
+          "obtained": 1,
+          "required": 1,
+          "effect": null
+        }
+      },
+      {
+        "index": 19,
+        "completedBy": [
+          {
+            "discordId": 234567890123456789,
+            "rsn": "IronMan42",
+            "captain": false
+          }
+        ],
+        "data": {
+          "coordX": 2,
+          "coordY": 5,
+          "descriptor": "Obtain 55 Magic",
+          "obtained": 55,
+          "required": 55,
+          "effect": null
+        }
+      },
+      {
+        "index": 20,
+        "completedBy": [
+          {
+            "discordId": 345678901234567890,
+            "rsn": "PureSkillz",
+            "captain": false
+          }
+        ],
+        "data": {
+          "coordX": 2,
+          "coordY": 6,
+          "descriptor": "Obtain Black full helm",
+          "obtained": 1,
+          "required": 1,
+          "effect": null
+        }
+      },
+      {
+        "index": 21,
+        "completedBy": null,
+        "data": {
+          "coordX": 3,
+          "coordY": 0,
+          "descriptor": "Complete Waterfall Quest",
+          "obtained": 0,
+          "required": 1,
+          "effect": null
+        }
+      },
+      {
+        "index": 22,
+        "completedBy": null,
+        "data": {
+          "coordX": 3,
+          "coordY": 1,
+          "descriptor": "Obtain 50 Slayer",
+          "obtained": 42,
+          "required": 50,
+          "effect": {
+            "protected": false,
+            "exterminated": false,
+            "reclaimed": false,
+            "slayerNegative": true,
+            "slayerPositive": false,
+            "previousProtection": false,
+            "appliedBy": "Team Beta"
+          }
+        }
+      },
+      {
+        "index": 23,
+        "completedBy": null,
+        "data": {
+          "coordX": 3,
+          "coordY": 2,
+          "descriptor": "Defeat Obor",
+          "obtained": 0,
+          "required": 1,
+          "effect": null
+        }
+      },
+      {
+        "index": 24,
+        "completedBy": [
+          {
+            "discordId": 123456789012345678,
+            "rsn": "ZezimaBTW",
+            "captain": true
+          }
+        ],
+        "data": {
+          "coordX": 3,
+          "coordY": 3,
+          "descriptor": "Obtain 65 Combat level",
+          "obtained": 65,
+          "required": 65,
+          "effect": null
+        }
+      },
+      {
+        "index": 25,
+        "completedBy": null,
+        "data": {
+          "coordX": 3,
+          "coordY": 4,
+          "descriptor": "Cook 50 Sharks",
+          "obtained": 28,
+          "required": 50,
+          "effect": null
+        }
+      },
+      {
+        "index": 26,
+        "completedBy": null,
+        "data": {
+          "coordX": 3,
+          "coordY": 5,
+          "descriptor": "Obtain Amulet of glory",
+          "obtained": 0,
+          "required": 1,
+          "effect": null
+        }
+      },
+      {
+        "index": 27,
+        "completedBy": null,
+        "data": {
+          "coordX": 3,
+          "coordY": 6,
+          "descriptor": "Complete Lost City",
+          "obtained": 0,
+          "required": 1,
+          "effect": null
+        }
+      },
+      {
+        "index": 28,
+        "completedBy": null,
+        "data": {
+          "coordX": 4,
+          "coordY": 0,
+          "descriptor": "Obtain 70 Strength",
+          "obtained": 63,
+          "required": 70,
+          "effect": null
+        }
+      },
+      {
+        "index": 29,
+        "completedBy": null,
+        "data": {
+          "coordX": 4,
+          "coordY": 1,
+          "descriptor": "Mine 50 Adamantite ore",
+          "obtained": 22,
+          "required": 50,
+          "effect": null
+        }
+      },
+      {
+        "index": 30,
+        "completedBy": null,
+        "data": {
+          "coordX": 4,
+          "coordY": 2,
+          "descriptor": "Obtain 60 Prayer",
+          "obtained": 48,
+          "required": 60,
+          "effect": null
+        }
+      },
+      {
+        "index": 31,
+        "completedBy": null,
+        "data": {
+          "coordX": 4,
+          "coordY": 3,
+          "descriptor": "Complete Animal Magnetism",
+          "obtained": 0,
+          "required": 1,
+          "effect": null
+        }
+      },
+      {
+        "index": 32,
+        "completedBy": null,
+        "data": {
+          "coordX": 4,
+          "coordY": 4,
+          "descriptor": "Obtain Berserker ring",
+          "obtained": 0,
+          "required": 1,
+          "effect": null
+        }
+      },
+      {
+        "index": 33,
+        "completedBy": null,
+        "data": {
+          "coordX": 4,
+          "coordY": 5,
+          "descriptor": "Defeat 25 Blue Dragons",
+          "obtained": 12,
+          "required": 25,
+          "effect": null
+        }
+      },
+      {
+        "index": 34,
+        "completedBy": null,
+        "data": {
+          "coordX": 4,
+          "coordY": 6,
+          "descriptor": "Obtain 70 Farming",
+          "obtained": 58,
+          "required": 70,
+          "effect": {
+            "protected": false,
+            "exterminated": false,
+            "reclaimed": true,
+            "slayerNegative": false,
+            "slayerPositive": false,
+            "previousProtection": true,
+            "appliedBy": "ZezimaBTW"
+          }
+        }
+      },
+      {
+        "index": 35,
+        "completedBy": null,
+        "data": {
+          "coordX": 5,
+          "coordY": 0,
+          "descriptor": "Complete Horror from the Deep",
+          "obtained": 0,
+          "required": 1,
+          "effect": null
+        }
+      },
+      {
+        "index": 36,
+        "completedBy": null,
+        "data": {
+          "coordX": 5,
+          "coordY": 1,
+          "descriptor": "Obtain 75 Hitpoints",
+          "obtained": 68,
+          "required": 75,
+          "effect": null
+        }
+      },
+      {
+        "index": 37,
+        "completedBy": null,
+        "data": {
+          "coordX": 5,
+          "coordY": 2,
+          "descriptor": "Obtain Dragon scimitar",
+          "obtained": 0,
+          "required": 1,
+          "effect": null
+        }
+      },
+      {
+        "index": 38,
+        "completedBy": null,
+        "data": {
+          "coordX": 5,
+          "coordY": 3,
+          "descriptor": "Complete Monkey Madness",
+          "obtained": 0,
+          "required": 1,
+          "effect": null
+        }
+      },
+      {
+        "index": 39,
+        "completedBy": null,
+        "data": {
+          "coordX": 5,
+          "coordY": 4,
+          "descriptor": "Obtain 80 Thieving",
+          "obtained": 71,
+          "required": 80,
+          "effect": null
+        }
+      },
+      {
+        "index": 40,
+        "completedBy": null,
+        "data": {
+          "coordX": 5,
+          "coordY": 5,
+          "descriptor": "Obtain Abyssal whip",
+          "obtained": 0,
+          "required": 1,
+          "effect": null
+        }
+      },
+      {
+        "index": 41,
+        "completedBy": null,
+        "data": {
+          "coordX": 5,
+          "coordY": 6,
+          "descriptor": "Complete Recipe for Disaster",
+          "obtained": 0,
+          "required": 1,
+          "effect": null
+        }
+      },
+      {
+        "index": 42,
+        "completedBy": null,
+        "data": {
+          "coordX": 6,
+          "coordY": 0,
+          "descriptor": "Obtain 85 Runecrafting",
+          "obtained": 62,
+          "required": 85,
+          "effect": null
+        }
+      },
+      {
+        "index": 43,
+        "completedBy": null,
+        "data": {
+          "coordX": 6,
+          "coordY": 1,
+          "descriptor": "Complete Desert Treasure",
+          "obtained": 0,
+          "required": 1,
+          "effect": null
+        }
+      },
+      {
+        "index": 44,
+        "completedBy": null,
+        "data": {
+          "coordX": 6,
+          "coordY": 2,
+          "descriptor": "Obtain 90 Mining",
+          "obtained": 76,
+          "required": 90,
+          "effect": null
+        }
+      },
+      {
+        "index": 45,
+        "completedBy": null,
+        "data": {
+          "coordX": 6,
+          "coordY": 3,
+          "descriptor": "Defeat Jad",
+          "obtained": 0,
+          "required": 1,
+          "effect": null
+        }
+      },
+      {
+        "index": 46,
+        "completedBy": null,
+        "data": {
+          "coordX": 6,
+          "coordY": 4,
+          "descriptor": "Obtain Quest Cape",
+          "obtained": 0,
+          "required": 1,
+          "effect": null
+        }
+      },
+      {
+        "index": 47,
+        "completedBy": null,
+        "data": {
+          "coordX": 6,
+          "coordY": 5,
+          "descriptor": "Reach 1750 total level",
+          "obtained": 1523,
+          "required": 1750,
+          "effect": null
+        }
+      },
+      {
+        "index": 48,
+        "completedBy": null,
+        "data": {
+          "coordX": 6,
+          "coordY": 6,
+          "descriptor": "Obtain any God sword",
+          "obtained": 0,
+          "required": 1,
+          "effect": null
+        }
+      }
+    ]
+  },
+  "inventory": {
+    "protection": 2,
+    "reclaim": 1,
+    "extermination": [
+      {
+        "active": true,
+        "used": false,
+        "useBefore": 1727917200.0
+      },
+      {
+        "active": false,
+        "used": true,
+        "useBefore": 1727744400.0
+      }
+    ]
+  },
+  "lastExtermination": 1727658000.0
+}
