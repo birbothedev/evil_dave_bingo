@@ -11,7 +11,7 @@ from ..database.mongoclient import auth_collection, team_collection
 
 load_dotenv()
 router = APIRouter(prefix="/authenticate")
-ADMIN_PHRASE = os.getenv("ADMIN_PHRASE").lower()
+ADMIN_PHRASE = os.getenv("ADMIN_PHRASE")
 ac = auth_collection()
 tc = team_collection()
 
@@ -62,10 +62,9 @@ async def authenticate(phrase: str, request: Request, response: Response):
     Authenticates a user based on a team phrase or admin phrase.
     Creates or updates a server-side session in MongoDB and sets a sessionId cookie.
     """
-    phrase_lower = phrase.lower()
 
 
-    auth_result = await validate_phrase(phrase_lower)
+    auth_result = await validate_phrase(phrase)
 
     current_session = await get_current_session(request)
     if current_session:
