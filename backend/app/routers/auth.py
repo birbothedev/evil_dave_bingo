@@ -60,7 +60,7 @@ async def validate_phrase(phrase: str) -> Dict[str, Optional[str]]:
     
 
 
-@router.post("/{phrase}")
+@router.post("/{phrase}/")
 async def authenticate(phrase: str, request: Request, response: Response):
     """
     Authenticates a user based on a team phrase or admin phrase.
@@ -122,7 +122,7 @@ async def authenticate(phrase: str, request: Request, response: Response):
     }
 
 
-@router.post("/logout")
+@router.post("/logout/")
 async def logout(response: Response, current_session: Optional[AuthCookie] = Depends(get_current_session)):
     """
     Clears the sessionId cookie and deletes the server-side session from MongoDB.

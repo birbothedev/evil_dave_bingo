@@ -40,7 +40,7 @@ async def get_authenticated_team(current_session: AuthCookie = Depends(get_curre
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Server error: Malformed team data.")
 
 
-@router.get("", response_model=Team)
+@router.get("/", response_model=Team)
 async def get_team_details(current_team: Team = Depends(get_authenticated_team)):
     """
     Retrieves the details for the team that the authenticated user belongs to.
