@@ -1,7 +1,7 @@
 from pydantic import BaseModel, Field, GetCoreSchemaHandler
 from pydantic_core import core_schema
 from datetime import datetime, UTC, timedelta
-from typing import Dict, Any
+from typing import Any
 from uuid import uuid4
 from bson import ObjectId
 
@@ -33,6 +33,8 @@ class TileEffect(BaseModel):
     slayerNegative: bool = False
     slayerPositive: bool = False
     previousProtection: bool = False
+    armorTile: bool = False
+    weaponTile: bool = False
     appliedBy: str | None = None
 
 class Player(BaseModel):
@@ -62,10 +64,35 @@ class Extermination(BaseModel):
         )
     )
 
+class StewEffect(BaseModel):
+    positive: bool = False
+    negative: bool = False
+    thieving: bool = False
+    magic: bool = False
+    smithing: bool = False
+    defense: bool = False
+    slayer: bool = False
+    declaredTile: int | None = None
+    slayerPositive: int = -150
+    slayerNegative: int = 100
+
+class Stew(BaseModel):
+    used: bool = False
+    effect: StewEffect | None = None
+    unlockedAt: float = Field(
+        default_factory=lambda: datetime.timestamp(datetime.now(UTC))
+    )
+    
 class Inventory(BaseModel):
     protection: int = 0
     reclaim: int = 0
     extermination: list[Extermination]
+    stews: list[Stew] | None = None
+
+class Pickpocket(BaseModel):
+    team: str
+    change: int
+    timestamp: float = Field(default_factory=lambda: datetime.timestamp(datetime.now(UTC)))
 
 class Mission(BaseModel):
     missionId: int
@@ -94,6 +121,7 @@ class Team(BaseModel):
     name: str
     phrase: str
     score: int = 0
+    pickpockets: list[Pickpocket] | None = None
     players: list[Player] | None = None
     board: Board | None = None
     inventory: Inventory | None = None

@@ -9,6 +9,7 @@ class DiscordClient(discord.Client):
     def __init__(self, debug: bool = False):
         self.debug = debug
         self.tree: app_commands.CommandTree = app_commands.CommandTree(self)
+        self.guild_current = None
         super().__init__(intents=discord.Intents.all())
         logger.info("DiscordClient initialized.")
         
