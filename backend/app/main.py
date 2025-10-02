@@ -3,7 +3,7 @@ import os
 from dotenv import load_dotenv
 from loguru import logger
 from fastapi import FastAPI, Request, status
-from fastapi.middleware import CORSMiddleware
+from fastapi.middleware.cors import CORSMiddleware
 from .routers.admin import router as admin
 from .routers.auth import router as auth
 from .routers.team import router as team
@@ -13,12 +13,8 @@ from .routers.home import router as home
 
 load_dotenv()
 app = FastAPI(debug=os.getenv("BACKEND_DEBUG", False))
-app.include_router(home)
-app.include_router(admin)
-app.include_router(auth)
-app.include_router(team)
-app.include_router(newsfeed)
 
+# Add middleware BEFORE including routers
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
@@ -30,9 +26,23 @@ app.add_middleware(
         "http://www.evildavebingo.com"
     ],
     allow_credentials=True,
-    allow_methods=["GET,POST,PUT,OPTIONS,DELETE,PATCH"],
-    allow_headers=["Accept,Accept-Language,Content-Language,Content-Type"],
+    allow_methods=["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allow_headers=[
+        "Accept",
+        "Accept-Language",
+        "Content-Language",
+        "Content-Type",
+        "Authorization",
+        "X-Requested-With"
+    ],
 )
+
+# Include routers AFTER middleware
+app.include_router(home)
+app.include_router(admin)
+app.include_router(auth)
+app.include_router(team)
+app.include_router(newsfeed)
 
 @app.get("", status_code=status.HTTP_200_OK)
 async def root(request: Request):
