@@ -31,7 +31,7 @@ async def get_authenticated_admin(current_session: AuthCookie = Depends(get_curr
     return current_session
 
 
-@router.get("/", response_model=List[Team])
+@router.get("", response_model=List[Team])
 async def fetch_all_teams(admin_session: AuthCookie = Depends(get_authenticated_admin)):
     """
     Retrieves a list of all teams in the database.

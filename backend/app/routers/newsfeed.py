@@ -15,7 +15,7 @@ router = APIRouter(prefix="/news")
 nc = news_collection()
 
 
-@router.get("/", response_model=List[NewsPost])
+@router.get("", response_model=List[NewsPost])
 async def get_all_news_posts():
     """
     Retrieves a list of all news posts, ordered by timestamp (newest first).
@@ -43,7 +43,7 @@ async def get_all_news_posts():
     return news_list
 
 
-@router.post("/", response_model=NewsPost, status_code=status.HTTP_201_CREATED)
+@router.post("", response_model=NewsPost, status_code=status.HTTP_201_CREATED)
 async def create_news_post(
     new_post_data: NewsPost,
     admin_session: AuthCookie = Depends(get_authenticated_admin)

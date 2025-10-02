@@ -3,6 +3,7 @@ import os
 from dotenv import load_dotenv
 from loguru import logger
 from fastapi import FastAPI, Request, status
+from fastapi.middleware import CORSMiddleware
 from .routers.admin import router as admin
 from .routers.auth import router as auth
 from .routers.team import router as team
@@ -18,8 +19,19 @@ app.include_router(auth)
 app.include_router(team)
 app.include_router(newsfeed)
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:5173",
+        "https://evildavebingo.com",
+        "https://www.evildavebingo.com"
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
-@app.get("/", status_code=status.HTTP_200_OK)
+@app.get("", status_code=status.HTTP_200_OK)
 async def root(request: Request):
     logger.debug(f"Root endpoint accessed by client: {request.client.host}")
     return {"message": "Hello from Bingo Backend!"}
