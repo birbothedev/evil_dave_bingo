@@ -29,11 +29,23 @@ app.add_middleware(
     allow_headers=[
         "Accept",
         "Accept-Language",
+        "Accept-Encoding",
         "Content-Language",
         "Content-Type",
         "Authorization",
-        "X-Requested-With"
+        "X-Requested-With",
+        "Origin",
+        "X-CSRF-Token",
+        "Cache-Control",
+        "Pragma",
     ],
+    expose_headers=[
+        "Content-Length",
+        "Content-Type",
+        "Authorization",
+        "X-Total-Count",
+    ],
+    max_age=3600,
 )
 
 
