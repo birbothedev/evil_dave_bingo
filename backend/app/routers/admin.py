@@ -14,12 +14,12 @@ router = APIRouter(prefix="/admin")
 tc = team_collection()
 
 
-# --- Dependency for authenticated admin user ---
 async def get_authenticated_admin(current_session: AuthCookie = Depends(get_current_session)) -> AuthCookie:
     """
     Dependency that ensures the current user is authenticated as an administrator.
     Returns the AuthCookie model if admin, otherwise raises 403.
     """
+    logger.info(current_session.model_dump_json(indent=2))
     if not current_session:
         logger.warning("Attempted admin access without active session.")
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Authentication required.")
