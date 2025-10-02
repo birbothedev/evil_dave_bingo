@@ -43,7 +43,7 @@ async def get_all_news_posts():
     return news_list
 
 
-@router.post("/new", response_model=NewsPost, status_code=status.HTTP_201_CREATED)
+@router.post("/new/", response_model=NewsPost, status_code=status.HTTP_201_CREATED)
 async def create_news_post(
     new_post_data: NewsPost,
     admin_session: AuthCookie = Depends(get_authenticated_admin)
