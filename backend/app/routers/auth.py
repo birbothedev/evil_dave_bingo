@@ -92,7 +92,7 @@ async def authenticate(phrase: str, request: Request, response: Response):
         upsert=True
     )
 
-    cookie_params = dict(httponly=True, secure=True, samesite=None)
+    cookie_params = dict(httponly=True, secure=True, samesite=None, path="/")
     response.set_cookie("sessionId", session_model.sessionId, **cookie_params)
 
     return {
