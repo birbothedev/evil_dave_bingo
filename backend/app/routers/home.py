@@ -19,7 +19,7 @@ async def get_all_teams():
         team["phrase"] = "Thurgo Is Displeased"
         all_teams.append(Team.model_validate(team))
 
-    return Frontpage.model_validate(all_teams)
+    return Frontpage(teams=all_teams)
 
 
 @router.get("/", response_model=Frontpage)
