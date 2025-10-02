@@ -1,7 +1,7 @@
 from pydantic import BaseModel, Field, GetCoreSchemaHandler
 from pydantic_core import core_schema
 from datetime import datetime, UTC, timedelta
-from typing import Optional, Any
+from typing import Dict, Any
 from uuid import uuid4
 from bson import ObjectId
 
@@ -46,7 +46,7 @@ class TileData(BaseModel):
     descriptor: str
     obtained: int = 0
     required: int
-    effect: TileEffect
+    effect: TileEffect | None = None
 
 class Tile(BaseModel):
     index: int
@@ -56,7 +56,11 @@ class Tile(BaseModel):
 class Extermination(BaseModel):
     active: bool = True
     used: bool = False
-    useBefore: float = Field(default_factory=lambda: datetime.timestamp(datetime.now(UTC) + timedelta(hours=24)))
+    useBefore: float = Field(
+        default_factory=lambda: datetime.timestamp(
+            datetime.now(UTC) + timedelta(hours=24)
+        )
+    )
 
 class Inventory(BaseModel):
     protection: int = 0
@@ -74,7 +78,9 @@ class Mission(BaseModel):
     completedBy: list[Player] | None = None
 
 class Board(BaseModel):
-    updated: float = Field(default_factory=lambda: datetime.timestamp(datetime.now(UTC)))
+    updated: float = Field(
+        default_factory=lambda: datetime.timestamp(datetime.now(UTC))
+    )
     bingoReward: int = 70
     bonusReward: int = 35
     bingoCount: int = 0
@@ -84,26 +90,26 @@ class Board(BaseModel):
     tiles: list[Tile]
 
 class Team(BaseModel):
-    id: Optional[PyObjectId] = Field(alias="_id", default=None)
+    id: PyObjectId | None = Field(alias="_id", default=None)
     name: str
     phrase: str
     score: int = 0
-    players: list[Player]
-    board: Board
-    inventory: Inventory
+    players: list[Player] | None = None
+    board: Board | None = None
+    inventory: Inventory | None = None
     lastExtermination: float | None = None
-    
+
 class Frontpage(BaseModel):
     teams: list[Team]
 
 class AuthCookie(BaseModel):
-    id: Optional[PyObjectId] = Field(alias="_id", default=None)
+    id: PyObjectId | None = Field(alias="_id", default=None)
     sessionId: str = Field(default_factory=lambda: str(uuid4()))
-    teamPhrase: Optional[str] = None
-    adminPhrase: Optional[str] = None
+    teamPhrase: str | None = None
+    adminPhrase: str | None = None
 
 class NewsPost(BaseModel):
-    id: Optional[PyObjectId] = Field(alias="_id", default=None)
+    id: PyObjectId | None = Field(alias="_id", default=None)
     postId: str = Field(default_factory=lambda: str(uuid4()))
     content: str
     postedBy: str
