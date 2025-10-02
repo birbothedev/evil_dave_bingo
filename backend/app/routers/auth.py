@@ -83,9 +83,6 @@ async def authenticate(phrase: str, request: Request, response: Response):
         session_model.teamPhrase = auth_result["teamPhrase"]
 
     session_data_for_db = session_model.model_dump(by_alias=True, exclude_none=True)
-    
-    if "_id" in session_data_for_db and session_data_for_db["_id"] is None:
-        del session_data_for_db["_id"]
 
     await ac.update_one(
         {"sessionId": session_model.sessionId},
