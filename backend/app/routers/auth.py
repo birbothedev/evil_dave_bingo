@@ -18,9 +18,11 @@ tc = team_collection()
 async def get_current_session(request: Request) -> Optional[AuthCookie]:
     session_id = request.cookies.get("sessionId")
     if not session_id:
+        logger.info("No cookie")
         return None
     
     session_doc = await ac.find_one({"sessionId": session_id})
+    logger.info(session_doc)
     
     if session_doc:
         try:
