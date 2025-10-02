@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import "../../css/componentcss/NavBar.css"
+import { Logout } from "./Logout"
 
 export function NavBar(){
     return (
@@ -9,7 +10,8 @@ export function NavBar(){
                     <Link to="/" className="nav-link">Home</Link>
                 </div>
                 <div className="navBar-links">
-                    <Link to="/teampage" className="nav-link">Team</Link>
+                    {/* <Logout /> */}
+                    <Link to="/pageauth/teampage" className="nav-link">Team</Link>
                     <Link to="/pageauth/adminpage" className="nav-link">Admin</Link>
                 </div>
             </nav>

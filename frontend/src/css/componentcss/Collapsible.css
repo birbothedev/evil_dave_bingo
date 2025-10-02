@@ -14,7 +14,7 @@
 .collapsible-content {
     display: flex;
     flex-direction: column;
-    background-color: #fdd4a3;
+    background-color: transparent;
     color: black;
     font-size: larger;
     padding: .5rem;

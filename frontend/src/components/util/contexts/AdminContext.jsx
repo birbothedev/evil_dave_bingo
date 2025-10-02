@@ -24,8 +24,7 @@ export function AdminFetch({ children }){
                 }
                 setAdmin(adminData)
             } catch (err){
-                console.log(err)
-                setError("Failed to load admin data")
+                setError(err.message)
             } finally {
                 setLoading(false)
             }

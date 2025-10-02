@@ -5,7 +5,7 @@ import { BonusMissionComponent } from "../components/BonusMissionComponent"
 import "../css/TeamPage.css"
 import { Legend } from "../components/util/Legend"
 import { fetchTeamData } from "../components/util/contexts/TeamContext"
-import { Navigate, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 export function TeamPage(){
     const { team, loading, error, authorized } = fetchTeamData()
@@ -14,10 +14,6 @@ export function TeamPage(){
     if (loading) return <div>Loading...</div>
     if (error) return <div>{error}</div>
     if (!team) return <div>no team dummy</div>
-
-    if (!authorized){
-        navigate(`/pageauth/team`)
-    }
 
     return (
         <div className="team-page-wrapper">

@@ -14,24 +14,17 @@ export function TeamFetch({ children }) {
     const [authorized, setAuthorized] = useState(false)
 
     useEffect(() => {
-        if (!teamValue) {
-            console.log("no team value")
-            setLoading(false)
-            return
-        }
-
         async function loadTeam() {
             try {
-                const teamData = await teamPageFetch(teamValue)
-                if (!teamData || teamData.name !== teamValue) {
+                const teamData = await teamPageFetch()
+                if (!teamData) {
                     setAuthorized(false)
                     navigate(`/pageauth/team`)
                     return
                 }
                 setTeam(teamData)
             } catch (err) {
-                console.error(err)
-                setError("Failed to load team")
+                setError(err.message)
             } finally {
                 setLoading(false)
             }

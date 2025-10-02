@@ -60,12 +60,11 @@
     text-align: left;
     text-transform: none;
     align-items: center;
-    gap: .25rem;
 }
 
 .team-info-box-wrapper {
     position: relative;
-    background-color: #8f8c6d;
+    background-color: transparent;
     border-radius: 8px;
     display: flex;
     align-items: center;

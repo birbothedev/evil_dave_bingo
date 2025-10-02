@@ -1,10 +1,23 @@
 import "../css/componentcss/PlayerInfoBoxes.css"
-import { CollapsibleSection } from "./util/Collapsible";
-import { fetchTeamData } from "./util/contexts/TeamContext";
-import { CountdownComponent } from "./util/Timers/CountdownComponent";
+import { CollapsibleSection } from "./util/Collapsible"
+import { fetchTeamData } from "./util/contexts/TeamContext"
+import { CountdownComponent } from "./util/Timers/CountdownComponent"
 
-export function InventoryBox() { 
-    const { team, loading, error } = fetchTeamData()
+export function InventoryBox({ team: teamProp }) { 
+
+    let team = teamProp
+    let loading = false
+    let error = null
+
+    // changes fetch based on if prop is passed or not
+    if (!teamProp) {
+        const fetchResult = fetchTeamData()
+        if (fetchResult) {
+            team = fetchResult.team
+            loading = fetchResult.loading
+            error = fetchResult.error
+        }
+    } 
 
     if (loading) return <div>Loading Team...</div>
     if (error) return <div>{error}</div>
@@ -31,7 +44,7 @@ export function InventoryBox() {
                             <>
                                 {exterminations.map((ex, index) => (
                                     <div className="time-remaining" key={index}>
-                                        {`• Extermination (time remaining:`} <CountdownComponent useBy={ex.useBy} /> {`)`}
+                                        {`• Extermination (`} <CountdownComponent useBy={ex.useBy} /> {`)`}
                                     </div>
                                 ))}
                             </>

@@ -1,5 +1,5 @@
 export async function fetchAllTeams(){
-    const response = await fetch("https://api.evildavebingo.com/home", {
+    const response = await fetch("https://api.evildavebingo.com/home/", {
         method: "GET",
     });
     if (!response.ok){
@@ -10,7 +10,7 @@ export async function fetchAllTeams(){
     return data.teams;
 }
 
-export async function teamPageFetch(teamValue){
+export async function teamPageFetch(){
     const response = await fetch(`https://api.evildavebingo.com/teams/`, {
         method: "GET",
         credentials: "include"
@@ -37,8 +37,7 @@ export async function adminFetch(){
 
 export async function getNews(){
     const response = await fetch("https://api.evildavebingo.com/news/", {
-        method: "GET",
-        credentials: "include"
+        method: "GET"
     });
 
     if (!response.ok){

@@ -25,20 +25,20 @@ export function SmallBingoBoard({ team: teamProp }){
     if (!team?.board) return <div>No board data found.</div>
 
     const boardTiles = team?.board?.tiles?.map(tile => ({
-        tileId: tile.tileId,
         tileIndex: tile.index,
         tileDescription: tile.data.descriptor,
         tileObtained: tile.data.obtained,
         tileRequired: tile.data.required,
-        // tileProtection: tile.data.effect.protected,
-        // tileExtermination: tile.data.effect.exterminated,
-        // tileReclaimed: tile.data.effect.reclaimed
+        tileProtection: tile.data?.effect?.protected,
+        tileExtermination: tile.data?.effect?.exterminated,
+        tileReclaimed: tile.data?.effect?.reclaimed
     }))
 
-    console.log(boardTiles)
+    const now = Date.now() / 1000;
+    const exterminationTimer = team?.lastExtermination
+    const secondsLeft = Math.max(0, Math.floor(exterminationTimer - now))
 
     return (
-        <>
         <div className="small-board-page">
             <div className="board-label-group">
                 <h3 className="board-title">{team.name}</h3>
@@ -46,24 +46,32 @@ export function SmallBingoBoard({ team: teamProp }){
             </div>
             <div 
                 className={isOpen ? "big-bingo-board" : "small-bingo-board"}
+                style={{
+                    backgroundColor: (secondsLeft > 0) ? "#026975" : undefined
+                }}
                 onClick={() => {
-                    if (window.innerWidth > 1400) {
+                    if (window.innerWidth > 950) {
                     setIsOpen((prev) => !prev)
                     }
                 }}
                 >
-                <div className={isOpen ? "big-tiles-container" : "small-tiles-container"}>
-                    {boardTiles.map(({ tileId, tileIndex, tileDescription, 
+                <div 
+                className={isOpen ? "big-tiles-container" : "small-tiles-container"}
+                    style={{
+                        backgroundColor: (secondsLeft > 0) ? "#026975" : undefined
+                    }}
+                >
+                    {boardTiles.map(({ tileIndex, tileDescription, 
                         tileExtermination, tileProtection, tileObtained, tileRequired, tileReclaimed }) => {
                         return (
                             <div
                                 className={isOpen ? "big-tiles" : "small-tiles"}
-                                key={`${tileId}-${tileIndex}`}
+                                key={`${tileIndex}`}
                                 style={{
                                     backgroundColor: tileProtection
-                                        ? "#026975"
+                                        ? "#013F46"
                                         : tileReclaimed
-                                        ? "#026975"
+                                        ? "#013F46"
                                         : tileExtermination
                                         ? "#754702"
                                         : (tileObtained == tileRequired && tileObtained > 0)
@@ -73,11 +81,10 @@ export function SmallBingoBoard({ team: teamProp }){
                             >
                                 {isOpen ? tileDescription : tileIndex + 1}
                             </div>
-                        );
+                        )
                     })}
                 </div>
             </div> 
         </div>
-        </>
     )
 }

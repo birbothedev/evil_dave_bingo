@@ -1,13 +1,12 @@
-export function Logout({ onLogout }){
+export function Logout(){
     async function handleLogout(){
-        await fetch("https://api.evildavebingo.com/authenticate/logout", {
+        await fetch("https://api.evildavebingo.com/authenticate/logout/", {
             method: "POST",
             credentials: "include"
         })
-        onLogout()
     }
 
     return (
-        <button className="logoutButton" onClick={handleLogout}>Logout</button>
+        <button className="nav-link" onClick={handleLogout}>Logout</button>
     )
 }

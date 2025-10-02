@@ -15,8 +15,7 @@ export function HomeFetchAllTeams({children}){
                 const teamData = await fetchAllTeams()
                 setTeams(teamData)
             } catch (err) {
-                console.error(err)
-                setError("Failed to load teams")
+                setError(err.message)
             } finally {
                 setLoading(false)
             }

@@ -3,24 +3,27 @@ import "../css/HomePage.css"
 import { Legend } from "../components/util/Legend"
 import { CollapsibleSection } from "../components/util/Collapsible"
 import { useAllTeamsFetch } from "../components/util/contexts/FetchAllTeamsContext"
+import { getNews } from "../services/api"
+import { CountdownComponent } from "../components/util/Timers/CountdownComponent"
 
 export function HomePage(){
 
     const { teams, loading, error } = useAllTeamsFetch()
+    const { news = [] } = getNews()
 
     if (loading) return <div>Loading...</div>
     if (error) return <div>{error}</div>
     if (!teams) return <div>no team dummy</div>
 
+    const actionFeed = news.map((item) => ({
+        postId: item.id,
+        content: item.content,
+        timestamp: item.timeStamp
+    }))
 
-    const timeStamp = "00:00:00"
-
-    const teamArray = Array.isArray(teams) ? teams : [teams]
-
-        console.log(teams?.team?.board?.tiles.length);
-
-
-    // action feed: for every new action add a new child (timestamp + text)
+    // const now = Date.now() / 1000;
+    // const exterminationTimer = team?.lastExtermination
+    // const secondsLeft = Math.max(0, Math.floor(exterminationTimer - now))
 
     return (
         <div className="home-page">
@@ -29,7 +32,13 @@ export function HomePage(){
                 <div className="action-feed-wrapper">
                     <CollapsibleSection className="action-feed-dropdown" label={"Action Feed"}>
                         <div className="inner-description">
-                            {timeStamp} this is going to be the stored actions
+                            { actionFeed.length > 0 ? 
+                                actionFeed.map(({postId, content, timeStamp}) => 
+                                    <div className="time-remaining" key={postId}>
+                                        <CountdownComponent useBy={timeStamp} /> {content}
+                                    </div>
+                            ) : <div className="inner-description">No action feed items</div>
+                        }
                         </div>
                     </CollapsibleSection>
                 </div>
@@ -38,7 +47,13 @@ export function HomePage(){
                 <Legend />
                 <div className="bingo-container">
                     {Object.entries(teams).map(([teamKey, teamData]) => (
-                        <div className="team-group" key={teamKey}>
+                        <div className="team-group" key={teamKey}
+                            // style={{
+                            //         outline: secondsLeft > 0
+                            //             ? "solid 3px #026975"
+                            //             : "none"
+                            //     }}
+                        >
                             <SmallBingoBoard team={teamData} />
                         </div>
                     ))}
