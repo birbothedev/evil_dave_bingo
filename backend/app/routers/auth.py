@@ -19,6 +19,7 @@ async def get_current_session(request: Request) -> Optional[AuthCookie]:
     session_id = request.cookies.get("sessionId")
     if not session_id:
         logger.info("No cookie")
+        logger.info(request.cookies)
         return None
     
     session_doc = await ac.find_one({"sessionId": session_id})
