@@ -15,7 +15,7 @@ async def get_all_teams():
     cursor = tc.find({})
     all_teams: list[Team] = []
     
-    for team in cursor:
+    async for team in cursor:
         team["phrase"] = "Thurgo Is Displeased"
         all_teams.append(Team.model_validate(team))
 
