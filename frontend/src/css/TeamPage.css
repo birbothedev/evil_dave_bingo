@@ -3,12 +3,12 @@
     padding-top: 2rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: flex-start;
 }
 
 .team-columns {
     display: grid;
-    grid-template-columns: 1.5fr 1.5fr; 
+    grid-template-columns: 2fr 1fr;
     gap: 3rem;
     width: 80%;
     margin-top: 0;
@@ -19,6 +19,7 @@
 .team-bingo-board {
     flex: 1;
     width: 100%;
+    max-height: 70vh;
 }
 
 .team-inventory-container {
@@ -61,7 +62,7 @@
 
 .actionfeed-and-mission-wrapper-team-page {
     position: absolute;
-    top: calc(13% + 20px); 
+    top: 125px;
     left: 50%; 
     transform: translateX(-50%);
     z-index: 1100;

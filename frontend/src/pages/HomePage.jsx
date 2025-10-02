@@ -21,10 +21,6 @@ export function HomePage(){
         timestamp: item.timeStamp
     }))
 
-    // const now = Date.now() / 1000;
-    // const exterminationTimer = team?.lastExtermination
-    // const secondsLeft = Math.max(0, Math.floor(exterminationTimer - now))
-
     return (
         <div className="home-page">
             <h2 className="page-title">EVIL DAVE'S TOTALLY EVIL BINGO EVENT</h2>
@@ -48,11 +44,6 @@ export function HomePage(){
                 <div className="bingo-container">
                     {Object.entries(teams).map(([teamKey, teamData]) => (
                         <div className="team-group" key={teamKey}
-                            // style={{
-                            //         outline: secondsLeft > 0
-                            //             ? "solid 3px #026975"
-                            //             : "none"
-                            //     }}
                         >
                             <SmallBingoBoard team={teamData} />
                         </div>
