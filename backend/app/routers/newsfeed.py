@@ -15,7 +15,7 @@ router = APIRouter(prefix="/news")
 nc = news_collection()
 
 
-@router.get("", response_model=List[NewsPost])
+@router.get("/", response_model=List[NewsPost])
 async def get_all_news_posts():
     """
     Retrieves a list of all news posts, ordered by timestamp (newest first).

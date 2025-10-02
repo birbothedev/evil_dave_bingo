@@ -22,7 +22,7 @@ async def get_all_teams():
     return Frontpage(teams=all_teams)
 
 
-@router.get("", response_model=Frontpage)
+@router.get("/", response_model=Frontpage)
 async def index(teams: Frontpage = Depends(get_all_teams)):
     """
     Retrieves a list of all teams to be used for the frontpage of EvilDaveBingo.com
