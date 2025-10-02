@@ -66,8 +66,6 @@ async def authenticate(phrase: str, request: Request, response: Response):
     Authenticates a user based on a team phrase or admin phrase.
     Creates or updates a server-side session in MongoDB and sets a sessionId cookie.
     """
-
-
     auth_result = await validate_phrase(phrase)
 
     current_session = await get_current_session(request)
@@ -82,13 +80,19 @@ async def authenticate(phrase: str, request: Request, response: Response):
     if auth_result["teamPhrase"] is not None:
         session_model.teamPhrase = auth_result["teamPhrase"]
 
-    session_data_for_db = session_model.model_dump(by_alias=True, exclude_none=True)
+    session_data_for_db = session_model.model_dump(
+        by_alias=True, exclude_none=True
+    )
+    
+    if "_id" in session_data_for_db:
+        del session_data_for_db["_id"]
 
     await ac.update_one(
         {"sessionId": session_model.sessionId},
         {"$set": session_data_for_db},
         upsert=True
     )
+    
     is_local = request.url.hostname in ["localhost", "127.0.0.1"]
     
     cookie_params = dict(
