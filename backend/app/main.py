@@ -24,7 +24,9 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:5173",
         "https://evildavebingo.com",
-        "https://www.evildavebingo.com"
+        "https://www.evildavebingo.com",
+        "http://evildavebingo.com",
+        "http://www.evildavebingo.com"
     ],
     allow_credentials=True,
     allow_methods=["*"],
