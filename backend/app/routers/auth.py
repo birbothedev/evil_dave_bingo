@@ -92,8 +92,25 @@ async def authenticate(phrase: str, request: Request, response: Response):
         {"$set": session_data_for_db},
         upsert=True
     )
-
-    cookie_params = dict(httponly=True, secure=True, samesite=None, path="/")
+    is_local = request.url.hostname in ["localhost", "127.0.0.1"]
+    
+    cookie_params = dict(
+        httponly=True,
+        path="/",
+    )
+    
+    if is_local:
+        cookie_params.update({
+            "secure": False,
+            "samesite": "lax",
+        })
+    else:
+        cookie_params.update({
+            "secure": True,
+            "samesite": "none",
+            "domain": ".evildavebingo.com",
+        })
+    
     response.set_cookie("sessionId", session_model.sessionId, **cookie_params)
 
     return {
