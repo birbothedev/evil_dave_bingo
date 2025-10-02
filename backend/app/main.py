@@ -37,7 +37,7 @@ app.add_middleware(
     ],
 )
 
-# Include routers AFTER middleware
+
 app.include_router(home)
 app.include_router(admin)
 app.include_router(auth)
