@@ -24,6 +24,7 @@ async def get_current_session(request: Request) -> Optional[AuthCookie]:
     
     if session_doc:
         try:
+            logger.info("Found Session")
             return AuthCookie.model_validate(session_doc)
         except Exception as e:
             logger.error(f"Malformed session data for ID {session_id}: {e}. Deleting session.")
