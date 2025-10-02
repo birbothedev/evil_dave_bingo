@@ -14,9 +14,6 @@ def news_collection():
     collection = db[os.getenv("NEWS_COLLECTION")]
     return collection if collection is not None else None
 
-def extra_collection():
-    return NotImplemented
-
 def auth_collection():
     collection = db[os.getenv("AUTH_COLLECTION")]
     return collection if collection is not None else None
