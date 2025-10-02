@@ -16,6 +16,8 @@ async def get_all_teams():
     all_teams: list[Team] = []
     
     async for team in cursor:
+        if team["name"] == "template":
+            continue
         team["phrase"] = "Thurgo Is Displeased"
         all_teams.append(Team.model_validate(team))
 
