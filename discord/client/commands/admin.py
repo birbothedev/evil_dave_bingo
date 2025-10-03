@@ -13,6 +13,192 @@ tc = team_collection()
 nc = news_collection()
 
 @group.command()
+async def swap_columns(
+    interaction: discord.Interaction,
+    column_a: int,
+    column_b: int,
+    include_template: bool = False
+):
+    """
+    Swap two columns on all team boards
+    
+    Args:
+        column_a: First column to swap (0-6)
+        column_b: Second column to swap (0-6)
+        include_template: Whether to include the template team (default False)
+    """
+    await interaction.response.defer()
+    
+    # Validate column numbers
+    if not (0 <= column_a <= 6 and 0 <= column_b <= 6):
+        await interaction.followup.send("❌ Column numbers must be between 0 and 6!")
+        return
+    
+    if column_a == column_b:
+        await interaction.followup.send("❌ Cannot swap a column with itself!")
+        return
+    
+    # Get all teams
+    query = {} if include_template else {"name": {"$ne": "template"}}
+    teams = await tc.find(query).to_list(None)
+    
+    if not teams:
+        await interaction.followup.send("❌ No teams found!")
+        return
+    
+    teams_updated = 0
+    tiles_swapped = 0
+    
+    for team in teams:
+        if "board" not in team or "tiles" not in team["board"]:
+            continue
+        
+        tiles = team["board"]["tiles"]
+        updates = []
+        
+        for i, tile in enumerate(tiles):
+            coord_y = tile["data"]["coordY"]
+            
+            # Check if this tile is in one of the columns to swap
+            if coord_y == column_a or coord_y == column_b:
+                coord_x = tile["data"]["coordX"]
+                
+                # Determine new coordY
+                new_coord_y = column_b if coord_y == column_a else column_a
+                
+                # Calculate new index
+                new_index = (coord_x * 7) + new_coord_y
+                
+                # Store the update
+                updates.append({
+                    "array_index": i,
+                    "new_coord_y": new_coord_y,
+                    "new_index": new_index
+                })
+                
+                tiles_swapped += 1
+        
+        # Apply all updates for this team
+        if updates:
+            update_operations = {}
+            for update in updates:
+                i = update["array_index"]
+                update_operations[f"board.tiles.{i}.data.coordY"] = update["new_coord_y"]
+                update_operations[f"board.tiles.{i}.index"] = update["new_index"]
+            
+            result = await tc.update_one(
+                {"name": team["name"]},
+                {
+                    "$set": update_operations
+                }
+            )
+            
+            if result.modified_count > 0:
+                teams_updated += 1
+    
+    await interaction.followup.send(
+        f"✅ Swapped columns **{column_a}** ↔️ **{column_b}**\n"
+        f"**Teams updated:** {teams_updated}\n"
+        f"**Tiles swapped:** {tiles_swapped}\n"
+        f"**Template included:** {'Yes' if include_template else 'No'}"
+    )
+
+
+@group.command()
+async def swap_rows(
+    interaction: discord.Interaction,
+    row_a: int,
+    row_b: int,
+    include_template: bool = False
+):
+    """
+    Swap two rows on all team boards
+    
+    Args:
+        row_a: First row to swap (0-6)
+        row_b: Second row to swap (0-6)
+        include_template: Whether to include the template team (default False)
+    """
+    await interaction.response.defer()
+    
+    # Validate row numbers
+    if not (0 <= row_a <= 6 and 0 <= row_b <= 6):
+        await interaction.followup.send("❌ Row numbers must be between 0 and 6!")
+        return
+    
+    if row_a == row_b:
+        await interaction.followup.send("❌ Cannot swap a row with itself!")
+        return
+    
+    # Get all teams
+    query = {} if include_template else {"name": {"$ne": "template"}}
+    teams = await tc.find(query).to_list(None)
+    
+    if not teams:
+        await interaction.followup.send("❌ No teams found!")
+        return
+    
+    teams_updated = 0
+    tiles_swapped = 0
+    
+    for team in teams:
+        if "board" not in team or "tiles" not in team["board"]:
+            continue
+        
+        tiles = team["board"]["tiles"]
+        updates = []
+        
+        for i, tile in enumerate(tiles):
+            coord_x = tile["data"]["coordX"]
+            
+            # Check if this tile is in one of the rows to swap
+            if coord_x == row_a or coord_x == row_b:
+                coord_y = tile["data"]["coordY"]
+                
+                # Determine new coordX
+                new_coord_x = row_b if coord_x == row_a else row_a
+                
+                # Calculate new index
+                new_index = (new_coord_x * 7) + coord_y
+                
+                # Store the update
+                updates.append({
+                    "array_index": i,
+                    "new_coord_x": new_coord_x,
+                    "new_index": new_index
+                })
+                
+                tiles_swapped += 1
+        
+        # Apply all updates for this team
+        if updates:
+            update_operations = {}
+            for update in updates:
+                i = update["array_index"]
+                update_operations[f"board.tiles.{i}.data.coordX"] = update["new_coord_x"]
+                update_operations[f"board.tiles.{i}.index"] = update["new_index"]
+            
+            result = await tc.update_one(
+                {"name": team["name"]},
+                {
+                    "$set": update_operations
+                }
+            )
+            
+            if result.modified_count > 0:
+                teams_updated += 1
+    
+    await interaction.followup.send(
+        f"✅ Swapped rows **{row_a}** ↔️ **{row_b}**\n"
+        f"**Teams updated:** {teams_updated}\n"
+        f"**Tiles swapped:** {tiles_swapped}\n"
+        f"**Template included:** {'Yes' if include_template else 'No'}"
+    )
+
+
+
+
+@group.command()
 async def create_team(
     interaction: discord.Interaction, 
     name: str, 
