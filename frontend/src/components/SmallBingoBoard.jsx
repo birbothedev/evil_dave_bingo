@@ -42,11 +42,8 @@ export function SmallBingoBoard({ team: teamProp }){
     const rows = 7
     const reorderedTiles = []
 
-    console.log("Original tile order:", boardTiles.map(t => t.tileDescription))
-
-
-    for (let row = 0; row < rows; row++) {
-        for (let col = 0; col < cols; col++) {
+    for (let col = 0; col < cols; col++) {
+        for (let row = 0; row < rows; row++) {
             const index = row * cols + col
             if (index < boardTiles.length) {
                 reorderedTiles.push(boardTiles[index])
