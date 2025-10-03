@@ -1,4 +1,5 @@
 import discord
+from loguru import logger
 from discord import ui, ButtonStyle, TextStyle, app_commands
 from datetime import datetime, UTC
 from ..modules.models.bingo import Stew, Extermination
@@ -8,7 +9,7 @@ from ..modules.database.mongoclient import team_collection
 tc = team_collection()
 
 
-STAFF_ROLE_IDS = []
+STAFF_ROLE_IDS = [965399119021617162, 965402001066299424]
 
 class SubmissionView(ui.View):
     def __init__(self, team_name: str, tile_index: int, submitter: discord.Member, channel_id: int):
@@ -23,127 +24,189 @@ class SubmissionView(ui.View):
         """Check if user has staff role"""
         return any(role.id in STAFF_ROLE_IDS for role in interaction.user.roles)
     
+
     @ui.button(label="Accept", style=ButtonStyle.success, custom_id="accept")
     async def accept_button(self, interaction: discord.Interaction, button: ui.Button):
-        if not self.check_staff(interaction):
-            await interaction.response.send_message("❌ You don't have permission to use this!", ephemeral=True)
-            return
-        
-        if self.question_channel:
-            await interaction.response.send_message("❌ Close the question channel first!", ephemeral=True)
-            return
-        
-        await interaction.response.defer()
-        
-        team = await tc.find_one({"name": self.team_name})
-        if not team:
-            await interaction.followup.send("❌ Team not found!", ephemeral=True)
-            return
-        
-        player_data = None
-        for p in team.get("players", []):
-            if p["discordId"] == self.submitter.id:
-                player_data = p
-                break
-        
-        if not player_data:
-            await interaction.followup.send("❌ Player not found on team!", ephemeral=True)
-            return
-        
-        tile_found = False
-        for i, tile in enumerate(team["board"]["tiles"]):
-            if tile["index"] == self.tile_index:
-                tile_found = True
-                
-                current_obtained = tile["data"].get("obtained", 0)
-                required = tile["data"]["required"]
-                new_obtained = current_obtained + 1
-                
-                # Check if exterminated
-                effect = tile.get("data", {}).get("effect")
-                if effect and effect.get("exterminated"):
-                    await interaction.followup.send("❌ This tile has been exterminated!", ephemeral=True)
-                    return
-                
-                # Check if already complete
-                if current_obtained >= required:
-                    await interaction.followup.send("⚠️ This tile is already complete!", ephemeral=True)
-                    return
-                
-                is_completing = new_obtained >= required
-                
-                # Update tile
-                update_dict = {
-                    f"board.tiles.{i}.data.obtained": new_obtained,
-                    "board.updated": datetime.timestamp(datetime.now(UTC))
-                }
-                
-                # Add player to completedBy if completing
-                if is_completing:
-                    completed_by = tile.get("completedBy", [])
-                    if not any(p["discordId"] == self.submitter.id for p in completed_by):
-                        completed_by.append(player_data)
-                        update_dict[f"board.tiles.{i}.completedBy"] = completed_by
-                
-                # Award 10 points for tile progress
-                points_gained = 10
-                
-                result = await tc.update_one(
-                    {"name": self.team_name},
-                    {
-                        "$set": update_dict,
-                        "$inc": {"score": points_gained}
+        try:
+            logger.info(f"Accept button clicked by {interaction.user.id} for team {self.team_name}, tile {self.tile_index}")
+            
+            if not self.check_staff(interaction):
+                logger.warning(f"Non-staff user {interaction.user.id} tried to accept submission")
+                await interaction.response.send_message("❌ You don't have permission to use this!", ephemeral=True)
+                return
+            
+            if self.question_channel:
+                logger.warning(f"Accept attempted while question channel is open")
+                await interaction.response.send_message("❌ Close the question channel first!", ephemeral=True)
+                return
+            
+            await interaction.response.defer()
+            logger.info("Interaction deferred successfully")
+            
+            # Get team
+            team = await tc.find_one({"name": self.team_name})
+            if not team:
+                logger.error(f"Team '{self.team_name}' not found in database")
+                await interaction.followup.send("❌ Team not found!", ephemeral=True)
+                return
+            
+            logger.info(f"Team '{self.team_name}' found with {len(team.get('players', []))} players")
+            
+            # Find player
+            player_data = None
+            for p in team.get("players", []):
+                if p["discordId"] == self.submitter.id:
+                    player_data = p
+                    break
+            
+            if not player_data:
+                logger.error(f"Player {self.submitter.id} not found on team {self.team_name}")
+                logger.debug(f"Team players: {[p['discordId'] for p in team.get('players', [])]}")
+                await interaction.followup.send("❌ Player not found on team!", ephemeral=True)
+                return
+            
+            logger.info(f"Player found: {player_data}")
+            
+            # Find tile
+            tile_found = False
+            for i, tile in enumerate(team["board"]["tiles"]):
+                if tile["index"] == self.tile_index:
+                    tile_found = True
+                    logger.info(f"Tile {self.tile_index} found at array index {i}")
+                    
+                    current_obtained = tile["data"].get("obtained", 0)
+                    required = tile["data"]["required"]
+                    new_obtained = current_obtained + 1
+                    
+                    logger.info(f"Tile progress: {current_obtained}/{required} -> {new_obtained}/{required}")
+                    
+                    # Check if exterminated
+                    effect = tile.get("data", {}).get("effect")
+                    if effect and effect.get("exterminated"):
+                        logger.warning(f"Tile {self.tile_index} is exterminated")
+                        await interaction.followup.send("❌ This tile has been exterminated!", ephemeral=True)
+                        return
+                    
+                    # Check if already complete
+                    if current_obtained >= required:
+                        logger.warning(f"Tile {self.tile_index} is already complete")
+                        await interaction.followup.send("⚠️ This tile is already complete!", ephemeral=True)
+                        return
+                    
+                    is_completing = new_obtained >= required
+                    logger.info(f"Is completing tile: {is_completing}")
+                    
+                    # Update tile
+                    update_dict = {
+                        f"board.tiles.{i}.data.obtained": new_obtained,
+                        "board.updated": datetime.timestamp(datetime.now(UTC))
                     }
-                )
-                
-                if result.modified_count == 0:
-                    await interaction.followup.send("❌ Failed to update tile!", ephemeral=True)
-                    return
-                
-                # Update embed
-                embed = interaction.message.embeds[0]
-                embed.color = discord.Color.green()
-                embed.add_field(
-                    name="✅ Accepted",
-                    value=f"By: {interaction.user.mention}\n"
-                          f"Progress: {new_obtained}/{required}\n"
-                          f"Points: +{points_gained}",
-                    inline=False
-                )
-                
-                # Disable all buttons
-                for item in self.children:
-                    item.disabled = True
-                
-                await interaction.message.edit(embed=embed, view=self)
-                
-                # Get the submission channel
-                channel = interaction.guild.get_channel(self.channel_id)
-                
-                # Check for bingo if tile completed
-                if is_completing:
-                    bingo_result = await self.check_bingos(team, channel)
-                    if bingo_result:
-                        points_gained += bingo_result["points"]
-                        await channel.send(
-                            f"🎉 **{self.team_name}** completed tile **{self.tile_index}**!\n"
-                            f"{bingo_result['message']}"
-                        )
+                    
+                    # Add player to completedBy if completing
+                    if is_completing:
+                        completed_by = tile.get("completedBy") or []
+                        if not any(p["discordId"] == self.submitter.id for p in completed_by):
+                            completed_by.append(player_data)
+                            update_dict[f"board.tiles.{i}.completedBy"] = completed_by
+                            logger.info(f"Added player to completedBy list")
+                    
+                    # Award 10 points for tile progress
+                    points_gained = 10
+                    
+                    logger.info(f"Attempting database update with: {update_dict}")
+                    
+                    result = await tc.update_one(
+                        {"name": self.team_name},
+                        {
+                            "$set": update_dict,
+                            "$inc": {"score": points_gained}
+                        }
+                    )
+                    
+                    logger.info(f"Database update result: matched={result.matched_count}, modified={result.modified_count}")
+                    
+                    if result.modified_count == 0:
+                        logger.error("Database update failed - no documents modified")
+                        await interaction.followup.send("❌ Failed to update tile!", ephemeral=True)
+                        return
+                    
+                    # Update embed
+                    embed = interaction.message.embeds[0]
+                    embed.color = discord.Color.green()
+                    embed.add_field(
+                        name="✅ Accepted",
+                        value=f"By: {interaction.user.mention}\n"
+                              f"Progress: {new_obtained}/{required}\n"
+                              f"Points: +{points_gained}",
+                        inline=False
+                    )
+                    
+                    # Disable all buttons
+                    for item in self.children:
+                        item.disabled = True
+                    
+                    await interaction.message.edit(embed=embed, view=self)
+                    logger.info("Embed updated successfully")
+                    
+                    # Get the submission channel
+                    channel = interaction.guild.get_channel(self.channel_id)
+                    if not channel:
+                        logger.error(f"Channel {self.channel_id} not found")
+                        return
+                    
+                    logger.info(f"Sending notification to channel {channel.id}")
+                    
+                    # Check for bingo if tile completed
+                    if is_completing:
+                        logger.info("Checking for bingos...")
+                        try:
+                            # Re-fetch team for bingo check to get updated data
+                            updated_team = await tc.find_one({"name": self.team_name})
+                            bingo_result = await self.check_bingos(updated_team, channel)
+                            
+                            if bingo_result:
+                                logger.info(f"Bingo detected! Points: {bingo_result['points']}")
+                                points_gained += bingo_result["points"]
+                                await channel.send(
+                                    f"🎉 **{self.team_name}** completed tile **{self.tile_index}**!\n"
+                                    f"{bingo_result['message']}"
+                                )
+                            else:
+                                logger.info("No new bingos")
+                                await channel.send(
+                                    f"✅ **{self.team_name}** completed tile **{self.tile_index}**!\n"
+                                    f"Progress: {new_obtained}/{required} (+{points_gained} points)"
+                                )
+                        except Exception as e:
+                            logger.error(f"Error checking bingos: {e}", exc_info=True)
+                            await channel.send(
+                                f"✅ **{self.team_name}** completed tile **{self.tile_index}**!\n"
+                                f"Progress: {new_obtained}/{required} (+{points_gained} points)\n"
+                                f"⚠️ Error checking for bingos - please verify manually"
+                            )
                     else:
                         await channel.send(
-                            f"✅ **{self.team_name}** completed tile **{self.tile_index}**!\n"
+                            f"✅ **{self.team_name}** - Tile **{self.tile_index}** accepted!\n"
                             f"Progress: {new_obtained}/{required} (+{points_gained} points)"
                         )
-                else:
-                    await channel.send(
-                        f"✅ **{self.team_name}** - Tile **{self.tile_index}** accepted!\n"
-                        f"Progress: {new_obtained}/{required} (+{points_gained} points)"
-                    )
+                    
+                    logger.info("Accept button completed successfully")
+                    break
+            
+            if not tile_found:
+                logger.error(f"Tile {self.tile_index} not found on team {self.team_name}")
+                logger.debug(f"Available tiles: {[t['index'] for t in team['board']['tiles']]}")
+                await interaction.followup.send("❌ Tile not found!", ephemeral=True)
                 
-                break
-        
-        if not tile_found:
-            await interaction.followup.send("❌ Tile not found!", ephemeral=True)
+        except Exception as e:
+            logger.error(f"Unexpected error in accept_button: {e}", exc_info=True)
+            try:
+                await interaction.followup.send(
+                    f"❌ An unexpected error occurred: {str(e)}\nCheck logs for details.",
+                    ephemeral=True
+                )
+            except:
+                logger.error("Failed to send error message to user")
     
     async def check_bingos(self, team: dict, notification_channel: discord.TextChannel) -> dict | None:
         """Check for new bingos and award rewards"""

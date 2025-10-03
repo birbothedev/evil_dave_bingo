@@ -199,6 +199,47 @@ async def swap_rows(
 
 
 @group.command()
+async def edit_phrase(
+    interaction: discord.Interaction,
+    team_name: str,
+    new_phrase: str
+):
+    """
+    Edit a team's phrase
+    
+    Args:
+        team_name: Name of the team
+        new_phrase: New phrase for the team
+    """
+    await interaction.response.defer()
+    
+    # Check if team exists
+    team = await tc.find_one({"name": team_name})
+    if not team:
+        await interaction.followup.send(f"❌ Team '{team_name}' not found!")
+        return
+    
+    old_phrase = team.get("phrase", "N/A")
+    
+    # Update phrase
+    result = await tc.update_one(
+        {"name": team_name},
+        {"$set": {"phrase": new_phrase}}
+    )
+    
+    if result.modified_count > 0:
+        await interaction.followup.send(
+            f"✅ Updated phrase for **{team_name}**!\n"
+            f"Old: `{old_phrase}`\n"
+            f"New: `{new_phrase}`"
+        )
+    else:
+        await interaction.followup.send(
+            f"⚠️ Phrase not changed (may already be set to this value)"
+        )
+
+
+@group.command()
 async def create_team(
     interaction: discord.Interaction, 
     name: str, 
