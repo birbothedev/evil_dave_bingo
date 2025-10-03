@@ -4,7 +4,7 @@ import os
 from dotenv import load_dotenv
 from loguru import logger
 
-from .client.discord import DiscordClient
+from client.discord import DiscordClient
 
 
 

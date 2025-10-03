@@ -1,5 +1,5 @@
 from ..modules.database.mongoclient import team_collection, news_collection
-from ..modules.models.bingo import Team, Tile, TileData, TileEffect, Player, Extermination, Inventory, Mission, Board, NewsPost, PyObjectId
+from ..modules.models.bingo import Team, Tile, TileData, TileEffect, Player, Extermination, Inventory, Mission, Board, NewsPost, Stew, StewEffect
 from .groups.admin import Admin
 
 import discord
@@ -18,7 +18,7 @@ async def create_team(
     name: str, 
     phrase: str
 ):
-    """Create a new team"""
+    """Create a new team based on the template"""
     await interaction.response.defer()
     
     existing = await tc.find_one({"name": name})
@@ -26,17 +26,60 @@ async def create_team(
         await interaction.followup.send(f"❌ Team '{name}' already exists!")
         return
     
+    template = await tc.find_one({"name": "template"})
+    if not template:
+        await interaction.followup.send("❌ Template team not found! Create it first with `/admin create_template`")
+        return
+    
+    template_board = template.get("board")
+    if not template_board or not template_board.get("tiles"):
+        await interaction.followup.send("❌ Template has no tiles! Add tiles to the template first.")
+        return
+    
+    new_tiles = []
+    for tile in template_board["tiles"]:
+        new_tile = Tile(
+            index=tile["index"],
+            completedBy=None,
+            data=TileData(
+                coordX=tile["data"]["coordX"],
+                coordY=tile["data"]["coordY"],
+                descriptor=tile["data"]["descriptor"],
+                obtained=0,
+                required=tile["data"]["required"],
+                effect=None
+            )
+        )
+        new_tiles.append(new_tile)
+    
+
     new_team = Team(
         name=name, 
         phrase=phrase,
-        board=Board(missions=[], tiles=[]),
-        inventory=Inventory(extermination=[]),
-        players=[]
+        score=0,
+        board=Board(
+            missions=[],
+            tiles=new_tiles,
+            bingoCount=0,
+            activeBonus={"row": [], "column": [], "diagonal": []},
+            missionBonus=0
+        ),
+        inventory=Inventory(
+            protection=0,
+            reclaim=0,
+            extermination=[],
+            stews=[]
+        ),
+        players=[],
+        pickpockets=[]
     )
     
     await tc.insert_one(new_team.model_dump(by_alias=True, exclude={"id"}))
     
-    await interaction.followup.send(f"✅ Team **{name}** created successfully!")
+    await interaction.followup.send(
+        f"✅ Team **{name}** created successfully!\n"
+        f"📋 Copied **{len(new_tiles)}** tiles from template"
+    )
 
 
 @group.command()
@@ -103,6 +146,44 @@ async def remove_player(
         )
 
 @group.command()
+async def view_stews(
+    interaction: discord.Interaction,
+    team_name: str
+):
+    """View a team's stews"""
+    await interaction.response.defer()
+    
+    team = await tc.find_one({"name": team_name})
+    if not team:
+        await interaction.followup.send(f"❌ Team '{team_name}' not found!")
+        return
+    
+    stews = team.get("inventory", {}).get("stews", [])
+    if not stews:
+        await interaction.followup.send(f"**{team_name}** has no stews!")
+        return
+    
+    response = f"**{team_name}** - Stews:\n\n"
+    
+    for i, stew in enumerate(stews):
+        used = "✅ Used" if stew.get("used") else "⏳ Available"
+        unlocked = int(stew.get("unlockedAt", 0))
+        
+        response += f"**#{i}** - {used} • Unlocked <t:{unlocked}:R>\n"
+        
+        if stew.get("effect"):
+            effect = stew["effect"]
+            effect_type = next((k for k, v in effect.items() if v is True and k not in ["declaredTile", "slayerPositive", "slayerNegative"]), "unknown")
+            response += f"  Effect: **{effect_type}**"
+            if effect.get("declaredTile") is not None:
+                response += f" (Tile {effect['declaredTile']})"
+            response += "\n"
+        
+        response += "\n"
+    
+    await interaction.followup.send(response)
+
+@group.command()
 async def add_tile(
     interaction: discord.Interaction, 
     x: int, 
@@ -142,6 +223,43 @@ async def add_tile(
         await interaction.followup.send("❌ Failed to add tile!")
 
 @group.command()
+async def grant_stew(
+    interaction: discord.Interaction,
+    team_name: str,
+    amount: int = 1
+):
+    """
+    Grant stew(s) to a team
+    
+    Args:
+        team_name: Name of the team
+        amount: Number of stews to grant (default 1)
+    """
+    await interaction.response.defer()
+    
+    team = await tc.find_one({"name": team_name})
+    if not team:
+        await interaction.followup.send(f"❌ Team '{team_name}' not found!")
+        return
+    
+    stews = [Stew() for _ in range(amount)]
+    stew_dicts = [stew.model_dump() for stew in stews]
+    
+    result = await tc.update_one(
+        {"name": team_name},
+        {"$push": {"inventory.stews": {"$each": stew_dicts}}}
+    )
+    
+    if result.modified_count > 0:
+        current_stews = len(team.get("inventory", {}).get("stews", [])) + amount
+        await interaction.followup.send(
+            f"✅ Granted **{amount}** stew(s) to **{team_name}**!\n"
+            f"Total stews: **{current_stews}**"
+        )
+    else:
+        await interaction.followup.send("❌ Failed to grant stew!")
+
+@group.command()
 async def add_effect(
     interaction: discord.Interaction,
     team_name: str,
@@ -155,7 +273,7 @@ async def add_effect(
     Args:
         team_name: Name of the team
         index: Tile index (0-48 for 7x7 board)
-        effect_type: protected, exterminated, reclaimed, slayer_negative, slayer_positive
+        effect_type: protected, exterminated, reclaimed, slayer_negative, slayer_positive, armor_tile, weapon_tile
         applied_by: Name of who/what applied the effect
     """
     await interaction.response.defer()
@@ -166,7 +284,9 @@ async def add_effect(
         "reclaimed": "reclaimed",
         "slayer_negative": "slayerNegative",
         "slayer_positive": "slayerPositive",
-        "previous_protection": "previousProtection"
+        "previous_protection": "previousProtection",
+        "armor_tile": "armorTile",
+        "weapon_tile": "weaponTile"
     }
     
     if effect_type not in effect_map:
@@ -175,7 +295,6 @@ async def add_effect(
         )
         return
     
-
     team = await tc.find_one({"name": team_name})
     
     if not team:
@@ -843,10 +962,13 @@ async def create_template(interaction: discord.Interaction):
         board=Board(missions=[], tiles=[]),
         inventory=Inventory(extermination=[])
     )
-    
-    await tc.insert_one(template.model_dump(by_alias=True, exclude={"id"}))
-    await interaction.followup.send("✅ Template team created!")
-
+    try:
+        await tc.insert_one(template.model_dump(by_alias=True, exclude={"id"}))
+        await interaction.followup.send("✅ Template team created!")
+    except Exception as e:
+        print(e)
+        
+        
 @group.command()
 async def create_news(
     interaction: discord.Interaction,
