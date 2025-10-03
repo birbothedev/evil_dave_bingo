@@ -2,9 +2,14 @@ import "../css/AdminPage.css"
 import { InventoryBox } from "../components/InventoryBox"
 import { StatusEffectBox } from "../components/StatusEffectBox"
 import { loadAdminData } from "../components/util/contexts/AdminContext"
+import { usePageAuth } from "../components/util/contexts/PageAuthContext"
+import { PageAuthComponent } from "../components/PageAuthComponent"
 
 export function AdminPage(){
+    const { authorizedAdmin } = usePageAuth()
     const { admin, loading, error } = loadAdminData()
+
+    if (!authorizedAdmin) return <PageAuthComponent page={"adminpage"}/>
 
     if (loading) return <div>Loading Admin Page...</div>
     if (error) return <div>{error}</div>

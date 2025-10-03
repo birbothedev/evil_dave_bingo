@@ -5,7 +5,6 @@ import { teamPageFetch } from "../../../services/api"
 const TeamContext = createContext()
 
 export function TeamFetch({ children }) {
-    const { teamValue } = useParams()
     const navigate = useNavigate()
 
     const [team, setTeam] = useState(null)
@@ -31,7 +30,7 @@ export function TeamFetch({ children }) {
         }
 
         loadTeam()
-    }, [teamValue])
+    }, [])
 
     return (
         <TeamContext.Provider value={{ team, loading, error, authorized }}>

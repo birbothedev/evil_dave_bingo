@@ -92,6 +92,8 @@ export function SmallBingoBoard({ team: teamProp, canOpen }){
                                         ? "#754702"
                                         : (tile.tileObtained === tile.tileRequired && tile.tileObtained > 0)
                                         ? "#750D02"
+                                        : (tile.tileObtained > 0 && tile.tileObtained !== tile.tileRequired && !teamProp)
+                                        ? "#F2492A"
                                         : undefined
                                 }}
                             >
