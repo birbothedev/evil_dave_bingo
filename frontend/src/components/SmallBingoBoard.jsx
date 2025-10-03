@@ -47,7 +47,10 @@ export function SmallBingoBoard({ team: teamProp, canOpen }){
         for (let row = 0; row < rows; row++) {
             const index = row * cols + col
             if (index < boardTiles.length) {
-                reorderedTiles.push(boardTiles[index])
+                reorderedTiles.push({
+                    ...boardTiles[index],
+                    tileIndex: index 
+                })
             }
         }
     }
@@ -92,7 +95,7 @@ export function SmallBingoBoard({ team: teamProp, canOpen }){
                                         : undefined
                                 }}
                             >
-                                {isOpen ? tile.tileDescription : displayIndex}
+                                {isOpen ? tile.tileDescription : tile.tileIndex}
                             </div>
                         )
                     })}
