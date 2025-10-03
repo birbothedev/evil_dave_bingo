@@ -3,7 +3,7 @@ import { useState } from "react"
 import { TeamPoints } from "./TeamPoints"
 import { fetchTeamData } from "./util/contexts/TeamContext"
 
-export function SmallBingoBoard({ team: teamProp }){
+export function SmallBingoBoard({ team: teamProp, canOpen }){
     const [isOpen, setIsOpen] = useState(false)
 
     let team = teamProp
@@ -34,6 +34,7 @@ export function SmallBingoBoard({ team: teamProp }){
         tileReclaimed: tile.data?.effect?.reclaimed
     }))
 
+    console.log(boardTiles)
     const now = Date.now() / 1000;
     const exterminationTimer = team?.lastExtermination
     const secondsLeft = Math.max(0, Math.floor(exterminationTimer - now))
@@ -63,7 +64,7 @@ export function SmallBingoBoard({ team: teamProp }){
                     backgroundColor: (secondsLeft > 0) ? "#026975" : undefined
                 }}
                 onClick={() => {
-                    if (window.innerWidth > 1190) {
+                    if (canOpen && window.innerWidth > 1190) {
                     setIsOpen((prev) => !prev)
                     }
                 }}

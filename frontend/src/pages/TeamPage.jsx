@@ -25,7 +25,7 @@ export function TeamPage(){
                 <Legend />
                 <div className="team-columns">
                     <div className="team-bingo-board">
-                        <SmallBingoBoard/>
+                        <SmallBingoBoard canOpen={true}/>
                     </div>
                     <div className="team-inventory-container">
                         <div className="inventory-box">
