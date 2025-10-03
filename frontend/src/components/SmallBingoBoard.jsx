@@ -38,6 +38,16 @@ export function SmallBingoBoard({ team: teamProp }){
     const exterminationTimer = team?.lastExtermination
     const secondsLeft = Math.max(0, Math.floor(exterminationTimer - now))
 
+    const cols = 7;
+    const rows = 7;
+    const reorderedTiles = new Array(boardTiles.length)
+
+    boardTiles.forEach((tile, tileIndex) => {
+        const reorderedIndex = (tileIndex % cols) * rows + Math.floor(tileIndex / cols)
+        reorderedTiles[reorderedIndex] = tile
+    })
+
+
     return (
         <div className="small-board-page">
             <div className="board-label-group">
@@ -50,7 +60,7 @@ export function SmallBingoBoard({ team: teamProp }){
                     backgroundColor: (secondsLeft > 0) ? "#026975" : undefined
                 }}
                 onClick={() => {
-                    if (window.innerWidth > 950) {
+                    if (window.innerWidth > 1190) {
                     setIsOpen((prev) => !prev)
                     }
                 }}
@@ -61,12 +71,12 @@ export function SmallBingoBoard({ team: teamProp }){
                         backgroundColor: (secondsLeft > 0) ? "#026975" : undefined
                     }}
                 >
-                    {boardTiles.map(({ tileIndex, tileDescription, 
+                    {reorderedTiles.map(({ tileIndex, tileDescription, 
                         tileExtermination, tileProtection, tileObtained, tileRequired, tileReclaimed }) => {
                         return (
                             <div
                                 className={isOpen ? "big-tiles" : "small-tiles"}
-                                key={`${tileIndex}`}
+                                key={`${tileIndex}-${tileDescription}`}
                                 style={{
                                     backgroundColor: tileProtection
                                         ? "#013F46"
@@ -79,7 +89,8 @@ export function SmallBingoBoard({ team: teamProp }){
                                         : undefined
                                 }}
                             >
-                                {isOpen ? tileDescription : tileIndex + 1}
+                                {isOpen ? tileDescription : (tileIndex % 7) * 7 + Math.floor(tileIndex / 7)}
+
                             </div>
                         )
                     })}

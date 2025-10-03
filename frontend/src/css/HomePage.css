@@ -55,7 +55,7 @@
 
 .actionfeed-and-mission-wrapper {
     position: absolute;
-    top: calc(13% + 20px); 
+    top: 120px; 
     left: 50%; 
     transform: translateX(-50%);
     z-index: 1000;
@@ -97,11 +97,6 @@
     width: 100%;
 }
 
-@media (max-width: 1650px) {
-    .everything-else {
-        margin-top: 7%;
-    }
-}
 
 @media (max-width: 1500px) {
     .bingo-container {
@@ -110,9 +105,7 @@
         width: 90%;
     }
 
-    .actionfeed-and-mission-wrapper {
-        top: 15%; 
-    }
+
 
     .everything-else {
         margin-top: 8%;
@@ -124,9 +117,6 @@
         margin-top: 12%;
     }
 
-    .actionfeed-and-mission-wrapper {
-        top: 15%; 
-    }
 }
 
 @media (max-width: 1050px) {
@@ -136,18 +126,13 @@
 }
 
 @media (max-width: 880px) {
-    .actionfeed-and-mission-wrapper {
-        top: 7%; 
-    }
+
     .everything-else {
         margin-top: 13%;
     }
 }
 
 @media (max-width: 800px) {
-    .actionfeed-and-mission-wrapper {
-        top: 7%; 
-    }
 
     .everything-else {
         margin-top: 18%;
@@ -160,9 +145,9 @@
     }
 }
 
-@media (max-width: 690px) {
+@media (max-width: 700px) {
     .actionfeed-and-mission-wrapper {
-        top: 8%; 
+        top: 4%; 
     }
 
     .everything-else {
