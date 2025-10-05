@@ -1,6 +1,6 @@
 import "../../css/componentcss/Legend.css"
 
-export function Legend() {
+export function Legend({pageProp}) {
     return (
         <>
         <div className="legend-wrapper">
@@ -36,6 +36,21 @@ export function Legend() {
                 />
                 <h3 className="legend-text">Protected Tile</h3>
             </div>
+            {
+                pageProp==="team" ? 
+                    (
+                        <div className="legend-object">
+                            <img 
+                                className="legend-image" 
+                                src="/images/legendImages/partialTileColor32px.png" 
+                                alt="Partial Tile" 
+                            />
+                            <h3 className="legend-text">Partial Tile</h3>
+                        </div>
+                    ) : 
+                    undefined
+            }
+            
         </div>
         </>
     )

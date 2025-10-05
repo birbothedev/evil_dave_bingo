@@ -3,7 +3,7 @@ import { useState } from "react"
 import { TeamPoints } from "./TeamPoints"
 import { fetchTeamData } from "./util/contexts/TeamContext"
 
-export function SmallBingoBoard({ team: teamProp }){
+export function SmallBingoBoard({ team: teamProp, canOpen }){
     const [isOpen, setIsOpen] = useState(false)
 
     let team = teamProp
@@ -34,6 +34,7 @@ export function SmallBingoBoard({ team: teamProp }){
         tileReclaimed: tile.data?.effect?.reclaimed
     }))
 
+    console.log(boardTiles)
     const now = Date.now() / 1000;
     const exterminationTimer = team?.lastExtermination
     const secondsLeft = Math.max(0, Math.floor(exterminationTimer - now))
@@ -46,7 +47,10 @@ export function SmallBingoBoard({ team: teamProp }){
         for (let row = 0; row < rows; row++) {
             const index = row * cols + col
             if (index < boardTiles.length) {
-                reorderedTiles.push(boardTiles[index])
+                reorderedTiles.push({
+                    ...boardTiles[index],
+                    tileIndex: index 
+                })
             }
         }
     }
@@ -63,7 +67,7 @@ export function SmallBingoBoard({ team: teamProp }){
                     backgroundColor: (secondsLeft > 0) ? "#026975" : undefined
                 }}
                 onClick={() => {
-                    if (window.innerWidth > 1190) {
+                    if (canOpen && window.innerWidth > 1190) {
                     setIsOpen((prev) => !prev)
                     }
                 }}
@@ -88,10 +92,12 @@ export function SmallBingoBoard({ team: teamProp }){
                                         ? "#754702"
                                         : (tile.tileObtained === tile.tileRequired && tile.tileObtained > 0)
                                         ? "#750D02"
+                                        : (tile.tileObtained > 0 && tile.tileObtained !== tile.tileRequired && !teamProp)
+                                        ? "#F2492A"
                                         : undefined
                                 }}
                             >
-                                {isOpen ? tile.tileDescription : displayIndex}
+                                {isOpen ? tile.tileDescription : tile.tileIndex}
                             </div>
                         )
                     })}

@@ -11,8 +11,8 @@ export function NavBar(){
                 </div>
                 <div className="navBar-links">
                     {/* <Logout /> */}
-                    <Link to="/pageauth/teampage" className="nav-link">Team</Link>
-                    <Link to="/pageauth/adminpage" className="nav-link">Admin</Link>
+                    <Link to="teampage" className="nav-link">Team</Link>
+                    <Link to="adminpage" className="nav-link">Admin</Link>
                 </div>
             </nav>
         </div>

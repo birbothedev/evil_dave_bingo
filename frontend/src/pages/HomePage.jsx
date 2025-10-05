@@ -40,12 +40,12 @@ export function HomePage(){
                 </div>
             </div>
             <div className="everything-else">
-                <Legend />
+                <Legend pageProp={"home"}/>
                 <div className="bingo-container">
                     {Object.entries(teams).map(([teamKey, teamData]) => (
                         <div className="team-group" key={teamKey}
                         >
-                            <SmallBingoBoard team={teamData} />
+                            <SmallBingoBoard team={teamData} canOpen={false} />
                         </div>
                     ))}
                 </div>
