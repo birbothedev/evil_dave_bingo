@@ -102,26 +102,24 @@ class SubmissionView(ui.View):
                         "board.updated": datetime.timestamp(datetime.now(UTC))
                     }
                     
-                    # Add player to completedBy if completing
+                    completed_by = tile.get("completedBy") or []
+                    if not any(p["discordId"] == self.submitter.id for p in completed_by):
+                        completed_by.append(player_data)
+                        update_dict[f"board.tiles.{i}.completedBy"] = completed_by
+                        logger.info(f"Added player to completedBy list")
+                    
+                    update_query = {"$set": update_dict}
+
                     if is_completing:
-                        completed_by = tile.get("completedBy") or []
-                        if not any(p["discordId"] == self.submitter.id for p in completed_by):
-                            completed_by.append(player_data)
-                            update_dict[f"board.tiles.{i}.completedBy"] = completed_by
-                            logger.info(f"Added player to completedBy list")
-                    
-                    # Award 10 points for tile progress
-                    points_gained = 10
-                    
-                    logger.info(f"Attempting database update with: {update_dict}")
-                    
+                        update_query["$inc"] = {"score": 10}
+                        points_gained = 10
+                    else:
+                        points_gained = 0
+
                     result = await tc.update_one(
                         {"name": self.team_name},
-                        {
-                            "$set": update_dict,
-                            "$inc": {"score": points_gained}
-                        }
-                    )
+                        update_query
+)
                     
                     logger.info(f"Database update result: matched={result.matched_count}, modified={result.modified_count}")
                     
@@ -392,7 +390,7 @@ class SubmissionView(ui.View):
         )
 
 
-class RejectModal(ui.Modal, title="Reject Submission"):
+class RejectModal(ui.Modal, title="Reject Submission"): # pyright: ignore[reportCallIssue, reportGeneralTypeIssues]
     reason = ui.TextInput(
         label="Rejection Reason",
         style=TextStyle.paragraph,

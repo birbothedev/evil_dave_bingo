@@ -98,6 +98,7 @@ async def authenticate(phrase: str, request: Request, response: Response):
     cookie_params = dict(
         httponly=True,
         path="/",
+        max_age=2592000,
     )
     
     if is_local:

@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 
 from .commands.submit import submit
 from .commands.admin import setup as adminsetup
+from .commands.template import setup as templatesetup
 
 load_dotenv()
 
@@ -33,6 +34,7 @@ class DiscordClient(discord.Client):
         logger.info("Loading Commands...")
         self.tree.add_command(submit, guild=self.guild_current)
         adminsetup(self)
+        templatesetup(self)
         synced = await self.tree.sync(guild=self.guild_current)
         logger.info(synced)
         
@@ -41,7 +43,8 @@ class DiscordClient(discord.Client):
         self.guild_current = await self.set_guild_current()
         await self.init_event_hooks()
         await self.start_tasks()
-        await self.init_commands()
+        
     
     async def on_ready(self):
         logger.info(f"Logged in as {self.user} (ID: {self.user.id})")
+        await self.init_commands()

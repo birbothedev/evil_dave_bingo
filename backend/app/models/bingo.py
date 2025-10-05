@@ -41,6 +41,12 @@ class Player(BaseModel):
     discordId: int
     rsn: str
     captain: bool = False
+    
+class TileExtraItems(BaseModel):
+    name: str
+    required: int
+    obtained: int
+    set_id: int | None = None
 
 class TileData(BaseModel):
     coordX: int
@@ -49,6 +55,7 @@ class TileData(BaseModel):
     obtained: int = 0
     required: int
     effect: TileEffect | None = None
+    tileExtra: list[TileExtraItems] | None = None
 
 class Tile(BaseModel):
     index: int
