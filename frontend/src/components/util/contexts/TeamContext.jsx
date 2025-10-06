@@ -1,6 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react"
-import { useNavigate, useParams } from "react-router-dom"
-import { teamPageFetch } from "../../../services/api"
+import { useNavigate } from "react-router-dom"
 
 const TeamContext = createContext()
 
@@ -10,15 +9,21 @@ export function TeamFetch({ children }) {
     const [team, setTeam] = useState(null)
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
-    const [authorized, setAuthorized] = useState(false)
 
     useEffect(() => {
         async function loadTeam() {
             try {
-                const teamData = await teamPageFetch()
+                const response = await fetch(`https://api.evildavebingo.com/teams/`, {
+                    method: "GET",
+                    credentials: "include"
+                })
+                if (response.status === 401){
+                    navigate(`/pageauth/teampage`)
+                    return
+                }
+                const teamData = await response.json()
                 if (!teamData) {
-                    setAuthorized(false)
-                    navigate(`/pageauth/team`)
+                    navigate(`/pageauth/teampage`)
                     return
                 }
                 setTeam(teamData)
@@ -33,7 +38,7 @@ export function TeamFetch({ children }) {
     }, [])
 
     return (
-        <TeamContext.Provider value={{ team, loading, error, authorized }}>
+        <TeamContext.Provider value={{ team, loading, error }}>
             {children}
         </TeamContext.Provider>
     )

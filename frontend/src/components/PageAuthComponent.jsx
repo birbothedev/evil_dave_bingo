@@ -1,8 +1,10 @@
 import { useState } from "react"
 import "../css/componentcss/PageAuth.css"
 import { usePageAuth } from "./util/contexts/PageAuthContext"
+import { useParams } from "react-router-dom"
 
-export function PageAuthComponent({page}){
+export function PageAuthComponent(){
+    const { page } = useParams()
     const [passphrase, setPassphrase] = useState("")
     const { authenticatePassphrase, wrongPassTeam, wrongPassAdmin } = usePageAuth()
 

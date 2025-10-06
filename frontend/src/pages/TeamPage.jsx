@@ -5,14 +5,9 @@ import { BonusMissionComponent } from "../components/BonusMissionComponent"
 import "../css/TeamPage.css"
 import { Legend } from "../components/util/Legend"
 import { fetchTeamData } from "../components/util/contexts/TeamContext"
-import { usePageAuth } from "../components/util/contexts/PageAuthContext"
-import { PageAuthComponent } from "../components/PageAuthComponent"
 
 export function TeamPage(){
-    const { authorizedTeam } = usePageAuth()
     const { team, loading, error } = fetchTeamData()
-
-    if (!authorizedTeam) return <PageAuthComponent page={"teampage"}/>
 
     if (loading) return <div>Loading...</div>
     if (error) return <div>{error}</div>

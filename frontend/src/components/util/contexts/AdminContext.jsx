@@ -1,7 +1,5 @@
-import { createContext, useCallback, useContext, useEffect, useState } from "react"
+import { createContext, useContext, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { adminFetch } from "../../../services/api"
-
 
 const AdminContext = createContext()
 
@@ -11,14 +9,20 @@ export function AdminFetch({ children }){
     const [admin, setAdmin] = useState(null)
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
-    const [authorized, setAuthorized] = useState(false)
 
     useEffect(() => {
         async function loadAdmin() {
             try {
-                const adminData = await adminFetch()
+                const response = await fetch(`https://api.evildavebingo.com/teams/`, {
+                    method: "GET",
+                    credentials: "include"
+                })
+                if (response.status === 401){
+                    navigate(`/pageauth/adminpage`)
+                    return
+                }
+                const adminData = await response.json()
                 if (!adminData){
-                    setAuthorized(false)
                     navigate(`/pageauth/admin`)
                     return
                 }
@@ -34,7 +38,7 @@ export function AdminFetch({ children }){
     }, [])
 
     return (
-        <AdminContext.Provider value = {{ admin, loading, error, authorized }}>
+        <AdminContext.Provider value = {{ admin, loading, error }}>
             {children}
         </AdminContext.Provider>
     )

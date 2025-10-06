@@ -8,6 +8,7 @@ import { PageAuth } from './components/util/contexts/PageAuthContext'
 import { TeamFetch } from './components/util/contexts/TeamContext'
 import { HomeFetchAllTeams } from './components/util/contexts/FetchAllTeamsContext'
 import { AdminFetch } from './components/util/contexts/AdminContext'
+import { PageAuthComponent } from './components/PageAuthComponent'
 
 function App() {
   return (
@@ -16,30 +17,26 @@ function App() {
       <div className='main-content'>
         <Routes>
           <Route path="/" element={
-            <PageAuth>
-              <HomeFetchAllTeams>
-                    <HomePage />
-                </HomeFetchAllTeams>
-            </PageAuth>
-                
+            <HomeFetchAllTeams>
+                  <HomePage />
+            </HomeFetchAllTeams>
             } />
           <Route path="/teampage" 
             element={
-              <PageAuth>
-                <TeamFetch>
-                    <TeamPage />
-                </TeamFetch>
-              </PageAuth>
-                
+              <TeamFetch>
+                  <TeamPage />
+              </TeamFetch>
             } />
           <Route path="/adminpage" element={
-            <PageAuth>
               <AdminFetch>
                 <AdminPage />
               </AdminFetch>
-            </PageAuth>
             } />
-          <Route path="/pageauth/:page" element={<PageAuth />} />
+          <Route path="/pageauth/:page" element={
+            <PageAuth>
+              <PageAuthComponent />
+            </PageAuth>
+          } />
         </Routes>
       </div>
     </div>

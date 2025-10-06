@@ -1,14 +1,14 @@
 
 import { createContext, useContext, useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 const PageAuthContext = createContext()
 
 export function PageAuth({children}){
     const [wrongPass, setWrongPass] = useState(false)
-    const [authorizedTeam, setAuthorizedTeam] = useState(false)
-    const [authorizedAdmin, setAuthorizedAdmin] = useState(false)
     const [wrongPassTeam, setWrongPassTeam] = useState(false)
     const [wrongPassAdmin, setWrongPassAdmin] = useState(false)
+    const navigate = useNavigate()
     
     async function authenticatePassphrase(passphrase, page) {
         try {
@@ -17,36 +17,34 @@ export function PageAuth({children}){
                 credentials: "include",
             })
             if (!response.ok) {
-            if (page === "teampage") {
-                setWrongPassTeam(true)
-                setAuthorizedTeam(false)
-            }
-            if (page === "adminpage") {
-                setWrongPassAdmin(true)
-                setAuthorizedAdmin(false)
-            }
+                if (page === "teampage") {
+                    setWrongPassTeam(true)
+                }
+                if (page === "adminpage") {
+                    setWrongPassAdmin(true)
+                }
                 return false
             }
 
+            console.log("attempting to navigate to ", page)
+
             if (page === "teampage") {
                 setWrongPassTeam(false)
-                setAuthorizedTeam(true)
+                navigate('/teampage')
             }
             if (page === "adminpage") {
                 setWrongPassAdmin(false)
-                setAuthorizedAdmin(true)
+                navigate('/adminpage')
             }
 
         } catch(err) {
             setWrongPass(true)
-            if (page === "teampage") setAuthorizedTeam(false)
-            if (page === "adminpage") setAuthorizedAdmin(false)
             return false
         }
     }
 
     return (
-        <PageAuthContext.Provider value = {{ authenticatePassphrase, authorizedTeam, authorizedAdmin, wrongPassTeam, wrongPassAdmin }}>
+        <PageAuthContext.Provider value = {{ authenticatePassphrase, wrongPassTeam, wrongPassAdmin }}>
             {children}
         </PageAuthContext.Provider>
         
