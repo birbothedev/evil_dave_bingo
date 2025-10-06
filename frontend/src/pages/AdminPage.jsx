@@ -1,6 +1,4 @@
 import "../css/AdminPage.css"
-import { InventoryBox } from "../components/InventoryBox"
-import { StatusEffectBox } from "../components/StatusEffectBox"
 import { loadAdminData } from "../components/util/contexts/AdminContext"
 
 export function AdminPage(){
@@ -9,6 +7,9 @@ export function AdminPage(){
     if (loading) return <div>Loading Admin Page...</div>
     if (error) return <div>{error}</div>
     if (!admin) return <div>No admin data</div>
+
+    console.log("loading", loading, "admin", admin, "error", error);
+
 
     return (
         <div className="admin-page">
@@ -22,7 +23,8 @@ export function AdminPage(){
                             <StatusEffectBox team={team} />
                         </div>
                     ))} */}
-                    team groups
+
+                    commented everything out so it doesnt break page
                 </div>
             </div>
         </div>

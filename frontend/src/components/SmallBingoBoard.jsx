@@ -34,7 +34,6 @@ export function SmallBingoBoard({ team: teamProp, canOpen }){
         tileReclaimed: tile.data?.effect?.reclaimed
     }))
 
-    console.log(boardTiles)
     const now = Date.now() / 1000;
     const exterminationTimer = team?.lastExtermination
     const secondsLeft = Math.max(0, Math.floor(exterminationTimer - now))

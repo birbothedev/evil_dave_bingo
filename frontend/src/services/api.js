@@ -22,18 +22,18 @@ export async function fetchAllTeams(){
 //     return data;
 // }
 
-export async function adminFetch(){
-    const response = await fetch("https://api.evildavebingo.com/admin/", {
-        method: "GET",
-        credentials: "include"
-    })
+// export async function adminFetch(){
+//     const response = await fetch("https://api.evildavebingo.com/admin/", {
+//         method: "GET",
+//         credentials: "include"
+//     })
 
-    if (!response.ok){
-        throw new Error ("Not authenticated or invalid data")
-    }
-    const data = await response.json();
-    return data;
-}
+//     if (!response.ok){
+//         throw new Error ("Not authenticated or invalid data")
+//     }
+//     const data = await response.json();
+//     return data;
+// }
 
 export async function getNews(){
     const response = await fetch("https://api.evildavebingo.com/news/", {

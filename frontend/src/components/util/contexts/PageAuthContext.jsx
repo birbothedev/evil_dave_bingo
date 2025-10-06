@@ -26,8 +26,6 @@ export function PageAuth({children}){
                 return false
             }
 
-            console.log("attempting to navigate to ", page)
-
             if (page === "teampage") {
                 setWrongPassTeam(false)
                 navigate('/teampage')
