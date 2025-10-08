@@ -45,7 +45,7 @@ export function HomePage(){
                     {Object.entries(teams).map(([teamKey, teamData]) => (
                         <div className="team-group" key={teamKey}
                         >
-                            <SmallBingoBoard team={teamData} canOpen={false} />
+                            <SmallBingoBoard team={teamData} canOpen={false} page={"home"} />
                         </div>
                     ))}
                 </div>

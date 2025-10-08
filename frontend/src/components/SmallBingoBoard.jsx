@@ -3,7 +3,7 @@ import { useState } from "react"
 import { TeamPoints } from "./TeamPoints"
 import { fetchTeamData } from "./util/contexts/TeamContext"
 
-export function SmallBingoBoard({ team: teamProp, canOpen }){
+export function SmallBingoBoard({ team: teamProp, canOpen, page }){
     const [isOpen, setIsOpen] = useState(false)
 
     let team = teamProp
@@ -91,7 +91,8 @@ export function SmallBingoBoard({ team: teamProp, canOpen }){
                                         ? "#754702"
                                         : (tile.tileObtained === tile.tileRequired && tile.tileObtained > 0)
                                         ? "#750D02"
-                                        : (tile.tileObtained > 0 && tile.tileObtained !== tile.tileRequired && !teamProp)
+                                        : (tile.tileObtained > 0 && tile.tileObtained !== tile.tileRequired && 
+                                            (page === "team" || page === "admin") )
                                         ? "#F2492A"
                                         : undefined
                                 }}
@@ -101,36 +102,6 @@ export function SmallBingoBoard({ team: teamProp, canOpen }){
                         )
                     })}
                 </div>
-                {/* <div 
-                className={isOpen ? "big-tiles-container" : "small-tiles-container"}
-                    style={{
-                        backgroundColor: (secondsLeft > 0) ? "#026975" : undefined
-                    }}
-                >
-                    {reorderedTiles.map(({ tileIndex, tileDescription, 
-                        tileExtermination, tileProtection, tileObtained, tileRequired, tileReclaimed }) => {
-                        return (
-                            <div
-                                className={isOpen ? "big-tiles" : "small-tiles"}
-                                key={`${tileIndex}-${tileDescription}`}
-                                style={{
-                                    backgroundColor: tileProtection
-                                        ? "#013F46"
-                                        : tileReclaimed
-                                        ? "#013F46"
-                                        : tileExtermination
-                                        ? "#754702"
-                                        : (tileObtained == tileRequired && tileObtained > 0)
-                                        ? "#750D02"
-                                        : undefined
-                                }}
-                            >
-                                {isOpen ? tileDescription : (tileIndex % 7) * 7 + Math.floor(tileIndex / 7)}
-
-                            </div>
-                        )
-                    })}
-                </div> */}
             </div> 
         </div>
     )
