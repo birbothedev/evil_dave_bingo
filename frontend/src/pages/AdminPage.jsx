@@ -8,7 +8,7 @@ export function AdminPage(){
     if (error) return <div>{error}</div>
     if (!admin) return <div>No admin data</div>
 
-    console.log("loading", loading, "admin", admin, "error", error);
+    // console.log("loading", loading, "admin", admin, "error", error)
 
 
     return (

@@ -13,11 +13,11 @@ export function AdminFetch({ children }){
     useEffect(() => {
         async function loadAdmin() {
             try {
-                const response = await fetch(`https://api.evildavebingo.com/teams/`, {
+                const response = await fetch(`https://api.evildavebingo.com/admin/`, {
                     method: "GET",
                     credentials: "include"
                 })
-                if (response.status === 401){
+                if (!response.ok){
                     navigate(`/pageauth/adminpage`)
                     return
                 }
