@@ -28,6 +28,8 @@ export function InventoryBox({ team: teamProp }) {
 
     const exterminations = (team.inventory?.extermination || [])
         .filter(x => x.active && !x.used)
+
+    const exterminationTimer = exterminations[0]?.useBefore
     
     return (
         <>
@@ -44,7 +46,7 @@ export function InventoryBox({ team: teamProp }) {
                             <>
                                 {exterminations.map((ex, index) => (
                                     <div className="time-remaining" key={index}>
-                                        {`• Extermination (`} <CountdownComponent useBy={ex.useBy} /> {`)`}
+                                        {`• Extermination (`} <CountdownComponent useBy={exterminationTimer} /> {`)`}
                                     </div>
                                 ))}
                             </>

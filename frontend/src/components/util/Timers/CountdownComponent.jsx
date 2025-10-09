@@ -1,5 +1,5 @@
 import { use } from "react";
-import { useCountdownEffect } from "./UseCountdownEffect";
+import { useCountdownEffect } from "./UseCountdownEffect"
 
 
 export function CountdownComponent({useBy}) {
