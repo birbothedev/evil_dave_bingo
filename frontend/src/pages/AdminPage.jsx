@@ -12,9 +12,6 @@ export function AdminPage(){
     if (error) return <div>{error}</div>
     if (!admin) return <div>No admin data</div>
 
-    console.log(admin)
-
-
     return (
         <div className="admin-page">
             <h3 className="page-title">ADMIN HOME</h3>
