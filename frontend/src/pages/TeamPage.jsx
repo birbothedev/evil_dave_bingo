@@ -18,7 +18,7 @@ export function TeamPage(){
             <h3 className="page-title"> {team.name} Home Page</h3>
             <div className="actionfeed-and-mission-wrapper-team-page">
                 <div className="bonus-missions-home-page">
-                    <BonusMissionComponent page={"team"}/>
+                    <BonusMissionComponent page={"team"} team={team}/>
                 </div>
             </div>
             <div className="everything-else-team-page">

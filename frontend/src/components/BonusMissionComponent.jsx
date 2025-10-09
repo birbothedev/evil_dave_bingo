@@ -1,15 +1,8 @@
-
 import "../css/componentcss/BonusMission.css"
 import { CollapsibleSection } from "./util/Collapsible"
-import { fetchTeamData } from "./util/contexts/TeamContext"
 import { CountdownComponent } from "./util/Timers/CountdownComponent"
 
-export function BonusMissionComponent({page}) {
-    const { team, loading, error } = fetchTeamData()
-
-    if (loading) return <div>Loading Team...</div>
-    if (error) return <div>{error}</div>
-    if (!team) return <div>No team data found.</div>
+export function BonusMissionComponent({page, team}) {
 
     const missions = team.board.missions
 
@@ -28,7 +21,7 @@ export function BonusMissionComponent({page}) {
                             label={
                                 <div
                                     className="inventory-list-text"
-                                    style={(isCompleted && page==="team") ? { textDecoration: "line-through" } : {}}
+                                    style={(isCompleted && (page==="team" || page==="admin")) ? { textDecoration: "line-through" } : {}}
                                 >
                                     <CountdownComponent useBy={mission.completeBefore} />{" "}
                                     {mission.missionTitle}

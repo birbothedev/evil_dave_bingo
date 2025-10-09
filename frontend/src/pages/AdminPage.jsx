@@ -3,6 +3,7 @@ import { loadAdminData } from "../components/util/contexts/AdminContext"
 import { InventoryBox } from "../components/InventoryBox"
 import { StatusEffectBox } from "../components/StatusEffectBox"
 import { SmallBingoBoard } from "../components/SmallBingoBoard"
+import { BonusMissionComponent } from "../components/BonusMissionComponent"
 
 export function AdminPage(){
     const { admin, loading, error } = loadAdminData()
@@ -11,7 +12,7 @@ export function AdminPage(){
     if (error) return <div>{error}</div>
     if (!admin) return <div>No admin data</div>
 
-    // console.log("loading", loading, "admin", admin, "error", error)
+    console.log(admin)
 
 
     return (
@@ -25,6 +26,7 @@ export function AdminPage(){
                             <SmallBingoBoard team={team} page={"admin"}/>
                             <InventoryBox team={team} />
                             <StatusEffectBox team={team} />
+                            <BonusMissionComponent page={"admin"} team={team}/>
                         </div>
                     ))}
                 </div>

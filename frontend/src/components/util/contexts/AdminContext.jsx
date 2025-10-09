@@ -22,7 +22,6 @@ export function AdminFetch({ children }){
                     return
                 }
                 const adminData = await response.json()
-                console.log("AdminFetch response", adminData)
                 if (!adminData){
                     navigate(`/pageauth/admin`)
                     return
