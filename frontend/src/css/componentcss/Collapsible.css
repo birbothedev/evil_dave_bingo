@@ -14,8 +14,7 @@
 }
 
 .collapsible-content {
-    display: flex;
-    flex-direction: column;
+    display: block;
     background-color: transparent;
     color: black;
     font-size: larger;
@@ -23,6 +22,11 @@
     box-shadow: none;
     margin-left: 0;
     padding-left: 0;
+    max-height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 1rem;
+    scroll-behavior: smooth;
 }
 
 .collapsible-children {
@@ -81,3 +85,7 @@
     border-radius: 4px;
 }
 
+.collapsible-content {
+    scrollbar-width: medium;
+    scrollbar-color: #750D02 #fdd4a3;
+}

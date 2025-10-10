@@ -6,7 +6,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     width: 90%;
-    align-items: center;
+    align-items: start;
     justify-content: center;
     margin-bottom: 5rem;
     gap: 3rem;
