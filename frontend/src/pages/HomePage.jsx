@@ -21,6 +21,8 @@ export function HomePage(){
         timestamp: item.timeStamp
     }))
 
+    const sortedTeams = Object.entries(teams).sort((teamA, teamB) => teamB[1].score - teamA[1].score)
+
     return (
         <div className="home-page">
             <h2 className="page-title">EVIL DAVE'S TOTALLY EVIL BINGO EVENT</h2>
@@ -42,7 +44,7 @@ export function HomePage(){
             <div className="everything-else">
                 <Legend pageProp={"home"}/>
                 <div className="bingo-container">
-                    {Object.entries(teams).map(([teamKey, teamData]) => (
+                    {sortedTeams.map(([teamKey, teamData]) => (
                         <div className="team-group" key={teamKey}
                         >
                             <SmallBingoBoard team={teamData} canOpen={false} page={"home"} />

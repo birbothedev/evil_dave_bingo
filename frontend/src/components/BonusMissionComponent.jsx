@@ -15,6 +15,10 @@ export function BonusMissionComponent({page, team}) {
                     missions.map((mission, missionId) => {
                         const isCompleted = mission.completed
 
+                        const now = Date.now() / 1000;
+                        const secondsLeft = Math.max(0, Math.floor(mission.completeBefore - now))
+                        const isTimeRemaining = secondsLeft > 0
+
                         return (
                             <CollapsibleSection
                             key={missionId}
@@ -23,8 +27,12 @@ export function BonusMissionComponent({page, team}) {
                                     className="inventory-list-text"
                                     style={(isCompleted && (page==="team" || page==="admin")) ? { textDecoration: "line-through" } : {}}
                                 >
-                                    <CountdownComponent useBy={mission.completeBefore} />{" "}
-                                    {mission.missionTitle}
+                                    {isTimeRemaining && 
+                                        <>
+                                        <CountdownComponent useBy={mission.completeBefore} />{" "}
+                                        {mission.missionTitle}
+                                        </>
+                                    }
                                 </div>
                             }
                             className="inner-collapsible"

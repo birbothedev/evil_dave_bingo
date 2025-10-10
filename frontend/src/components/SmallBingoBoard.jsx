@@ -24,15 +24,24 @@ export function SmallBingoBoard({ team: teamProp, canOpen, page }){
     if (error) return <div>{error}</div>
     if (!team?.board) return <div>No board data found.</div>
 
-    const boardTiles = team?.board?.tiles?.map(tile => ({
-        tileIndex: tile.index,
-        tileDescription: tile.data.descriptor,
-        tileObtained: tile.data.obtained,
-        tileRequired: tile.data.required,
-        tileProtection: tile.data?.effect?.protected,
-        tileExtermination: tile.data?.effect?.exterminated,
-        tileReclaimed: tile.data?.effect?.reclaimed
-    }))
+    const boardTiles = team?.board?.tiles?.map(tile => {
+        // reduce will iterate over the array and reduce it into a single value
+        const totalExtraObtained = tile.data.tileExtra?.reduce((sum, value) => sum + value.obtained, 0) || 0
+        const totalExtraRequired = tile.data.tileExtra?.reduce((sum, value) => sum + value.required, 0) || 0
+
+        return {
+            tileIndex: tile.index,
+            tileDescription: tile.data.descriptor,
+            tileObtained: tile.data.obtained,
+            tileRequired: tile.data.required,
+            tileProtection: tile.data?.effect?.protected,
+            tileExtermination: tile.data?.effect?.exterminated,
+            tileReclaimed: tile.data?.effect?.reclaimed,
+            tileExtraObtained: totalExtraObtained,
+            tileExtraRequired: totalExtraRequired
+        }
+        
+    })
 
     const now = Date.now() / 1000;
     const exterminationTimer = team?.lastExtermination
@@ -77,23 +86,27 @@ export function SmallBingoBoard({ team: teamProp, canOpen, page }){
                         backgroundColor: (secondsLeft > 0) ? "#026975" : undefined
                     }}
                 >
-                    {reorderedTiles.map((tile, displayIndex) => {
+                    {reorderedTiles.map((tile) => {
                         return (
                             <div
                                 className={isOpen ? "big-tiles" : "small-tiles"}
                                 key={`${tile.tileIndex}-${tile.tileDescription}`}
                                 style={{
-                                    backgroundColor: tile.tileProtection
-                                        ? "#013F46"
+                                    backgroundColor:
+                                        tile.tileProtection
+                                            ? "#013F46" // protected
                                         : tile.tileReclaimed
-                                        ? "#013F46"
+                                            ? "#013F46" // reclaimed
                                         : tile.tileExtermination
-                                        ? "#754702"
-                                        : (tile.tileObtained === tile.tileRequired && tile.tileObtained > 0)
-                                        ? "#750D02"
-                                        : (tile.tileObtained > 0 && tile.tileObtained !== tile.tileRequired && 
-                                            (page === "team" || page === "admin") )
-                                        ? "#F2492A"
+                                            ? "#754702" // exterminated
+                                        : (tile.tileObtained > 0 && tile.tileObtained === tile.tileRequired)
+                                            ? "#750D02" // base fully completed
+                                        : (tile.tileExtraObtained > 0 &&
+                                            (page === "team" || page === "admin"))
+                                            ? "#F2492A" // extra in progress
+                                        : (tile.tileObtained > 0 && tile.tileObtained !== tile.tileRequired &&
+                                            (page === "team" || page === "admin"))
+                                            ? "#F2492A" // base in progress
                                         : undefined
                                 }}
                             >
