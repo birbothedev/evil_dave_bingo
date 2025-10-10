@@ -24,6 +24,8 @@ export function SmallBingoBoard({ team: teamProp, canOpen, page }){
     if (error) return <div>{error}</div>
     if (!team?.board) return <div>No board data found.</div>
 
+    console.log(team.board.tiles)
+
     const boardTiles = team?.board?.tiles?.map(tile => {
         // reduce will iterate over the array and reduce it into a single value
         const totalExtraObtained = tile.data.tileExtra?.reduce((sum, value) => sum + value.obtained, 0) || 0
