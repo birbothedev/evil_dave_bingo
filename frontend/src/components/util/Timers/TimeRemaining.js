@@ -9,3 +9,15 @@ export function getTimeRemaining(useBefore) {
 
     return (`${days}d ${hours}h ${minutes}m`).toLowerCase();
 }
+
+export function timeAgo(timestamp) {
+    const number = Number(timestamp);
+    const now = Date.now() / 1000;
+    let diff = now - number;
+
+    const days = String(Math.floor(diff / 86400)).padStart(2, "0");
+    const hours = String(Math.floor((diff % 86400) / 3600)).padStart(2, "0");
+    const minutes = String(Math.floor((diff % 3600) / 60)).padStart(2, "0");
+
+    return (`${days}d ${hours}h ${minutes}m ago:`).toLowerCase();
+}

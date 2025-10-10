@@ -20,7 +20,7 @@ export function AdminPage(){
                     {admin.slice(1).map((team) => (
                         <div className="team-groups" key={team._id}>
                             <h3 className="board-title"> {team.name}</h3>
-                            <SmallBingoBoard team={team} page={"admin"}/>
+                            <SmallBingoBoard team={team} page={"admin"} canOpen={true}/>
                             <InventoryBox team={team} />
                             <StatusEffectBox team={team} />
                             <BonusMissionComponent page={"admin"} team={team}/>

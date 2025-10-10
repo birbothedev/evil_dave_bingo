@@ -1,12 +1,10 @@
 
 .bonus-mission-container {
     display: flex;
-    background-color: #8f8c6d;
     text-align: center;
     margin-bottom: 1rem;
     border-radius: 8px;
     color: black;
-    padding: 1rem;
     margin-top: 1rem;
     box-sizing: border-box;
     align-items: center;
@@ -16,7 +14,6 @@
 .bonus-mission-description-container {
     display: flex;
     flex-direction: column;
-    background-color: #8f8c6d;
     padding: .25rem;
     align-items: center;
     justify-content: center;

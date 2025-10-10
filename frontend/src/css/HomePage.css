@@ -39,7 +39,6 @@
     gap: 1rem; 
 }
 
-.bonus-missions-home-page,
 .action-feed-wrapper {
     margin: 0 auto; 
     width: 100%;
@@ -51,6 +50,7 @@
     justify-content: center;
     background-color: transparent;
     border-radius: 8px;
+    flex-direction: column;
 }
 
 .actionfeed-and-mission-wrapper {
@@ -72,17 +72,6 @@
 }
 
 
-.action-feed-wrapper {
-    display: flex;
-    background-color: #8f8c6d;
-    text-align: left;
-    margin-bottom: 2.5rem;
-    border-radius: 8px;
-    color: black;
-    padding: 1rem;
-    margin-top: 0;
-}
-
 .action-feed-dropdown {
     margin: 0;
     font-size: medium;
@@ -94,6 +83,26 @@
     align-items: center;
     justify-content: center;
     margin-top: 5%;
+    width: 100%;
+}
+
+.action-feed-item-wrapper {
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+}
+
+.inner-description {
+    display: flex;
+    flex-direction: column;
+}
+
+.collapsible-content,
+.collapsible-children,
+.inner-description,
+.action-feed-item-wrapper {
+    display: flex !important;
+    flex-direction: column !important;
     width: 100%;
 }
 

@@ -3,9 +3,7 @@
     width: 100%;
     text-align: center;
     border-radius: 8px;
-    background-color: #fdd4a3;
     color: black;
-    padding: 1rem;
     border-radius: 8px;
 }
 
@@ -17,6 +15,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 8px;
+    background-color: #fdd4a3;
 }
 
 .team-info-title {
@@ -60,6 +59,7 @@
     text-align: left;
     text-transform: none;
     align-items: center;
+    gap: 1rem;
 }
 
 .team-info-box-wrapper {
@@ -74,9 +74,7 @@
 .team-info-box, .team-status-box {
     z-index: 1000;
     width: 100%;
-    padding: 1rem;
     gap: 5%;
-    background-color: #8f8c6d;
     border-radius: 8px;
 }
 
