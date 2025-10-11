@@ -33,7 +33,6 @@
     }
 }
 
-
 @media (max-width: 850px) {
     .team-group-container {
         grid-template-columns: 1fr;

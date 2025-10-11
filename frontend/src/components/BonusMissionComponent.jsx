@@ -8,10 +8,18 @@ export function BonusMissionComponent({page, team}) {
     const now = Date.now() / 1000
     const activeMissions = missions.filter(m => m.completeBefore > now)
 
+    const totalMissionPoints = missions.filter(m => m.completed)
+        .reduce((sum, value) => sum + value.pointReward, 0) || 0
+
+    const completedMissionCount = missions.filter(m => m.completed)
+        .reduce((sum, value) => sum + value.completed, 0) || 0
+
     return (
         <>
         <div className="bonus-mission-container">
             <div className="bonus-mission-description-container">
+                <div className="mission-title-text">Total Completed Missions: {completedMissionCount}</div>
+                <div className="mission-title-text">Points earned from missions: {totalMissionPoints}</div>
             <CollapsibleSection label="Active Bonus Missions">
                 {activeMissions.length > 0 &&
                     activeMissions.map((mission, missionId) => {

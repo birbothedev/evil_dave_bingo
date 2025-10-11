@@ -1,5 +1,6 @@
 import './css/App.css'
 import { Routes, Route } from "react-router-dom"
+import { HashRouter as Router } from 'react-router-dom'
 import { HomePage } from './pages/HomePage'
 import { TeamPage } from './pages/TeamPage'
 import { NavBar } from './components/util/NavBar'

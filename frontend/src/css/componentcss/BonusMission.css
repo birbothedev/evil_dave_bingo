@@ -58,6 +58,10 @@
     color:bisque;
 }
 
+.mission-title-text {
+    color: bisque;
+}
+
 @media (max-width: 500px) {
     .bonus-mission-title,
     .bonus-mission-description,
