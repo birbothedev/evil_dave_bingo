@@ -51,7 +51,7 @@ export function StatusEffectBox({ team: teamProp }) {
                             {effects.flatMap(({ tileId, effect, tileIndex }) =>
                                 Object.keys(effect).map(effectKey => (
                                     <div className="status-list-text" key={`${tileId}-${effectKey}`}>
-                                        • Tile {tileIndex + 1}: {addSpaceToCamelCase(effectKey)}
+                                        • Tile {tileIndex}: {addSpaceToCamelCase(effectKey)}
                                     </div>
                                 ))
                             )}

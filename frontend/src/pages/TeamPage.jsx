@@ -25,7 +25,7 @@ export function TeamPage(){
                 <Legend pageProp={"team"}/>
                 <div className="team-columns">
                     <div className="team-bingo-board">
-                        <SmallBingoBoard canOpen={true} page={"team"}/>
+                        <SmallBingoBoard canOpen={true} page={"team"} style={{ top: "calc(50% + 200px)" }} />
                     </div>
                     <div className="team-inventory-container">
                         <div className="inventory-box">

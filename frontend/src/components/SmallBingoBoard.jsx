@@ -3,7 +3,7 @@ import { useState } from "react"
 import { TeamPoints } from "./TeamPoints"
 import { fetchTeamData } from "./util/contexts/TeamContext"
 
-export function SmallBingoBoard({ team: teamProp, canOpen, page }){
+export function SmallBingoBoard({ team: teamProp, canOpen, page, style }){
     const [isOpen, setIsOpen] = useState(false)
 
     let team = teamProp
@@ -71,11 +71,9 @@ export function SmallBingoBoard({ team: teamProp, canOpen, page }){
             </div>
             <div 
                 className={isOpen ? "big-bingo-board" : "small-bingo-board"}
-                style={{
-                    backgroundColor: (secondsLeft > 0) ? "#026975" : undefined
-                }}
+                style={open ? style : {}}
                 onClick={() => {
-                    if (canOpen && window.innerWidth > 1190) {
+                    if (canOpen && window.innerWidth > 1250) {
                     setIsOpen((prev) => !prev)
                     }
                 }}

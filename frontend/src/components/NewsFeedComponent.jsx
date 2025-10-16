@@ -26,7 +26,7 @@ export function NewsFeed(){
 
     if (loading) return <div>Loading...</div>
     if (error) return <div>{error}</div>
-    if (!news || news.length === 0) return <div>No action feed items</div>
+    // if (!news || news.length === 0) return <div>No action feed items</div>
 
     console.log(news)
 
