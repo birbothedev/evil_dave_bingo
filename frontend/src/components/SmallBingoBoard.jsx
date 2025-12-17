@@ -14,7 +14,7 @@ export function SmallBingoBoard({ team: teamProp, canOpen, page, style }){
     if (!teamProp) {
         const fetchResult = fetchTeamData()
         if (fetchResult) {
-            team = fetchResult.team
+            team = fetchResult.team[0]
             loading = fetchResult.loading
             error = fetchResult.error
         }

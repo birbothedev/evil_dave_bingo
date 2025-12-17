@@ -39,6 +39,20 @@ export function PageAuthComponent(){
                 {page === "teampage" && wrongPassTeam && (
                     <h3 className="passphrase-title">Incorrect Password</h3>
                 )}
+                {page === "adminpage" && (
+                    <div>
+                        <h3 className="passphrase-title">Password for testing:</h3>
+                        <h3 className="passphrase-title">DavesMom</h3>
+                    </div>
+                    
+
+                )}
+                {page === "teampage" && (
+                    <div>
+                        <h3 className="passphrase-title">Password for testing:</h3>
+                        <h3 className="passphrase-title">"79PL8RorP5"</h3>
+                    </div>
+                )}
             </div>
         </div>
     )

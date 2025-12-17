@@ -13,7 +13,7 @@ export function InventoryBox({ team: teamProp }) {
     if (!teamProp) {
         const fetchResult = fetchTeamData()
         if (fetchResult) {
-            team = fetchResult.team
+            team = fetchResult.team[0]
             loading = fetchResult.loading
             error = fetchResult.error
         }

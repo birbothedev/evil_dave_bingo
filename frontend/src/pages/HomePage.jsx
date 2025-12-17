@@ -11,14 +11,16 @@ export function HomePage(){
     if (error) return <div>{error}</div>
     if (!teams) return <div>no team dummy</div>
 
-    const sortedTeams = Object.entries(teams).sort((teamA, teamB) => teamB[1].score - teamA[1].score)
+    const removedTemplate = teams.filter(team => team.name != "template")
+
+    const sortedTeams = Object.entries(removedTemplate).sort((teamA, teamB) => teamB[1].score - teamA[1].score)
 
     return (
         <div className="home-page">
             <h2 className="page-title">EVIL DAVE'S TOTALLY EVIL BINGO EVENT</h2>
-            <div className="actionfeed-and-mission-wrapper">
+            {/* <div className="actionfeed-and-mission-wrapper">
                 <NewsFeed />
-            </div>
+            </div> */}
             <div className="everything-else">
                 <Legend pageProp={"home"}/>
                 <div className="bingo-container">

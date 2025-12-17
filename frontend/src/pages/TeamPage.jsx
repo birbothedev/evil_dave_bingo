@@ -13,12 +13,14 @@ export function TeamPage(){
     if (error) return <div>{error}</div>
     if (!team) return <div>no team dummy</div>
 
+    console.log("team on teaam page: ", team)
+
     return (
         <div className="team-page-wrapper">
-            <h3 className="page-title"> {team.name} Home Page</h3>
+            <h3 className="page-title"> {team[0].name} Home Page</h3>
             <div className="actionfeed-and-mission-wrapper-team-page">
                 <div className="bonus-missions-home-page">
-                    <BonusMissionComponent page={"team"} team={team}/>
+                    <BonusMissionComponent page={"team"} team={team[0]}/>
                 </div>
             </div>
             <div className="everything-else-team-page">

@@ -51,35 +51,32 @@ export function BonusMissionComponent({page, team}) {
                         )
                     })}
                 </CollapsibleSection>
-                {page==="admin" && 
-                    <CollapsibleSection label="Completed Bonus Missions">
-                        {completedMissions.length > 0 &&
-                            completedMissions.map((mission, missionId) => {
-                                return (
-                                    <CollapsibleSection
-                                    key={missionId}
-                                    label={
-                                        <div
-                                            className="inventory-list-text"
-                                        >
-                                            {mission.missionTitle}
-                                        </div>
-                                    }
-                                    className="inner-collapsible"
-                                    style={{ boxShadow: "none" }}
+                <CollapsibleSection label="Completed Bonus Missions">
+                    {completedMissions.length > 0 &&
+                        completedMissions.map((mission, missionId) => {
+                            return (
+                                <CollapsibleSection
+                                key={missionId}
+                                label={
+                                    <div
+                                        className="inventory-list-text"
                                     >
-                                    <div className="inner-description">
-                                        • Mission: {mission.descriptor}
+                                        {mission.missionTitle}
                                     </div>
-                                    <div className="inner-description">
-                                        • Reward: {mission.reward}
-                                    </div>
-                                    </CollapsibleSection>
-                                )
-                            })}
-                    </CollapsibleSection>
-                }
-                
+                                }
+                                className="inner-collapsible"
+                                style={{ boxShadow: "none" }}
+                                >
+                                <div className="inner-description">
+                                    • Mission: {mission.descriptor}
+                                </div>
+                                <div className="inner-description">
+                                    • Reward: {mission.reward}
+                                </div>
+                                </CollapsibleSection>
+                            )
+                        })}
+                </CollapsibleSection>
             </div>
         </div>
         </>
